@@ -6,13 +6,14 @@ import SupplierMenu from './SupplierMenu/SupplierMenu';
 import BuyerCentralMenu from './BuyerCentralMenu/BuyerCentralMenu';
 import TradeAssuranceMenu from './TradeAssuranceMenu/TradeAssuranceMenu';
 import FeaturedSelectionMenu from './FeaturedSelectionMenu/FeaturedSelectionMenu';
+import CategoryMenu from './CategoryMenu/CategoryMenu';
 
 const SubNav = () => {
   const [appMenu, setAppMenu] = useState(null);
 
   const handleMouseEnter = (index) => {
     setAppMenu(index);
-    setInterval(1000)
+    
   }
 
   const handleMouseLeave = () => {
@@ -21,9 +22,9 @@ const SubNav = () => {
 
   const menuItems = [
     {
-        icon: <AiOutlineBars className="mt-1 mr-1" />,
+        icon: <AiOutlineBars className="mt-1 mr-1"/>,
       label: 'All Categories',
-      subMenu: ['Category 1', 'Category 2', 'Category 3']
+      subMenu: <CategoryMenu/>
     },
     {
       label: 'Featured Selections',
@@ -55,7 +56,7 @@ const SubNav = () => {
 
   return (
     <div className="w-full ">
-      <nav onMouseLeave={handleMouseLeave} className={`  flex justify-between bg-transparent relative py-3 w-full ${appMenu !== null ? 'text-black bg-white ' : 'text-white'}`}>
+      <nav onMouseLeave={handleMouseLeave} className={`px-14  flex justify-between bg-transparent relative py-3 w-full ${appMenu !== null ? 'text-black bg-white ' : 'text-white'}`}>
         <ul className="flex space-x-8">
           {/* Render the left side menu items */}
           {leftMenuItems.map((item, index) => (
@@ -68,7 +69,7 @@ const SubNav = () => {
               {item.icon}
               {item.label ? item.label : item}
               {item.label && appMenu === index && (
-                <div className="absolute w-full left-0 bg-white text-black p-2 mt-7 space-y-2" >
+                <div className="absolute px-14  w-full left-0 bg-white text-black p-2 mt-7 space-y-2" >
                  {item.subMenu}
                 </div>
               )}

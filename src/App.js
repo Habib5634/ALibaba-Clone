@@ -1,11 +1,14 @@
-import HomeBanner from "./Components/HomeBanner/HomeBanner";
+
+import Navbar from "./Components/Navbar/Navbar";
+import NewUser from "./Components/NewUser/NewUser";
 
 
 function App() {
   return (
     <>
 
-      <HomeBanner/>
+      <Navbar/>
+      <NewUser/>
     </>
   );
 }
