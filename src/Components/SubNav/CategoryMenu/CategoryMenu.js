@@ -1,15 +1,21 @@
 import React, { useState } from 'react';
 import MyCategorySubMenu from './MyCategorySubMenu/MyCategorySubMenu';
+import HomeDecoreMenu from './HomeDecoreMenu/HomeDecoreMenu';
+import IndustrialSubMenu from './IndustrialSubMenu/IndustrialSubMenu';
+import HealthPersonalCare from './Health&PersonelCare/HealthPersonelCare';
+import FashionBeauty from './FashionBeauty/FashionBeauty';
+import SportsEntertainment from './SportsEntertainments/SportsEntertainments';
+import ToolsHome from './ToolsHome/ToolsHome';
 
 const CategoryMenu = () => {
   const categories = [
     { id: 1, name: 'My Categories', submenu: <MyCategorySubMenu/> },
-    { id: 2, name: 'Home Decore', submenu: 'sub2' },
-    { id: 3, name: 'Industrial', submenu: 'sub3' },
-    { id: 4, name: 'Health & Personal Care', submenu: 'sub4' },
-    { id: 5, name: 'Fashion & Beauty', submenu: 'sub5' },
-    { id: 6, name: 'Sports & Entertainment', submenu: 'sub6' },
-    { id: 7, name: 'Tools & Home Improvement', submenu: 'sub7' },
+    { id: 2, name: 'Home Decore', submenu: <HomeDecoreMenu/> },
+    { id: 3, name: 'Industrial', submenu: <IndustrialSubMenu/> },
+    { id: 4, name: 'Health & Personal Care', submenu: <HealthPersonalCare/> },
+    { id: 5, name: 'Fashion & Beauty', submenu: <FashionBeauty/> },
+    { id: 6, name: 'Sports & Entertainment', submenu: <SportsEntertainment/> },
+    { id: 7, name: 'Tools & Home Improvement', submenu: <ToolsHome/> },
     { id: 8, name: 'Raw Materials', submenu: 'sub8' },
     { id: 9, name: 'Maintenance, Repair & Operations', submenu: 'sub9' }
   ];
@@ -21,13 +27,13 @@ const CategoryMenu = () => {
     onMouseLeave={() => setActiveCategory(null)}
 
     >
-      <div className="category-menu w-2/6 overflow-y-auto" 
+      <div className="category-menu w-2/6  overflow-y-auto" 
       >
         <ul>
           {categories.map(category => (
             <li 
               key={category.id} 
-              className={`category-item p-2  hover:bg-gray-100 ${activeCategory === category.id ? 'active' : ''}`}
+              className={`category-item p-2 hover:font-semibold hover:bg-gray-100 ${activeCategory === category.id ? 'active' : ''}`}
               onMouseEnter={() => setActiveCategory(category.id)}
             >
               {category.name}

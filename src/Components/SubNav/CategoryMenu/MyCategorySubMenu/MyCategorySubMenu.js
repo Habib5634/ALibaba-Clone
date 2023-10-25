@@ -4,13 +4,12 @@ import ConsumerElectronics from './ConsumerElectronice/ConsumerElectronics';
 const MyCategorySubMenu = () => {
   const categories = [
     { id: 1,icon:<IoHeadset className='text-2xl mr-2'/>, name: 'Consumer Electronics', submenu:<ConsumerElectronics/> }
-    
   ];
 
   const [activeCategory, setActiveCategory] = useState(categories[0]?.id || null);
 
   return (
-    <div className='flex w-full'
+    <div className='flex w-full h-[50vh] overflow-y-auto'
     onMouseLeave={() => setActiveCategory(null)}
 
     >
