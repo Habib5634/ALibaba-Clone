@@ -6,6 +6,8 @@ import HealthPersonalCare from './Health&PersonelCare/HealthPersonelCare';
 import FashionBeauty from './FashionBeauty/FashionBeauty';
 import SportsEntertainment from './SportsEntertainments/SportsEntertainments';
 import ToolsHome from './ToolsHome/ToolsHome';
+import RawMaterials from './RawMaterial/RawMaterial';
+import Maintenance from './Maintenance/Maintenance';
 
 const CategoryMenu = () => {
   const categories = [
@@ -16,8 +18,8 @@ const CategoryMenu = () => {
     { id: 5, name: 'Fashion & Beauty', submenu: <FashionBeauty/> },
     { id: 6, name: 'Sports & Entertainment', submenu: <SportsEntertainment/> },
     { id: 7, name: 'Tools & Home Improvement', submenu: <ToolsHome/> },
-    { id: 8, name: 'Raw Materials', submenu: 'sub8' },
-    { id: 9, name: 'Maintenance, Repair & Operations', submenu: 'sub9' }
+    { id: 8, name: 'Raw Materials', submenu: <RawMaterials/> },
+    { id: 9, name: 'Maintenance, Repair & Operations', submenu: <Maintenance/> }
   ];
 
   const [activeCategory, setActiveCategory] = useState(categories[0]?.id || null);
@@ -33,7 +35,7 @@ const CategoryMenu = () => {
           {categories.map(category => (
             <li 
               key={category.id} 
-              className={`category-item p-2 hover:font-semibold hover:bg-gray-100 ${activeCategory === category.id ? 'active' : ''}`}
+              className={`category-item p-2 border-r hover:font-semibold hover:bg-gray-100 ${activeCategory === category.id ? 'active' : ''}`}
               onMouseEnter={() => setActiveCategory(category.id)}
             >
               {category.name}

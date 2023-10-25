@@ -7,7 +7,7 @@ import {BsDoorClosed } from 'react-icons/bs'
 import {GiEmbrassedEnergy} from 'react-icons/gi'
 import {MdOutlineElectricalServices } from 'react-icons/md'
 import {IoHeadset} from 'react-icons/io5'
-import {RiSafeLine} from 'react-icons/ri'
+
 import {GrSecure} from 'react-icons/gr'
 import ConsumerElectronics from '../MyCategorySubMenu/ConsumerElectronice/ConsumerElectronics';
 import Construction from '../HomeDecoreMenu/ConstructionMenu/Construction';
@@ -28,7 +28,7 @@ const ToolsHome = () => {
         { id: 4,icon:<BsDoorClosed className='text-2xl mr-2'/>, name: 'Furniture', submenu:<FurnitureMenu/> },
         { id: 5,icon:<GiEmbrassedEnergy className='text-2xl mr-2'/>, name: 'Renewable Energy', submenu:<RenewableEnergy/>},
         { id: 6,icon:<MdOutlineElectricalServices className='text-2xl mr-2'/>, name: 'Elictrical Equipment & Supplies', submenu:<ElectricalEquipments   />},
-        { id: 7,icon:<RiSafeLine className='text-2xl mr-2'/>, name: 'Lights & Lightining', submenu:<Light/>},
+
         { id: 8,icon:<GrSecure className='text-2xl mr-2'/>, name: 'Lights & Lightining', submenu:<Light/>},
         { id: 9,icon:<IoHeadset className='text-2xl mr-2'/>, name: 'Consumer Electronics', submenu:<ConsumerElectronics/> },
         
@@ -41,7 +41,7 @@ const ToolsHome = () => {
     onMouseLeave={() => setActiveCategory(null)}
 
     >
-      <div className="category-menu w-2/6" 
+      <div className="category-menu w-2/6 border-r" 
       >
         <ul>
           {categories.map(category => (

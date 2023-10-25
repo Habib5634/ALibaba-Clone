@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import ReactCountryFlag from 'react-country-flag';
+
 
 import CountryCodeDropdown from './Dropdown';
 
@@ -11,7 +11,7 @@ const ShipToPkMenu = () => {
     <li 
     onMouseEnter={()=>setNavMenu(true)}
     onMouseLeave={()=>setNavMenu(false)}
-    className="p-2 w-fit menu-item hover:text-white"><span className='mr-2'>Ship to:</span><span className='mr-2'><ReactCountryFlag countryCode="PK"  svg /></span>PK
+    className="p-2 w-fit menu-item hover:text-white flex"><span className='mr-2'>Ship to:</span><span className='mr-2'><img src='https://s.alicdn.com/@u/mobile/g/common/flags/1.0.0/assets/pk.png' className='w-7 h-auto' alt='pk'/></span>PK
 
 
           {navMenu && 

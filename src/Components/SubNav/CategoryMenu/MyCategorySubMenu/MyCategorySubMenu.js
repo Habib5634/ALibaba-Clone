@@ -13,7 +13,7 @@ const MyCategorySubMenu = () => {
     onMouseLeave={() => setActiveCategory(null)}
 
     >
-      <div className="category-menu w-2/6" 
+      <div className="category-menu w-2/6 border-r" 
       >
         <ul>
           {categories.map(category => (
