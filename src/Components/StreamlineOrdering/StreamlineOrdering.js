@@ -45,7 +45,7 @@ const StreamlineOrdering = () => {
     </div>
   ) : (
     <div className='flex  items-center'>
-                        <span className=' rounded-full p-1 border mr-3'>
+                        <span className=' rounded-full p-1 border-2 mr-3'>
                         <img src={category.img} alt='hovered' className='w-12 h-auto'/>
                         </span>
                         <div className='flex flex-col'> 
