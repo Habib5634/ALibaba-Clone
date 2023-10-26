@@ -2,6 +2,8 @@
 import Discover from "./Components/DiscoverBussiness/Discover";
 import EmpoweringBussiness from "./Components/EmpoweringBussiness/EmpoweringBussiness";
 import ExploreOffer from "./Components/ExploreOffers/ExploreOffer";
+import Footer from "./Components/Footer/Footer";
+import SubFooter from "./Components/Footer/SubFooter";
 import GetStarted from "./Components/GetStarted/GetStarted";
 import Navbar from "./Components/Navbar/Navbar";
 import NewUser from "./Components/NewUser/NewUser";
@@ -25,6 +27,8 @@ function App() {
       <PersonalizeYourTrading/>
       <GetStarted/>
       <EmpoweringBussiness/>
+      <Footer/>
+      <SubFooter/>
     </>
   );
 }

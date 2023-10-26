@@ -107,7 +107,7 @@ const EmpoweringBussiness = () => {
       }
     };
     return (
-        <div className='py-20 px-14'>
+        <div className='py-20 px-14 border-b'>
             <h1 className='text-6xl text-amber-950 text-center mb-6' >Empowering businesses through global trade</h1>
             <p className='text-center text-xl px-20 text-gray-500 mb-6' >Alibaba.com offers one-stop B2B trading solutions for global small and medium-sized businesses, empowering them to transform through digital trade, grasp opportunities, and accelerate growth internationally.</p>
             <div className='flex justify-center space-x-10'>
