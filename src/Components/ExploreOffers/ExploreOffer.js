@@ -3,7 +3,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { BiChevronsRight, BiChevronsLeft } from "react-icons/bi"
-import { AiOutlinePause } from 'react-icons/ai'
+
 const ExploreOffer = () => {
   const items = [
     { id: 1, title: 'Product', value: '200M+' },
@@ -266,11 +266,11 @@ const ExploreOffer = () => {
         {servicesData.map(service => (
           <div key={service.id} className='relative flex flex-col justify-center space-y-2 px-20'  >
             <div className=' border h-[10rem] w-[10rem] rounded-full p-11 mr-2 hover:border hover:border-orange-500 flex flex-col justify-center items-center font-serif  ' >
-              <img src={service.img1} className='w-10 h-auto' />
+              <img src={service.img1} alt='img' className='w-10 h-auto' />
               <h1 className=' break-words text-center text-black font-serif font-medium'>{service.title1}</h1>
             </div>
             <div className=' border h-[10rem] w-[10rem] rounded-full p-11 mr-2 hover:border hover:border-orange-500 flex flex-col justify-center items-center font-serif  ' >
-              <img src={service.img2} className='w-14 h-auto'/>
+              <img src={service.img2} alt='img2' className='w-14 h-auto'/>
               <h1 className=' break-words text-center text-black font-serif font-medium'>{service.title2}</h1>
             </div>
           </div>
