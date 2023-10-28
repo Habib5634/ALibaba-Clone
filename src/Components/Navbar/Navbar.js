@@ -10,11 +10,12 @@ import ShipToPkMenu from "./NavbarMenus/ShipToPkMenu/ShipToPkMenu";
 import LanguageMenu from "./NavbarMenus/LanguageMenu/LanguageMenu";
 import SigninMenu from "./NavbarMenus/SigninMenu/SigninMenu";
 import SubNav from "../SubNav/SubNav";
+import Modal from "./FormModal";
 
 const Navbar = () => {
   const [showSidebar, setShowSidebar] = useState(false);
   const [bgWhite,setBgWhite]= useState(false)
-
+  const [isFormModal, setIsFormModal] = useState(false);
   const handleMouseEnter = ()=>{
 setBgWhite(true)
   }
@@ -26,7 +27,13 @@ setBgWhite(false)
   const handleToggleSidebar = () => {
     setShowSidebar(!showSidebar);
   };
+  const openForm = () => {
+    setIsFormModal(true);
+  };
 
+  const closeForm = () => {
+    setIsFormModal(false);
+  };
 
 //  
   return (
@@ -60,7 +67,7 @@ setBgWhite(false)
            <SigninMenu/>
           </li>
           
-          <li className="p-1 flex items-center border-none px-10 bg-orange-500 hover:bg-orange-600 transition-colors duration-300 text-white rounded-full  menu-item cursor-pointer hover:text-white">
+          <li onClick={openForm} className="p-1 flex items-center border-none px-10 bg-orange-500 hover:bg-orange-600 transition-colors duration-300 text-white rounded-full  menu-item cursor-pointer hover:text-white">
           Sign Up
           </li>
           
@@ -147,6 +154,8 @@ setBgWhite(false)
     </div>
       </div>
     </div>
+
+    <Modal isFormModal={isFormModal} closeForm={closeForm} />
     </>
   );
 };
