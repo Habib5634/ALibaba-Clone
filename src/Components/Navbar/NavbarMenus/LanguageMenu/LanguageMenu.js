@@ -28,7 +28,7 @@ const LanguageMenu = () => {
   
   
             {navMenu && 
-          <div className="absolute bg-white max-w-sm p-5 z-50 mt-8 -ml-24 rounded-xl py-3 shadow-xl text-black">
+          <div className="absolute bg-white max-w-sm p-5 z-50 mt-8 -ml-24 rounded-xl py-3 shadow-xl ">
   
   <h1 className='text mb-4'>Set Language and Currency</h1>
             <p className='text-gray-500 text-sm mb-4'>Select your preferred language and currency. You can update the settings at any time</p>
