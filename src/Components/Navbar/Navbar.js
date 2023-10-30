@@ -27,7 +27,7 @@ const Navbar = () => {
 
   const handleMouseEnter = (id) => {
     setAppMenu(id);
-    
+
   }
 
   const handleMouseLeave = () => {
@@ -36,41 +36,41 @@ const Navbar = () => {
 
   const menuItems = [
     {
-      id:1,
-        icon: <AiOutlineBars className="mt-1 mr-1"/>,
+      id: 1,
       label: 'All Categories',
-      subMenu: <CategoryMenu/>
+      subMenu: <CategoryMenu />,
+      icon: <AiOutlineBars className="mt-1 mr-1" />,
     },
     {
-      id:2,
+      id: 2,
       label: 'Featured Selections',
-      subMenu: <FeaturedSelectionMenu/>
+      subMenu: <FeaturedSelectionMenu />
     },
     {
-      id:3,
+      id: 3,
       label: 'Trade Assurance',
-      subMenu: <TradeAssuranceMenu/>
+      subMenu: <TradeAssuranceMenu />
     },
     {
-      id:4,
+      id: 4,
       label: 'Buyer Central',
-      subMenu: <BuyerCentralMenu/>
+      subMenu: <BuyerCentralMenu />
     },
     {
-      id:5,
+      id: 5,
       label: 'Become a Supplier',
-      subMenu: <SupplierMenu/>
+      subMenu: <SupplierMenu />
     },
     {
-      id:6,
+      id: 6,
       label: 'Help Center',
-      subMenu:<HelpCenterMenu/>
+      subMenu: <HelpCenterMenu />
     },
     {
-      id:7,
-        label: 'Get App',
-        subMenu: <AppMenu/>
-      },
+      id: 7,
+      label: 'Get App',
+      subMenu: <AppMenu />
+    },
   ];
   const leftMenuItems = menuItems.slice(0, 3);
   const rightMenuItems = menuItems.slice(3);
@@ -92,24 +92,20 @@ const Navbar = () => {
     <>
       <div className="bg-cover  bg-center h-[660px] flex  flex-col items-center w-full " style={{ backgroundImage: 'url("https://s.alicdn.com/@img/imgextra/i1/O1CN019pxhXm26Fy2GEGlVO_!!6000000007633-0-tps-3840-1320.jpg")' }}>
         <div className="w-full">
-{/* main navbar start */}
+          {/* main navbar start */}
           <div className={`bg-transparent  w-full  h-20 px-14  md:px-4 flex ${appMenu !== null ? `text-black bg-white` : `text-white`} `}>
-            
+
             <header className="flex items-center justify-between w-full px-12 ">
               <div className="w-1/4 items-center  ">
-                {appMenu ? (
-                  <img
-                    src='https://s.alicdn.com/@img/imgextra/i2/O1CN0153JdbU26g4bILVOyC_!!6000000007690-2-tps-418-58.png'
-                    alt="pngfuel"
-                    className="mr-3 w-44 h-auto"
-                  />
-                ) : (
-                  <img
-                    src='https://s.alicdn.com/@img/imgextra/i2/O1CN01kNCWs61cTlUC9Pjmu_!!6000000003602-2-tps-418-58.png'
-                    alt="pngfuel"
-                    className="mr-3 w-44 h-auto"
-                  />
-                )}
+
+              <img
+    src={(appMenu === 0|| appMenu === 1|| appMenu === 2 || appMenu === 3|| appMenu === 4|| appMenu === 5|| appMenu === 6)
+      ? 'https://s.alicdn.com/@img/imgextra/i2/O1CN0153JdbU26g4bILVOyC_!!6000000007690-2-tps-418-58.png' 
+      : 'https://s.alicdn.com/@img/imgextra/i2/O1CN01kNCWs61cTlUC9Pjmu_!!6000000003602-2-tps-418-58.png'}
+    alt="pngfuel"
+    className="mr-3 w-44 h-auto"
+  />
+
 
 
 
@@ -148,7 +144,7 @@ const Navbar = () => {
                 {showSidebar ? <FiX /> : <FiMenu />}
               </button>
             </div>
-{/* main navbar end */}
+            {/* main navbar end */}
             {/* Sidebar start */}
             {showSidebar && (
               <div className="bg-[#4E1E6C] w-64 h-full fixed  z-50 right-0 top-0 shadow-lg transform ${showSidebar ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 ease-in-out`}">
@@ -184,65 +180,65 @@ const Navbar = () => {
             )}
 
             {/* Sidebar end */}
-            
+
           </div>
           {/* sub navbar code start */}
           <div className="w-full ">
-      <nav  className={`px-14  flex justify-between bg-transparent relative py-3 w-full  ${appMenu !== null ? '  bg-white' : 'text-white'}`}>
-        <ul  className="flex space-x-8"
-        onMouseLeave={handleMouseLeave} 
-        >
-          {/* Render the left side menu items */}
-          {leftMenuItems.map((item, id) => (
-            <li
-              key={id}
-              className={`flex cursor-pointer hover:underline hover:underline-offset-8 transition-all duration-300  `}
-        onMouseEnter={() => handleMouseEnter(id)}
-              
-              
-            >
-              {item.label ? item.icon : item}
-              {item.label ? item.label : item}
-              {item.label && appMenu === id && (
-                <div className="absolute px-14  w-full left-0 bg-white text-black p-2 mt-6 space-y-2" >
-                 {item.subMenu}
-                </div>
-              )}
-            </li>
-          ))}
-        </ul>
-        <ul className="flex space-x-8  " onMouseLeave={handleMouseLeave} >
-          {/* Render the right side menu items */}
-          {rightMenuItems.map((item, index) => (
-         
+            <nav className={`px-14  flex justify-between bg-transparent relative py-3 w-full  ${appMenu !== null ? '  bg-white' : 'text-white'}`}>
+              <ul className="flex space-x-8"
+                onMouseLeave={handleMouseLeave}
+              >
+                {/* Render the left side menu items */}
+                {leftMenuItems.map((item, id) => (
+                  <li
+                    key={id}
+                    className={`flex cursor-pointer hover:underline hover:underline-offset-8 transition-all duration-300  `}
+                    onMouseEnter={() => handleMouseEnter(id)}
 
-            <li
-              key={index}
-              className="flex  cursor-pointer hover:underline hover:underline-offset-8 transition-all duration-300 "
-              onMouseEnter={() => handleMouseEnter(index + 3)} // Adjust index for right side items
-            >
-                
-              
-              {item.label ? item.label : item}
-              {item.label && appMenu === index + 3 && ( // Adjust index for right side items
-                <div className="absolute w-full left-0 bg-white text-black p-2 mt-6 space-y-2" >
-                 {item.subMenu}
-                    
-                 
-                </div>
-                
-              )}
-            </li>
-            
-          ))}
-        </ul>
-      </nav>
-    </div>
+
+                  >
+                    {item.label ? item.icon : item}
+                    {item.label ? item.label : item}
+                    {item.label && appMenu === id && (
+                      <div className="absolute px-14  w-full left-0 bg-white text-black p-2 mt-6 space-y-2" >
+                        {item.subMenu}
+                      </div>
+                    )}
+                  </li>
+                ))}
+              </ul>
+              <ul className="flex space-x-8  " onMouseLeave={handleMouseLeave} >
+                {/* Render the right side menu items */}
+                {rightMenuItems.map((item, index) => (
+
+
+                  <li
+                    key={index}
+                    className="flex  cursor-pointer hover:underline hover:underline-offset-8 transition-all duration-300 "
+                    onMouseEnter={() => handleMouseEnter(index + 3)} // Adjust index for right side items
+                  >
+
+
+                    {item.label ? item.label : item}
+                    {item.label && appMenu === index + 3 && ( // Adjust index for right side items
+                      <div className="absolute w-full left-0 bg-white text-black p-2 mt-6 space-y-2" >
+                        {item.subMenu}
+
+
+                      </div>
+
+                    )}
+                  </li>
+
+                ))}
+              </ul>
+            </nav>
+          </div>
           {/* sub navbar code end */}
 
         </div>
 
-{/* Banner Content start */}
+        {/* Banner Content start */}
         <div className="flex flex-col self-start items-start mt-[10%] ml-40 text-white w-3/5">
 
           <h1 className="text-xl font-normal mb-4 flex self-start justify-center items-center"><AiFillPlayCircle className="mr-2" />Learn about Alibaba.com</h1>
@@ -267,10 +263,10 @@ const Navbar = () => {
             <button className="px-3 py-1.5 bg-black bg-opacity-50 border border-white text-white rounded-full">nike shoes</button>
           </div>
         </div>
-{/* Banner Content end */}
+        {/* Banner Content end */}
 
       </div>
-{/* form modal */}
+      {/* form modal */}
       <Modal isFormModal={isFormModal} closeForm={closeForm} />
     </>
   );
