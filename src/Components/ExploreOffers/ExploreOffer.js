@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react'
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { BiChevronsRight, BiChevronsLeft } from "react-icons/bi"
+import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai';
 
 const ExploreOffer = () => {
   const items = [
@@ -241,7 +241,7 @@ const ExploreOffer = () => {
           {items.map(item => (
             
               <div key={item.id}   className='w-1/2 border-l-4 mb-4 pl-2 flex flex-col'>
-                <h1 className='text-[44px] text-orange-500'>{item.value}</h1>
+                <h1 className='text-[44px] font-medium text-orange-500'>{item.value}</h1>
                 <p className='text-[20px]'>{item.title}</p>
               </div>
             
@@ -256,22 +256,22 @@ const ExploreOffer = () => {
         
 
         
-          <BiChevronsLeft onClick={prevSlide} className=' absolute left-14 mt-32 z-10  cursor-pointer text-5xl sm:text-6xl md:text-7xl  border rounded-full   hover:bg-gray-200 p-2 sm:p-5 md:p-6 transition-colors duration-300 mr-2' />
-          <BiChevronsRight onClick={nextSlide} className=' absolute right-14 mt-32 z-10 cursor-pointer text-5xl sm:text-6xl md:text-7xl  border rounded-full   hover:bg-gray-200 p-2 sm:p-5 md:p-6 transition-colors duration-300' />
+          <AiOutlineLeft onClick={prevSlide} className=' absolute left-14 mt-32 z-10  cursor-pointer text-5xl sm:text-6xl md:text-7xl  border rounded-full   hover:bg-gray-200 p-2 sm:p-5 md:p-6 transition-colors duration-300 mr-2' />
+          <AiOutlineRight onClick={nextSlide} className=' absolute right-14 mt-32 z-10 cursor-pointer text-5xl sm:text-6xl md:text-7xl  border rounded-full   hover:bg-gray-200 p-2 sm:p-5 md:p-6 transition-colors duration-300' />
 
 
         
       </div>
-      <Slider ref={sliderRef} {...settings} className=''>
+      <Slider ref={sliderRef} {...settings} className='px-20'>
         {servicesData.map(service => (
-          <div key={service.id} className='relative flex flex-col justify-center space-y-2 px-20'  >
-            <div className=' border h-[10rem] w-[10rem] rounded-full p-11 mr-2 hover:border hover:border-orange-500 flex flex-col justify-center items-center font-serif  ' >
-              <img src={service.img1} alt='img' className='w-10 h-auto' />
-              <h1 className=' break-words truncate max-w-[100px] text-center text-black font-serif font-medium'>{service.title1}</h1>
+          <div key={service.id} className='relative flex flex-col justify-center items-center  '  >
+            <div className=' border h-[9rem] w-[9rem] rounded-full  mr-9 mb-5 hover:border hover:border-orange-500 flex flex-col justify-center items-center font-serif  ' >
+              <img src={service.img1} alt='img' className='w-12 h-auto' />
+              <h1 className=' break-words  text-center text-black font-serif text-[12px]'>{service.title1}</h1>
             </div>
-            <div className=' border h-[10rem] w-[10rem] rounded-full p-11 mr-2 hover:border hover:border-orange-500 flex flex-col justify-center items-center font-serif  ' >
-              <img src={service.img2} alt='img2' className='w-14 h-auto'/>
-              <h1 className='   max-w-[100px] h-full text-center text-black font-serif font-medium'>{service.title2}</h1>
+            <div className=' border h-[9rem] w-[9rem] rounded-full  mr-9 hover:border hover:border-orange-500 flex flex-col justify-center items-center font-serif  ' >
+              <img src={service.img2} alt='img2' className='w-12 h-auto'/>
+              <h1 className='  break-words  text-center text-black font-serif text-[12px]'>{service.title2}</h1>
             </div>
           </div>
         ))}

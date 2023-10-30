@@ -11,7 +11,7 @@ const SignupForm = () => {
     firstName: '',
     lastName: '',
     companyName: '',
-    isNotBusinessEntity: false,
+    isNotBusinessEntity: "false",
     phone: '',
   });
 
@@ -160,20 +160,24 @@ const SignupForm = () => {
           </div>
         </div>
         
-        <div className="mb-4 flex w-full items-center">
-          <label htmlFor="companyName" className="block text-end pr-2 self-center text-sm w-2/6 text-gray-500  mb-2">
-            Company Name:
-          </label>
-          <input
-            type="text"
-            id="companyName"
-            name="companyName"
-            value={formData.companyName}
-            onChange={handleChange}
-            className="w-4/6 px-3 text-sm py-0.5 focus:outline-none border border-gray-300"
-            required
-          />
-        </div>
+      
+
+{!formData.isNotBusinessEntity && (
+  <div className="mb-4 flex w-full items-center">
+    <label htmlFor="companyName" className="block text-end pr-2 self-center text-sm w-2/6 text-gray-500 mb-2">
+      Company Name:
+    </label>
+    <input
+      type="text"
+      id="companyName"
+      name="companyName"
+      value={formData.companyName}
+      onChange={handleChange}
+      className="w-4/6 px-3 text-sm py-0.5 focus:outline-none border border-gray-300"
+      required
+    />
+  </div>
+)}
         <div className="mb-4 w-4/6 flex justify-end items-center">
           <input
             type="checkbox"

@@ -43,12 +43,12 @@ setIsHover(null)
   ];
 
   return (
-    <div className='bg-[#51200b] px-20 py-14 w-full flex justify-center space-x-6'>
+    <div className='bg-[#51200b] px-20 py-14  flex justify-center space-x-6'>
       {items.map(item => (
         <div
         onMouseEnter={() => handleMouseEnter(item.id)}
         onMouseLeave={handleMouseLeave}
-        key={item.id} className='flex w-1/5 bg-white bg-opacity-10 flex-col rounded-2xl p-6 hover:bg-white hover:bg-opacity-20 text-white' >
+        key={item.id} className='flex w-1/4 bg-white bg-opacity-10 flex-col rounded-2xl p-6 hover:bg-white hover:bg-opacity-20 text-white' >
          {isHover == item.id ? (
           <span className='rounded-full w-fit p-2 bg-[#7b3314f0]'>
             <img src={item.hoverimg} alt='imags' className='h-10 w-10'/>
