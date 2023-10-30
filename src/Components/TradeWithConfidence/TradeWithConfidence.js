@@ -18,11 +18,11 @@ const TradeWithConfidence = () => {
   return (
     <div className="bg-cover bg-center h-[100vh] flex flex-col w-full" style={{ backgroundImage: 'url("https://s.alicdn.com/@img/imgextra/i2/O1CN01of0szi1HBLd6pFTAC_!!6000000000719-0-tps-3840-1892.jpg")' }}>
       <div className='flex justify-start items-start py-20 px-14'>
-        <h1 className='text-6xl font-semibold text-start text-white'>Trade with confidence from production quality to purchase protection</h1>
+        <h1 className='text-6xl w-5/6 font-semibold text-start text-white'>Trade with confidence from production quality to purchase protection</h1>
       </div>
       <div className='flex justify-center items-center space-x-10'>
         {sections.map((section, index) => (
-          <div key={index} className='rounded-lg bg-white bg-opacity-10 w-2/5 p-6'>
+          <div key={index} className='rounded-lg bg-[#FFFFFF1C] backdrop-filter backdrop-blur-[50px] w-2/5 p-6'>
             <h1 className='text-xl text-white font-medium my-4 '>{section.title}</h1>
             <img src={section.image} alt={`img${index + 1}`} />
             <p className='text-lg mb-10 text-white font-medium'>{section.description}</p>

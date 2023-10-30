@@ -21,13 +21,13 @@ const options = [
 const SourceFactory = () => {
   return (
     <div className='py-20 px-14'>
-      <h1 className='text-3xl font-semibold mb-10'>Source direct-from-factory</h1>
+      <h1 className='text-[32px] font-semibold mb-10'>Source direct-from-factory</h1>
       <div className='flex justify-center items-center space-x-10'>
         {options.map(option => (
-          <div key={option.id} className='w-1/4 relative'>
-            <img src={option.image} className='w-full h-full rounded-xl' alt={option.title} />
-            <h1 className='absolute top-4 left-4 text-xl font-semibold text-white'>{option.title}</h1>
-            <h1 className='absolute bottom-4 left-4 text-white underline cursor-pointer'>View Live</h1>
+          <div key={option.id} className=' relative'>
+            <img src={option.image} className='w-full h-full rounded-xl text-[20px]' alt={option.title} />
+            <h1 className='absolute top-6 left-6 text-xl font-semibold text-white'>{option.title}</h1>
+            <h1 className='absolute bottom-6 left-6 text-white underline cursor-pointer'>View Live</h1>
           </div>
         ))}
       </div>

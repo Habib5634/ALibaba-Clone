@@ -23,7 +23,7 @@ const LanguageMenu = () => {
       <li 
       onMouseEnter={()=>setNavMenu(true)}
       onMouseLeave={()=>setNavMenu(false)}
-      className="p-2 w-fit flex menu-item  hover:text-white">
+      className="p-2 w-fit flex menu-item text-[14px]  hover:text-white">
             <AiOutlineGlobal className="text-xl mr-2 "/>English-USD
   
   

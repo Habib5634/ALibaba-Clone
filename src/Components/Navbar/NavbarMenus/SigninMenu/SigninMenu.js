@@ -13,8 +13,8 @@ const SigninMenu = () => {
     <li 
     onMouseEnter={()=>setNavMenu(true)}
     onMouseLeave={()=>setNavMenu(false)}
-    className="p-2 w-fit flex menu-item hover:text-white">
-          <SlUser className="text-xl mr-2 "/>Sign in
+    className="p-2 w-fit flex menu-item text-[14px] hover:text-white">
+          <SlUser className=" text-xl mr-2 "/>Sign in
           {navMenu && 
         <div className="absolute bg-white w-1/5 -ml-24 mt-8  p-5 z-50 rounded-xl py-3 shadow-xl text-black">
  <h1 className='text mb-4'>Welcome to Alibaba.com</h1>

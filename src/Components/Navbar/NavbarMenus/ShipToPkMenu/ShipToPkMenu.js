@@ -11,7 +11,7 @@ const ShipToPkMenu = () => {
     <li 
     onMouseEnter={()=>setNavMenu(true)}
     onMouseLeave={()=>setNavMenu(false)}
-    className="p-2 w-fit menu-item hover:text-white flex"><span className='mr-2'>Ship to:</span><span className='mr-2'><img src='https://s.alicdn.com/@u/mobile/g/common/flags/1.0.0/assets/pk.png' className='w-7 h-auto' alt='pk'/></span>PK
+    className="p-2 w-fit menu-item  text-[14px] hover:text-white flex"><span className='mr-1'>Ship to:</span><span className='mr-1'><img src='https://s.alicdn.com/@u/mobile/g/common/flags/1.0.0/assets/pk.png' className='w-6 h-auto' alt='pk'/></span>PK
 
 
           {navMenu && 

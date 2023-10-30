@@ -2,7 +2,8 @@ import React, { useRef, useState } from 'react'
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { BiChevronsRight, BiChevronsLeft } from "react-icons/bi"
+import { AiOutlineRight, AiOutlineLeft } from "react-icons/ai"
+
 
 
 const EmpoweringBussiness = () => {
@@ -108,14 +109,14 @@ const EmpoweringBussiness = () => {
     };
     return (
         <div className='py-20 px-14 border-b'>
-            <h1 className='text-6xl text-amber-950 text-center mb-6' >Empowering businesses through global trade</h1>
+            <h1 className='text-6xl font-semibold text-amber-950 text-center mb-6' >Empowering businesses through global trade</h1>
             <p className='text-center text-xl px-20 text-gray-500 mb-6' >Alibaba.com offers one-stop B2B trading solutions for global small and medium-sized businesses, empowering them to transform through digital trade, grasp opportunities, and accelerate growth internationally.</p>
             <div className='flex justify-center space-x-10'>
                 <div className='w-2/5 relative'>
                     <img src='https://s.alicdn.com/@img/imgextra/i1/O1CN01ZUhAEZ1plFc5piQ6Z_!!6000000005400-0-tps-1408-1200.jpg' alt='image' className='rounded-2xl' />
                     <div className='absolute bottom-10 left-5'>
-                    <h1 className='uppercase text-orange-500 text-xl font-medium'>Our Mission</h1>
-                    <h1 className='text-2xl font-medium text-white'>Make it easy to do bussiness anywhere.</h1>
+                    <h1 className='uppercase text-orange-500  '>Our Mission</h1>
+                    <h1 className='text-3xl font-medium text-white'>Make it easy to do bussiness anywhere.</h1>
                     </div>
                 </div>
                 <div className='w-2/5 '>
@@ -123,8 +124,8 @@ const EmpoweringBussiness = () => {
                     <img src='https://s.alicdn.com/@img/imgextra/i3/O1CN01AuT5oO1CpaMXEBGOd_!!6000000000130-0-tps-1410-646.jpg' alt='image' className='rounded-2xl' />
                         <div className='flex justify-between items-center pl-4 absolute bottom-2 '>
                             <div className='w-3/4 self-end'>
-                            <h1 className='uppercase text-orange-500 text-xl  font-medium'>Our Locaction</h1>
-                    <h1 className='text-2xl font-medium text-amber-950'>We have teams around the world.</h1>
+                            <h1 className='uppercase text-orange-500 '>Our Locaction</h1>
+                    <h1 className='text-3xl font-medium text-amber-950'>We have teams around the world.</h1>
                             </div>
                             <div className='w-1/4'>
                                 <p className='text-sm'>Hangzhou, China Paris, France Munich, Germany Tokyo, Japan Seoul, Korea London, UK New York, US ... and many other locations worldwide</p>
@@ -133,9 +134,9 @@ const EmpoweringBussiness = () => {
                     </div>
                     <div className='relative '>
                     <img src='https://s.alicdn.com/@img/imgextra/i2/O1CN01KXAelN1CWLiBLU7x9_!!6000000000088-0-tps-1408-490.jpg' alt='image' className='rounded-2xl' />
-                    <div className='absolute bottom-4 left-4'>
-                    <h1 className='uppercase text-orange-500 text-xl  font-medium'>Our ESG promises</h1>
-                    <h1 className='text-2xl font-medium text-white'>Responsible technology, Sustainable Future.</h1>
+                    <div className='absolute bottom-10 left-4'>
+                    <h1 className='uppercase text-orange-500 '>Our ESG promises</h1>
+                    <h1 className='text-3xl font-medium text-white'>Responsible technology, Sustainable Future.</h1>
                     </div>
                     </div>
                 </div>
@@ -151,8 +152,8 @@ const EmpoweringBussiness = () => {
         
 
         
-          <BiChevronsLeft onClick={prevSlide} className='shadow-sm shadow-black  absolute left-10 mt-20 z-10  cursor-pointer text-5xl sm:text-6xl md:text-7xl   rounded-full   hover:bg-gray-200 p-2 sm:p-5 md:p-6 transition-colors duration-300 mr-2' />
-          <BiChevronsRight onClick={nextSlide} className='shadow-sm shadow-black absolute right-10 mt-20 z-10 cursor-pointer text-5xl sm:text-6xl md:text-7xl   rounded-full   hover:bg-gray-200 p-2 sm:p-5 md:p-6 transition-colors duration-300' />
+          <AiOutlineLeft onClick={prevSlide} className='absolute left-10 mt-20 z-10  cursor-pointer text-5xl sm:text-6xl md:text-7xl   rounded-full   hover:bg-gray-200 p-2 sm:p-5 md:p-6 transition-colors duration-300 mr-2' />
+          <AiOutlineRight onClick={nextSlide} className=' absolute right-10 mt-20 z-10 cursor-pointer text-5xl sm:text-6xl md:text-7xl   rounded-full   hover:bg-gray-200 p-2 sm:p-5 md:p-6 transition-colors duration-300' />
 
 
         

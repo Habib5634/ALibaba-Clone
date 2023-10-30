@@ -234,15 +234,15 @@ const ExploreOffer = () => {
   return (
     <>
       <div className='w-full flex px-14 py-20'>
-        <div className='w-4/6 pr-20'>
+        <div className='w-3/5 pr-20'>
           <h1 className='text-6xl font-semibold '> Explore millions of offerings tailored to your business needs</h1>
         </div>
-        <div className='w-2/6 flex flex-wrap justify-center '>
+        <div className='w-2/5 flex flex-wrap justify-center '>
           {items.map(item => (
             
               <div key={item.id}   className='w-1/2 border-l-4 mb-4 pl-2 flex flex-col'>
-                <h1 className='text-4xl text-orange-500'>{item.value}</h1>
-                <p className='text-xl'>{item.title}</p>
+                <h1 className='text-[44px] text-orange-500'>{item.value}</h1>
+                <p className='text-[20px]'>{item.title}</p>
               </div>
             
           ))}
@@ -262,16 +262,16 @@ const ExploreOffer = () => {
 
         
       </div>
-      <Slider ref={sliderRef} {...settings} className='space-x-2 flex justify-center '>
+      <Slider ref={sliderRef} {...settings} className=''>
         {servicesData.map(service => (
           <div key={service.id} className='relative flex flex-col justify-center space-y-2 px-20'  >
             <div className=' border h-[10rem] w-[10rem] rounded-full p-11 mr-2 hover:border hover:border-orange-500 flex flex-col justify-center items-center font-serif  ' >
               <img src={service.img1} alt='img' className='w-10 h-auto' />
-              <h1 className=' break-words text-center text-black font-serif font-medium'>{service.title1}</h1>
+              <h1 className=' break-words truncate max-w-[100px] text-center text-black font-serif font-medium'>{service.title1}</h1>
             </div>
             <div className=' border h-[10rem] w-[10rem] rounded-full p-11 mr-2 hover:border hover:border-orange-500 flex flex-col justify-center items-center font-serif  ' >
               <img src={service.img2} alt='img2' className='w-14 h-auto'/>
-              <h1 className=' break-words text-center text-black font-serif font-medium'>{service.title2}</h1>
+              <h1 className='   max-w-[100px] h-full text-center text-black font-serif font-medium'>{service.title2}</h1>
             </div>
           </div>
         ))}

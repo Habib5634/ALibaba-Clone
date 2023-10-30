@@ -18,7 +18,7 @@ const StreamlineOrdering = () => {
       }, []);
   return (
     <div className=' py-20 px-14'>
-        <h1 className='text-6xl font-semibold text-start mb-24'>Streamline ordering from search to fulfillment, all in one place</h1>
+        <h1 className='text-6xl w-5/6 font-semibold text-start mb-24'>Streamline ordering from search to fulfillment, all in one place</h1>
 
         <div className='flex justify-center w-full'
     onMouseLeave={() => setActiveCategory(categories[0]?.id)}

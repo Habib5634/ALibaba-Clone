@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react'
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { BiChevronsRight, BiChevronsLeft } from "react-icons/bi"
+import { AiOutlineRight, AiOutlineLeft } from "react-icons/ai"
 
 const PersonalizeYourTrading = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -96,8 +96,8 @@ const PersonalizeYourTrading = () => {
         
 
         
-          <BiChevronsLeft onClick={prevSlide} className=' absolute left-14 mt-32 z-10  cursor-pointer text-5xl sm:text-6xl md:text-7xl  border rounded-full   hover:bg-gray-200 p-2 sm:p-5 md:p-6 transition-colors duration-300 mr-2' />
-          <BiChevronsRight onClick={nextSlide} className=' absolute right-14 mt-32 z-10 cursor-pointer text-5xl sm:text-6xl md:text-7xl  border rounded-full   hover:bg-gray-200 p-2 sm:p-5 md:p-6 transition-colors duration-300' />
+          <AiOutlineLeft onClick={prevSlide} className=' absolute left-14 mt-32 z-10  cursor-pointer text-5xl sm:text-6xl md:text-7xl  border rounded-full   hover:bg-gray-200 p-2 sm:p-5 md:p-6 transition-colors duration-300 mr-2' />
+          <AiOutlineRight onClick={nextSlide} className=' absolute right-14 mt-32 z-10 cursor-pointer text-5xl sm:text-6xl md:text-7xl  border rounded-full   hover:bg-gray-200 p-2 sm:p-5 md:p-6 transition-colors duration-300' />
 
 
         
@@ -114,7 +114,7 @@ const PersonalizeYourTrading = () => {
             <p className='text-gray-500 mt-3'>{service.role}</p>
            </div>
            
-           <p className='text-black text-center  font-semibold w-fit ml-20 text-xl'>{service.desc}</p>
+           <p className='text-black text-start  font-semibold w-fit ml-20 text-xl'>{service.desc}</p>
            </div>
           </div>
         ))}

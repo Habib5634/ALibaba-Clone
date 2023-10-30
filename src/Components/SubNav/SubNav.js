@@ -56,27 +56,30 @@ const SubNav = () => {
 
   return (
     <div className="w-full ">
-      <nav onMouseLeave={handleMouseLeave} className={`px-14  flex justify-between bg-transparent relative py-3 w-full ${appMenu !== null ? 'text-black bg-white ' : 'text-white'}`}>
-        <ul className="flex space-x-8">
+      <nav  className={`px-14  flex justify-between bg-transparent relative py-3 w-full  ${appMenu !== null ? '  bg-white' : 'text-white'}`}>
+        <ul  className="flex space-x-8"
+        onMouseLeave={handleMouseLeave} 
+        >
           {/* Render the left side menu items */}
           {leftMenuItems.map((item, index) => (
             <li
               key={index}
-              className="flex cursor-pointer hover:underline hover:underline-offset-8 transition-all duration-300"
-              onMouseEnter={() => handleMouseEnter(index)}
+              className={`flex cursor-pointer hover:underline hover:underline-offset-8 transition-all duration-300  `}
+        onMouseEnter={() => handleMouseEnter(index)}
+              
               
             >
               {item.icon}
               {item.label ? item.label : item}
               {item.label && appMenu === index && (
-                <div className="absolute px-14  w-full left-0 bg-white text-black p-2 mt-7 space-y-2" >
+                <div className="absolute px-14  w-full left-0 bg-white text-black p-2 mt-6 space-y-2" >
                  {item.subMenu}
                 </div>
               )}
             </li>
           ))}
         </ul>
-        <ul className="flex space-x-8  ">
+        <ul className="flex space-x-8  " onMouseLeave={handleMouseLeave} >
           {/* Render the right side menu items */}
           {rightMenuItems.map((item, index) => (
          
@@ -90,7 +93,7 @@ const SubNav = () => {
               
               {item.label ? item.label : item}
               {item.label && appMenu === index + 3 && ( // Adjust index for right side items
-                <div className="absolute w-full left-0 bg-white text-black p-2 mt-7 space-y-2" >
+                <div className="absolute w-full left-0 bg-white text-black p-2 mt-6 space-y-2" >
                  {item.subMenu}
                     
                  
