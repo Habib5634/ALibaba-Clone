@@ -122,11 +122,11 @@ setIsHover(true)
         <>
             <div className='bg-gray-200 py-20 px-14 w-full' >
                 <h1 className='text-3xl font-semibold mb-10'>Discover your next business opportunity</h1>
-                <div className='flex w-full space-x-2'>
+                <div className='flex w-full  space-x-4'>
                     <div
                     onMouseEnter={handleMouseEnter}
                     onMouseLeave={handleMouseLeave}
-                    className='w-2/6'>
+                    className='w-2/6 h-full '>
                     <div className='flex mb-4 justify-between'><h1 className='text-[24px] font-semibold'>Saving Spot Lights</h1> <button className='underline'>View More</button></div>
                     <div className={`${isHover? 'flex':'hidden'} absolute sm:flex-row flex-col justify-between`}>
                             <AiOutlineLeft onClick={prevSlide} className='  left-14 mt-72 z-10  cursor-pointer text-5xl sm:text-6xl md:text-7xl  border rounded-full   hover:bg-gray-200 p-2 sm:p-5 md:p-6 transition-colors duration-300 mr-2' />
@@ -137,14 +137,14 @@ setIsHover(true)
                         </div>
                         <Slider ref={sliderRef} {...settings} className='space-x-2 flex justify-center '>
                             {servicesData.map(service => (
-                                <div className='relative'>
+                                <div className='relative '>
                                 
                                 <div className='p-4  mb-3 rounded-xl bg-white w-full flex flex-col'>
                                     <h1 className='text-[20px] font-medium'>{service.title}</h1>
                                     <p>{service.desc}</p>
-                                <div className='w-full h-[64vh] p-2'><img src={service.img1} className=' border rounded-md h-auto w-full' alt='' /></div>
+                                <div className='w-full h-3/4 p-2 mb-6'><img src={service.img1} className=' border rounded-md h-auto w-full' alt='' /></div>
                                 
-                            <div className='flex h-[20vh]'>
+                            <div className='flex '>
                                 <img src={service.img2} className=' border rounded-md w-1/3  ' alt='' />
                                 <img src={service.img3} className=' border rounded-md w-1/3 ' alt='' />
                                 <img src={service.img4} className=' border rounded-md w-1/3 ' alt='' />
@@ -158,35 +158,35 @@ setIsHover(true)
 
 
                     </div>
-                    <div className='w-2/6'>
-                        <div className='flex mb-4 justify-between'><h1 className='text-[24px] font-semibold'>New Arrivals</h1> <button className='underline'>View More</button></div>
-                        <div className='p-4 mb-3 h-[74vh] rounded-xl bg-white w-full flex flex-wrap'>
+                    <div className='w-2/6 h-full'>
+                        <div className='flex mb-4  justify-between'><h1 className='text-[24px] font-semibold'>New Arrivals</h1> <button className='underline'>View More</button></div>
+                        <div className='p-4 mb-6 h-3/5 rounded-xl bg-white w-full flex flex-wrap'>
                             <h1 className='text-[20px] font-medium mb-3' >61,800+ products added today</h1>
                             <div className='w-1/2 p-2'><img src='https://s.alicdn.com/@sc04/kf/H9d4c49930ed74c3ebf27f6d4ed478abbM.png_350x350.jpg' className=' border rounded-md h-full w-full' alt='' /></div>
                             <div className='w-1/2 p-2'><img src='https://s.alicdn.com/@sc04/kf/Hc7b3de710b6e4008ad11d30c327ed88aC.jpg_350x350.jpg' className=' border rounded-md h-full w-full' alt='' /></div>
                             <div className='w-1/2 p-2'><img src='https://s.alicdn.com/@sc04/kf/H3d2f10f26faf4167b782c2b4f158ef3fS.jpg_350x350.jpg' className=' border rounded-md h-full w-full' alt='' /></div>
                             <div className='w-1/2 p-2'><img src='https://s.alicdn.com/@sc04/kf/Hc587970e70814a588fd59826d5a69598U.jpg_350x350.jpg' className=' border rounded-md h-full w-full' alt='' /></div>
                         </div>
-                        <div className='p-4 rounded-xl h-[20vh] bg-white w-full flex'>
-                            <div className='flex'><img src='https://s.alicdn.com/@sc04/kf/Hf9fc30e0c2a74d068581623365d67b1ds.png_350x350.jpg' className=' border rounded-md ' alt='' />
+                        <div className='p-4 rounded-xl  bg-white  w-full flex'>
+                            <img src='https://s.alicdn.com/@sc04/kf/Hf9fc30e0c2a74d068581623365d67b1ds.png_350x350.jpg' className='w-1/3 border rounded-md ' alt='' />
                                 <div className='flex flex-col p-2'>
                                     <h1 className='text-[20px] font-medium'>New This Week</h1>
                                     <p>Product from verified suppliers only</p>
                                 </div>
-                            </div>
+                           
                         </div>
                     </div>
-                    <div className='w-2/6'>
+                    <div className='w-2/6 h-full'>
                         <div className='flex mb-4 justify-between'><h1 className='text-[24px] font-semibold'>Saving Spot Lights</h1> <button className='underline'>View More</button></div>
-                        <div className='p-4 mb-3 h-[20vh] rounded-xl bg-white w-full flex'>
-                            <div className='flex'><img src='https://s.alicdn.com/@sc04/kf/H324f65d649a54e8badbc921234873a36V.jpg_350x350.jpg' className=' border rounded-md ' alt='' />
+                        <div className='p-4 mb-6  rounded-xl bg-white w-full flex'>
+                            <div className='flex'><img src='https://s.alicdn.com/@sc04/kf/H324f65d649a54e8badbc921234873a36V.jpg_350x350.jpg' className=' border rounded-md w-1/3' alt='' />
                                 <div className='flex flex-col justify-center items-center p-2'>
                                     <h1 className='text-[20px] font-medium'>Lowest Prices in 180 days</h1>
 
                                 </div>
                             </div>
                         </div>
-                        <div className='p-4 h-[74vh] rounded-xl bg-white w-full flex flex-wrap'>
+                        <div className='p-4 h-3/4 rounded-xl bg-white w-full flex flex-wrap'>
                             <h1 className='text-[20px] font-medium mb-3'>Deals on Best Sellers</h1>
                             <div className='w-full p-2'><img src='https://s.alicdn.com/@sc04/kf/Hff84760ec7754f5691fb86825e782f80y.jpg_350x350.jpg' className=' border rounded-md h-full w-full' alt='' /></div>
 
