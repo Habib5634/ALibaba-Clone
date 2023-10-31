@@ -1,34 +1,18 @@
 
-import Discover from "./Components/DiscoverBussiness/Discover";
-import EmpoweringBussiness from "./Components/EmpoweringBussiness/EmpoweringBussiness";
-import ExploreOffer from "./Components/ExploreOffers/ExploreOffer";
-import Footer from "./Components/Footer/Footer";
-import SubFooter from "./Components/Footer/SubFooter";
-import GetStarted from "./Components/GetStarted/GetStarted";
-import Navbar from "./Components/Navbar/Navbar";
-import NewUser from "./Components/NewUser/NewUser";
-import PersonalizeYourTrading from "./Components/PersonalizeYourTrading/PersonalizeYourTrading";
-import SourceFactory from "./Components/SourceFactory/SourceFactory";
-import StreamlineOrdering from "./Components/StreamlineOrdering/StreamlineOrdering";
-import TradeWithConfidence from "./Components/TradeWithConfidence/TradeWithConfidence";
-
+import { Route, Routes } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import HomePage from './Pages/HomePage/HomePage';
 
 function App() {
   return (
     <>
+<ToastContainer />
+<Routes>
+<Route path='/' element={<HomePage/>}/>
 
-      <Navbar/>
-      <NewUser/>
-      <ExploreOffer/>
-      <Discover/>
-      <SourceFactory/>
-      <TradeWithConfidence/>
-      <StreamlineOrdering/>
-      <PersonalizeYourTrading/>
-      <GetStarted/>
-      <EmpoweringBussiness/>
-      <Footer/>
-      <SubFooter/>
+</Routes>
+    
     </>
   );
 }

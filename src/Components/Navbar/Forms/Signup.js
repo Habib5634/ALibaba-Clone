@@ -1,31 +1,38 @@
 import React, { useState } from 'react';
 import { FaFacebook, FaLinkedin,  FaTwitter } from 'react-icons/fa';
 import {FcGoogle} from 'react-icons/fc'
+import {  handleRegister } from '../../../service/authService';
+import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 const SignupForm = () => {
-  const [formData, setFormData] = useState({
-    country: '',
-   
-    purpose: '',
-    email: '',
-    password: '',
-    firstName: '',
-    lastName: '',
-    companyName: '',
-    isNotBusinessEntity: "false",
-    phone: '',
-  });
-
-  const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    setFormData({
-      ...formData,
-      [name]: type === 'checkbox' ? checked : value,
-    });
-  };
-
-  const handleSubmit = (e) => {
+  const [countryname, setCountryName] = useState('');
+  const [purpose, setPurpose] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [firstname, setFirstName] = useState('');
+  const [lastname, setLastName] = useState('');
+  const [companyname, setCompanyName] = useState('Stem');
+  const [isnotbusinessentinty, setIsNotBusinessEntity] = useState("false");
+  const [phone, setPhone] = useState('');
+  const [loading, setLoading] = useState(false);
+ 
+const navigate = useNavigate()
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Form Data:', formData);
+  
+    
+  
+    try {
+      setLoading(true);
+      await handleRegister(e, firstname, lastname, email, password, isnotbusinessentinty, companyname, purpose, phone,setLoading);
+      
+      setLoading(false);
+      window.location.replace('/')
+    } catch (error) {
+      setLoading(false);
+      toast('Something Went Wrong');
+      console.error('Registration failed:', error);
+    }
   };
 
   return (
@@ -48,9 +55,9 @@ const SignupForm = () => {
           </label>
           <select
             id="country"
-            name="country"
-            value={formData.country}
-            onChange={handleChange}
+            name="countryname"
+            value={countryname}
+            onChange={(e) => setCountryName(e.target.value)}
             className="w-4/6 px-3 text-sm py-0.5 focus:outline-none border border-gray-300"
             required
           >
@@ -68,8 +75,8 @@ const SignupForm = () => {
               type="radio"
               name="purpose"
               value="sell"
-              checked={formData.purpose === 'sell'}
-              onChange={handleChange}
+              checked={purpose === 'sell'}
+              onChange={(e) => setPurpose(e.target.value)}
               className="mx-2"
             />
             <span className='mr-2 text-sm text-gray-500'>Sell</span>
@@ -79,8 +86,8 @@ const SignupForm = () => {
               type="radio"
               name="purpose"
               value="purchase"
-              checked={formData.purpose === 'purchase'}
-              onChange={handleChange}
+              checked={purpose === 'purchase'}
+              onChange={(e) => setPurpose(e.target.value)}
               className="mr-2 text-sm text-gray-500"
             />
             <span className='mr-2 text-gray-500'>Purchase</span>
@@ -90,8 +97,8 @@ const SignupForm = () => {
               type="radio"
               name="purpose"
               value="both"
-              checked={formData.purpose === 'both'}
-              onChange={handleChange}
+              checked={purpose === 'both'}
+              onChange={(e) => setPurpose(e.target.value)}
               className="mr-2 text-gray-500"
             />
             <span className='mr-2 text-sm text-gray-500'>Both</span>
@@ -112,8 +119,8 @@ const SignupForm = () => {
             type="email"
             id="email"
             name="email"
-            value={formData.email}
-            onChange={handleChange}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             className="w-4/6 px-3 text-sm py-0.5 focus:outline-none border border-gray-300 "
             required
           />
@@ -126,8 +133,8 @@ const SignupForm = () => {
             type="password"
             id="password"
             name="password"
-            value={formData.password}
-            onChange={handleChange}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             className="w-4/6 px-3 text-sm py-0.5 focus:outline-none border border-gray-300"
             required
           />
@@ -140,20 +147,20 @@ const SignupForm = () => {
           <input
             type="text"
             id="firstName"
-            name="firstName"
+            name="firstname"
             placeholder='First Name'
-            value={formData.firstName}
-            onChange={handleChange}
+            value={firstname}
+            onChange={(e) => setFirstName(e.target.value)}
             className="w-1/2 text-sm px-3 py-0.5 focus:outline-none border border-gray-300"
             required
           />
           <input
             type="text"
             id="lastName"
-            name="lastName"
+            name="lastname"
             placeholder='Last Name'
-            value={formData.lastName}
-            onChange={handleChange}
+            value={lastname}
+            onChange={(e) => setLastName(e.target.value)}
             className="w-1/2 text-sm px-3 py-0.5 focus:outline-none border border-gray-300"
             required
           />
@@ -162,7 +169,7 @@ const SignupForm = () => {
         
       
 
-{!formData.isNotBusinessEntity && (
+{!isnotbusinessentinty && (
   <div className="mb-4 flex w-full items-center">
     <label htmlFor="companyName" className="block text-end pr-2 self-center text-sm w-2/6 text-gray-500 mb-2">
       Company Name:
@@ -170,9 +177,9 @@ const SignupForm = () => {
     <input
       type="text"
       id="companyName"
-      name="companyName"
-      value={formData.companyName}
-      onChange={handleChange}
+      name="companyname"
+      value={companyname}
+      onChange={(e) => setCompanyName(e.target.value)}
       className="w-4/6 px-3 text-sm py-0.5 focus:outline-none border border-gray-300"
       required
     />
@@ -182,9 +189,9 @@ const SignupForm = () => {
           <input
             type="checkbox"
             id="isNotBusinessEntity"
-            name="isNotBusinessEntity"
-            checked={formData.isNotBusinessEntity}
-            onChange={handleChange}
+            name="isnotbusinessentinty"
+            checked={isnotbusinessentinty}
+            onChange={(e) => setIsNotBusinessEntity(e.target.value)}
             className="mr-2"
           />
           <label htmlFor="isNotBusinessEntity" className="text-gray-700">
@@ -199,17 +206,18 @@ const SignupForm = () => {
             type="tel"
             id="phone"
             name="phone"
-            value={formData.phone}
-            onChange={handleChange}
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
             className="w-4/6 px-3 text-sm py-0.5 focus:outline-none border border-gray-300"
             required
           />
         </div>
         <button
           type="submit"
+          disabled={loading}
           className="w-full bg-orange-500 text-white font-bold py-1 px-4 rounded-sm hover:bg-orange-700"
         >
-          Sign Up
+          {loading ? 'Wait...' : 'SignUp'}
         </button>
       </form>
     </div>

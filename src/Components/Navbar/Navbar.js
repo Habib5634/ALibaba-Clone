@@ -19,13 +19,16 @@ import SupplierMenu from "../SubNav/SupplierMenu/SupplierMenu";
 import HelpCenterMenu from "../SubNav/HelpCenterMenu/HelpCenterMenu";
 import AppMenu from "../SubNav/AppMenu/AppMenu";
 import Navbar2 from "./Navbar2";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
   // const [bgWhite, setBgWhite] = useState(false)
   const [isFormModal, setIsFormModal] = useState(false);
   const [appMenu, setAppMenu] = useState(null);
   const [showNavbar1, setShowNavbar1] = useState(true);
+  
 
   const handleMouseEnter = (id) => {
     setAppMenu(id);
@@ -77,7 +80,18 @@ const Navbar = () => {
   const leftMenuItems = menuItems.slice(0, 3);
   const rightMenuItems = menuItems.slice(3);
   // Check if a token exists in local storage
-
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      setIsLoggedIn(true);
+    }
+  }, []);
+  //logout
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    toast("Logout Successfull")
+    setIsLoggedIn(false);
+  };
   //use effect for changing the navbar
   useEffect(() => {
     let prevScrollPos = window.pageYOffset;
@@ -115,7 +129,7 @@ const Navbar = () => {
           {showNavbar1 ? (
         <div >
           <div >
-          <div className={`bg-transparent  w-full  h-20 px-14  md:px-4 flex ${appMenu !== null ? `text-[#222222] bg-white` : `text-white`} `}>
+          <div className={`bg-transparent  w-full  h-20 px-14  md:px-4 flex ${appMenu !== null ? `text-black bg-white` : `text-white`} `}>
 
 <header className="flex items-center justify-between w-full px-6 ">
   <div className="w-1/4 items-center  ">
@@ -134,7 +148,7 @@ className="mr-3 w-48 h-auto"
   </div>
   <div>
 
-    <ul className={`hidden md:flex list-none  justify-center space-x-5 font-semibold ${appMenu !== null ? `text-[#222222] bg-white` : `text-white`} `}>
+    <ul className={`hidden md:flex list-none  justify-center space-x-5 font-semibold ${appMenu !== null ? `text-black bg-white` : `text-white`} `}>
       <li className="">
         <ShipToPkMenu />
       </li>
@@ -146,10 +160,16 @@ className="mr-3 w-48 h-auto"
       <li >
         <SigninMenu />
       </li>
-
-      <li onClick={openForm} className="p-1 text-[14px] flex items-center border-none px-8 bg-orange-500 hover:bg-orange-700 transition-colors duration-300 text-white rounded-full  menu-item cursor-pointer hover:text-white">
-        Sign Up
-      </li>
+{isLoggedIn ? (
+  <li onClick={handleLogout} className="p-1 text-[14px] flex items-center border-none px-8 bg-orange-500 hover:bg-orange-700 transition-colors duration-300 text-white rounded-full  menu-item cursor-pointer hover:text-white">
+ Logout
+</li>
+) : (
+  <li onClick={openForm} className="p-1 text-[14px] flex items-center border-none px-8 bg-orange-500 hover:bg-orange-700 transition-colors duration-300 text-white rounded-full  menu-item cursor-pointer hover:text-white">
+  Sign Up
+</li>
+)}
+      
 
 
 
