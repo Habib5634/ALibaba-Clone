@@ -11,8 +11,8 @@ const SignupForm = () => {
   const [password, setPassword] = useState('');
   const [firstname, setFirstName] = useState('');
   const [lastname, setLastName] = useState('');
-  const [companyname, setCompanyName] = useState('Stem');
-  const [isnotbusinessentinty, setIsNotBusinessEntity] = useState("false");
+  const [companyname, setCompanyName] = useState('');
+  const [isnotbusinessentinty, setIsNotBusinessEntity] = useState(false);
   const [phone, setPhone] = useState('');
   const [loading, setLoading] = useState(false);
  
@@ -20,14 +20,16 @@ const navigate = useNavigate()
   const handleSubmit = async (e) => {
     e.preventDefault();
   
-    
+    const isNotBusinessEntityString = isnotbusinessentinty ? 'true' : 'false';
   
     try {
       setLoading(true);
-      await handleRegister(e, firstname, lastname, email, password, isnotbusinessentinty, companyname, purpose, phone,setLoading);
+      await handleRegister(e, firstname, lastname, email, password, isNotBusinessEntityString, companyname, purpose, phone,setLoading);
       
       setLoading(false);
-      window.location.replace('/')
+      toast("Registered Successfull Please Login to Continue")
+      navigate('/')
+      // window.location.replace('/')
     } catch (error) {
       setLoading(false);
       toast('Something Went Wrong');

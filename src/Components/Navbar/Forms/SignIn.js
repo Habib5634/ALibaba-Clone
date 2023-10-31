@@ -13,7 +13,7 @@ const SignIn = () => {
     setLoading(true);
     try {
       await handleLogin(e, email, password, setLoading);
-      toast("Login Successfull")
+      // toast("Login Successfull")
     } catch (error) {
       setLoading(false);
       toast("Email or password are wrong")
