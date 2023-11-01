@@ -110,7 +110,7 @@ const Navbar2 = () => {
 
 
         </div>
-        <div className='flex justify-between my-2 px-4'>
+        <div className='flex border-b justify-between my-2 px-4'>
             <div className='flex justify-center items-center border-r px-2 font-extralight'><AiOutlineBars/>Categories</div>
             <div className='flex justify-center space-x-3'>
               <div className='flex justify-center items-center border-r px-2 font-extralight'><BsPhone/>Get the App</div>
@@ -118,7 +118,7 @@ const Navbar2 = () => {
               <div className='flex justify-center items-center border-r px-2 font-extralight'><span className='mr-1'>Ship to:</span><span className='mr-1'><img src='https://s.alicdn.com/@u/mobile/g/common/flags/1.0.0/assets/pk.png' className='w-6 h-auto' alt='pk'/></span>PK</div>
             </div>
           </div>
-          
+
         </>
     )
 }

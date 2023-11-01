@@ -9,6 +9,7 @@ const data = [
       price: 0.18,
       realPrice:0.25,
       rating: 4,
+      link1:"Hot Selling In Lens Cap",
       reviews:"",
       images:[
         "",
@@ -37,6 +38,7 @@ const data = [
         price: 66,
         realPrice:87,
         rating: 4,
+        link1:"Hot Selling In Lens Cap",
         reviews:"",
         images:[
           "",
@@ -65,6 +67,7 @@ const data = [
         price: 2.90,
         realPrice:21.40,
         rating: 4,
+        link1:"Hot Selling In Lens Cap",
         reviews:"",
         images:[
           "",
@@ -92,6 +95,7 @@ const data = [
         price: 120,
         realPrice:130,
         rating: 4,
+        link1:"Hot Selling In Lens Cap",
         reviews:"",
         images:[
           "",
@@ -119,6 +123,7 @@ const data = [
         price: 0.66,
         realPrice:0.77,
         rating: 4,
+        link1:"Hot Selling In Lens Cap",
         reviews:"",
         images:[
           "",
@@ -146,6 +151,7 @@ const data = [
         price: 0.85,
         realPrice:0.99,
         rating: 4,
+        link1:"Hot Selling In Lens Cap",
         reviews:"",
         images:[
           "",
@@ -173,6 +179,7 @@ const data = [
         price: 1138,
         realPrice:1329,
         rating: 4,
+        link1:"Hot Selling In Lens Cap",
         reviews:"",
         images:[
           "",
@@ -200,6 +207,7 @@ const data = [
         price: 1.72,
         realPrice:1.99,
         rating: 4,
+        link1:"Hot Selling In Lens Cap",
         reviews:"",
         images:[
           "",
@@ -227,6 +235,7 @@ const data = [
         price: 0.49,
         realPrice:1.19,
         rating: 4,
+        link1:"Hot Selling In Lens Cap",
         reviews:"",
         images:[
           "",
@@ -254,6 +263,7 @@ const data = [
         price: 14.00,
         realPrice:59.9,
         rating: 4,
+        link1:"Hot Selling In Lens Cap",
         reviews:"",
         images:[
           "",

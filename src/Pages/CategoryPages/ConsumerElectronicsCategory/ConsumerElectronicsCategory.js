@@ -1,6 +1,7 @@
 import React from 'react'
 import Navbar2 from '../../../Components/Navbar/Navbar2'
 import data from '../ProductsData/Data'
+import { Link } from 'react-router-dom'
 const ConsumerElectronicsCategory = () => {
 
   return (
@@ -19,12 +20,13 @@ const ConsumerElectronicsCategory = () => {
       
       className="flex bg-white flex-col justify-center pb-3   rounded-md  items-center mb-4"
     >
-     
+     <Link to={`/product-detail-page/${item.id}`}>
         <img
           src={item.imageUrl}
           alt="Image"
           className="object-cover w-[230px] h-[230px]" 
         />
+        </Link>
       
       <h1 className='self-start mt-6 font-normal px-3 text-[14px] overflow-hidden  max-w-full'>
         {item.title.length > 50 ? `${item.title.slice(0, 50)}...` : item.title}
