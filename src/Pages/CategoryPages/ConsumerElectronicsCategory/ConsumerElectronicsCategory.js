@@ -1,8 +1,31 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Navbar2 from '../../../Components/Navbar/Navbar2'
 import data from '../ProductsData/Data'
 import { Link } from 'react-router-dom'
+import VerifiedProSuppliers from './Banners/VerifiedProSuppliers'
+import UptoOffSampals from './Banners/UptoOffSampals'
+import VerifiedSuppliers from './Banners/VerifiedSuppliers'
+import ForEcommernceMerchant from './Banners/ForEcommernceMerchant'
+import API from '../../../service/API'
 const ConsumerElectronicsCategory = () => {
+
+  const [product, setproduct] = useState([]);
+    //find donar records
+    const getProducts = async () => {
+        try {
+            const { product } = await API.get("https://jade-happy-bull.cyclic.app/alibaba/usergetall");
+            //   console.log(data);
+            if (product) {
+                console.log(product);
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    useEffect(() => {
+        getProducts();
+    }, []);
 
   return (
     <>
@@ -12,8 +35,15 @@ const ConsumerElectronicsCategory = () => {
             <p className='text-base font-normal text-white'>Discover new and trending products</p>
         </div>
 
+        {/* Banners */}
+        <div className='flex flex-col xl:px-16 bg-gray-200'>
+          <div className='flex'><VerifiedProSuppliers/> <UptoOffSampals/></div>
+          <div className='flex'><VerifiedSuppliers/><ForEcommernceMerchant/></div>
+        </div>
+        <h1 className='text-[20px] font-bold pl-20 bg-gray-200 pt-5'>Just For You</h1>
 
-        <div className='flex flex-wrap justify-center bg-gray-200 xl:px-16 pt-10 overflow-hidden'>
+        <div className='flex flex-wrap justify-center bg-gray-200 xl:px-16 pt-5 overflow-hidden'>
+          
   {data.map((item) => (
     <div key={item.id} className='px-2 w-1/5 '>
     <div

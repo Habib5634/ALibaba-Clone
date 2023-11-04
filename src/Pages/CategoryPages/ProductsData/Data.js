@@ -3,29 +3,34 @@ const data = [
       id: 1,
       imageUrl: 'https://s.alicdn.com/@sc04/kf/H0a258e37c00a444988e10ca00578789dE.jpg_250x250xz.jpg',
 
-      title:"Whole Sale Top Quality Stock Universal Snap-on Black Center pinch",
+      title:"Wholesale Top Quality Stock Universal Snap-on Black Centre Pinch Lens Cap 58mm",
       category:["consumer-electronics"],
       MinOrder:5,
-      price: 0.18,
+      mediumOrder:500,
+      largerOrder:1000,
+      minOrderPrice: 0.25,
+      mediumOrderPrice:0.22,
+      largerOrderPrice:0.18,
+      buyer:2,
       realPrice:0.25,
       rating: 4,
+      sellerCompany:"Shenzehen Hongxin Photographic Equipmwnt.co. Ltd",
       link1:"Hot Selling In Lens Cap",
-      reviews:"",
+      customizedLogoOrders:5000,
+      CustomizedPackagingOrder:5000,
+      GraphicCustomizationOrder:5000,
+      shippingCharges:25,
+      reviews:2,
       images:[
-        "",
-        "",
-        "",
-        "",
-        ""
+        "https://s.alicdn.com/@sc04/kf/HTB1kTOkcWSWBuNjSsrbq6y0mVXae.jpg",
+        "https://s.alicdn.com/@sc04/kf/HTB1kTOkcWSWBuNjSsrbq6y0mVXae.jpg",
+        "https://sc01.alicdn.com/kf/H362d785afd4249c4b8149567a88e5cf3U/226113457/H362d785afd4249c4b8149567a88e5cf3U.jpg",
+        "https://sc04.alicdn.com/kf/HTB1528qNXXXXXagXFXXq6xXFXXX3.jpg",
+        "https://sc04.alicdn.com/kf/HTB19ypqNXXXXXavXFXX760XFXXXJ.png",
+        "https://sc04.alicdn.com/kf/HTB1cB0oNXXXXXa_XFXXq6xXFXXXK.jpg",
+        "https://sc02.alicdn.com/kf/H4e4e5b3114d946d0951ca017d42f49del/226113457/H4e4e5b3114d946d0951ca017d42f49del.jpg"
       ],
-      description:[{
-        descImage:"",
-        DescCategory:"",
-        widthTop:"",
-        widthBottom:"",
-        height:"",
-        depth:""
-      }]
+      
 
     },
     {
@@ -35,11 +40,21 @@ const data = [
         title:"Wholesale note30U + mobile phone 16GB + 512GB",
         category:["consumer-electronics"],
         MinOrder:1,
-        price: 66,
+        buyer:2,
+        mediumOrder:500,
+        largerOrder:1000,
+        minOrderPrice: 0.25,
+        mediumOrderPrice:0.22,
+        largerOrderPrice:0.18,
         realPrice:87,
         rating: 4,
         link1:"Hot Selling In Lens Cap",
-        reviews:"",
+        sellerCompany:"Shenzehen Hongxin Photographic Equipmwnt.co. Ltd",
+        customizedLogoOrders:5000,
+        CustomizedPackagingOrder:5000,
+        GraphicCustomizationOrder:5000,
+        reviews:21,
+        shippingCharges:25,
         images:[
           "",
           "",
@@ -47,14 +62,7 @@ const data = [
           "",
           ""
         ],
-        description:[{
-          descImage:"",
-          DescCategory:"",
-          widthTop:"",
-          widthBottom:"",
-          height:"",
-          depth:""
-        }]
+        
   
       },
       {
@@ -64,10 +72,20 @@ const data = [
         title:"S85 new GPS Racing Drone Pro Real 4k HD Camera   ",
         category:["consumer-electronics"],
         MinOrder:1,
-        price: 2.90,
+        mediumOrder:500,
+        largerOrder:1000,
+        minOrderPrice: 0.25,
+        mediumOrderPrice:0.22,
+        largerOrderPrice:0.18,
+        sellerCompany:"Shenzehen Hongxin Photographic Equipmwnt.co. Ltd",
         realPrice:21.40,
-        rating: 4,
+        buyer:2,
+        rating: 49,
         link1:"Hot Selling In Lens Cap",
+        customizedLogoOrders:5000,
+        CustomizedPackagingOrder:5000,
+        GraphicCustomizationOrder:5000,
+        shippingCharges:25,
         reviews:"",
         images:[
           "",
@@ -76,14 +94,7 @@ const data = [
           "",
           ""
         ],
-        description:[{
-          descImage:"",
-          DescCategory:"",
-          widthTop:"",
-          widthBottom:"",
-          height:"",
-          depth:""
-        }]
+        
   
       },{
         id: 4,
@@ -93,10 +104,20 @@ const data = [
         category:["consumer-electronics"],
         MinOrder:5,
         price: 120,
+        mediumOrder:500,
+        largerOrder:1000,
+        sellerCompany:"Shenzehen Hongxin Photographic Equipmwnt.co. Ltd",
+        minOrderPrice: 0.25,
+        mediumOrderPrice:0.22,
+        largerOrderPrice:0.18,
+        customizedLogoOrders:5000,
+        CustomizedPackagingOrder:5000,
+        GraphicCustomizationOrder:5000,
+        shippingCharges:25,
         realPrice:130,
         rating: 4,
         link1:"Hot Selling In Lens Cap",
-        reviews:"",
+        reviews:2,
         images:[
           "",
           "",
@@ -104,14 +125,7 @@ const data = [
           "",
           ""
         ],
-        description:[{
-          descImage:"",
-          DescCategory:"",
-          widthTop:"",
-          widthBottom:"",
-          height:"",
-          depth:""
-        }]
+        
   
       },{
         id: 5,
@@ -120,11 +134,21 @@ const data = [
         title:"Universal Magnetic Air Vent Car Cellphone Holder",
         category:["consumer-electronics"],
         MinOrder:10,
-        price: 0.66,
+        buyer:2,
+        mediumOrder:500,
+        largerOrder:1000,
+        minOrderPrice: 0.25,
+        mediumOrderPrice:0.22,
+        sellerCompany:"Shenzehen Hongxin Photographic Equipmwnt.co. Ltd",
+        largerOrderPrice:0.18,
         realPrice:0.77,
         rating: 4,
         link1:"Hot Selling In Lens Cap",
-        reviews:"",
+        customizedLogoOrders:5000,
+        CustomizedPackagingOrder:5000,
+        GraphicCustomizationOrder:5000,
+        shippingCharges:25,
+        reviews:3,
         images:[
           "",
           "",
@@ -132,14 +156,7 @@ const data = [
           "",
           ""
         ],
-        description:[{
-          descImage:"",
-          DescCategory:"",
-          widthTop:"",
-          widthBottom:"",
-          height:"",
-          depth:""
-        }]
+       
   
       },{
         id: 6,
@@ -148,11 +165,21 @@ const data = [
         title:"Devia 120x180mm luminious transcluent 3d embossed ",
         category:["consumer-electronics"],
         MinOrder:20,
-        price: 0.85,
+        mediumOrder:500,
+        largerOrder:1000,
+        minOrderPrice: 0.25,
+        mediumOrderPrice:0.22,
+        largerOrderPrice:0.18,
+        customizedLogoOrders:5000,
+        sellerCompany:"Shenzehen Hongxin Photographic Equipmwnt.co. Ltd",
+        CustomizedPackagingOrder:5000,
+        GraphicCustomizationOrder:5000,
+        shippingCharges:25,
+        buyer:2,
         realPrice:0.99,
         rating: 4,
         link1:"Hot Selling In Lens Cap",
-        reviews:"",
+        reviews:8,
         images:[
           "",
           "",
@@ -160,14 +187,7 @@ const data = [
           "",
           ""
         ],
-        description:[{
-          descImage:"",
-          DescCategory:"",
-          widthTop:"",
-          widthBottom:"",
-          height:"",
-          depth:""
-        }]
+        
   
       },{
         id: 7,
@@ -176,11 +196,21 @@ const data = [
         title:"Replacement Devalt Battery Charger For DCB38y34 & DBU34783",
         category:["consumer-electronics"],
         MinOrder:1,
-        price: 1138,
+        mediumOrder:500,
+        largerOrder:1000,
+        minOrderPrice: 0.25,
+        mediumOrderPrice:0.22,
+        largerOrderPrice:0.18,
+        buyer:2,
         realPrice:1329,
         rating: 4,
         link1:"Hot Selling In Lens Cap",
-        reviews:"",
+        sellerCompany:"Shenzehen Hongxin Photographic Equipmwnt.co. Ltd",
+        customizedLogoOrders:5000,
+        CustomizedPackagingOrder:5000,
+        GraphicCustomizationOrder:5000,
+        shippingCharges:25,
+        reviews:5,
         images:[
           "",
           "",
@@ -188,14 +218,7 @@ const data = [
           "",
           ""
         ],
-        description:[{
-          descImage:"",
-          DescCategory:"",
-          widthTop:"",
-          widthBottom:"",
-          height:"",
-          depth:""
-        }]
+        
   
       },{
         id: 8,
@@ -204,11 +227,21 @@ const data = [
         title:"F9 Headset Earphone LED Mini F9-5 Earbuds 5.0 TWS",
         category:["consumer-electronics"],
         MinOrder:5,
-        price: 1.72,
+        buyer:2,
+        mediumOrder:500,
+        largerOrder:1000,
+        minOrderPrice: 0.25,
+        sellerCompany:"Shenzehen Hongxin Photographic Equipmwnt.co. Ltd",
+        mediumOrderPrice:0.22,
+        largerOrderPrice:0.18,
         realPrice:1.99,
         rating: 4,
         link1:"Hot Selling In Lens Cap",
-        reviews:"",
+        customizedLogoOrders:5000,
+        CustomizedPackagingOrder:5000,
+        GraphicCustomizationOrder:5000,
+        shippingCharges:25,
+        reviews:3,
         images:[
           "",
           "",
@@ -216,14 +249,7 @@ const data = [
           "",
           ""
         ],
-        description:[{
-          descImage:"",
-          DescCategory:"",
-          widthTop:"",
-          widthBottom:"",
-          height:"",
-          depth:""
-        }]
+        
   
       },{
         id: 9,
@@ -232,11 +258,22 @@ const data = [
         title:"CoolRabbie 2023 Removable Controller and Headset Wall",
         category:["consumer-electronics"],
         MinOrder:10,
-        price: 0.49,
+        mediumOrder:500,
+        largerOrder:1000,
+        minOrderPrice: 0.25,
+        mediumOrderPrice:0.22,
+        sellerCompany:"Shenzehen Hongxin Photographic Equipmwnt.co. Ltd",
+        largerOrderPrice:0.18,
+        buyer:2,
         realPrice:1.19,
         rating: 4,
+
         link1:"Hot Selling In Lens Cap",
-        reviews:"",
+        customizedLogoOrders:5000,
+        CustomizedPackagingOrder:5000,
+        GraphicCustomizationOrder:5000,
+        shippingCharges:25,
+        reviews:7,
         images:[
           "",
           "",
@@ -244,14 +281,7 @@ const data = [
           "",
           ""
         ],
-        description:[{
-          descImage:"",
-          DescCategory:"",
-          widthTop:"",
-          widthBottom:"",
-          height:"",
-          depth:""
-        }]
+        
   
       },{
         id: 10,
@@ -260,11 +290,21 @@ const data = [
         title:"MAONOCASTER Professinal Sound Card With 25mm",
         category:["consumer-electronics"],
         MinOrder:2,
-        price: 14.00,
+        sellerCompany:"Shenzehen Hongxin Photographic Equipmwnt.co. Ltd",
+        buyer:2,
+        mediumOrder:500,
+        largerOrder:1000,
+        minOrderPrice: 0.25,
+        mediumOrderPrice:0.22,
+        largerOrderPrice:0.18,
         realPrice:59.9,
         rating: 4,
         link1:"Hot Selling In Lens Cap",
-        reviews:"",
+        customizedLogoOrders:5000,
+        CustomizedPackagingOrder:5000,
+        GraphicCustomizationOrder:5000,
+        shippingCharges:25,
+        reviews:5,
         images:[
           "",
           "",
@@ -272,14 +312,7 @@ const data = [
           "",
           ""
         ],
-        description:[{
-          descImage:"",
-          DescCategory:"",
-          widthTop:"",
-          widthBottom:"",
-          height:"",
-          depth:""
-        }]
+        
   
       },
 
