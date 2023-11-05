@@ -5,6 +5,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import HomePage from './Pages/HomePage/HomePage';
 import ConsumerElectronicsCategory from './Pages/CategoryPages/ConsumerElectronicsCategory/ConsumerElectronicsCategory';
 import ProductDetailPage from './Pages/CategoryPages/ProductDetailPage/ProductDetailPage';
+import CatagoryDetailPage from './Pages/CategoryPages/CatagoryDetailPage/CatagoryDetailPage';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
 
 {/* Product detail page route */}
 <Route path='/product-detail-page/:id' exact element={<ProductDetailPage/>}/>
+<Route path='/catagory-detail-page/:id' exact element={<CatagoryDetailPage/>}/>
 
 </Routes>
     

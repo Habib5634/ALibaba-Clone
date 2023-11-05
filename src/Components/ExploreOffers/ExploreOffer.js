@@ -4,7 +4,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
-
+import servicesData from './Data';
 const ExploreOffer = () => {
   const items = [
     { id: 1, title: 'Product', value: '200M+' },
@@ -53,196 +53,7 @@ const ExploreOffer = () => {
     ]
   };
 
-  const servicesData = [
-    {
-      id: 1,
-      title1: 'Consumer Electronics',
-      img1: 'https://s.alicdn.com/@img/imgextra/i2/O1CN01lTlEA71idHDZyDnE1_!!6000000004435-2-tps-200-200.png',
-      path1:'/consumer-electronics',
-      title2: 'Apparal Accesories',
-      img2: 'https://s.alicdn.com/@img/imgextra/i2/O1CN01Si2Chv1URSNSZI3w2_!!6000000002514-2-tps-200-200.png',
-      path2:'/apparal-accessories'
-    },
-    {
-      id: 2,
-      title1: 'Home & Garden ',
-      img1: 'https://s.alicdn.com/@img/imgextra/i2/O1CN01FNDTXs1Js3bqyZjbx_!!6000000001083-2-tps-200-200.png',
-      path1:'/home-garden',
-      title2: 'Sports & Entertainments',
-      img2: 'https://s.alicdn.com/@img/imgextra/i2/O1CN01FNDTXs1Js3bqyZjbx_!!6000000001083-2-tps-200-200.png',
-      path2:'/sports-entertainment',
-    },
-    {
-      id: 3,
-      title1: 'Industrial Machinery',
-      img1: 'https://s.alicdn.com/@img/imgextra/i4/O1CN01SjYZ821m8pTY9ruQ1_!!6000000004910-2-tps-200-200.png',
-      path1:'/industrial-machinary',
-      title2: 'Beauty',
-      img2: 'https://s.alicdn.com/@img/imgextra/i2/O1CN01pTq4g71X95KxEqsrz_!!6000000002880-2-tps-200-200.png',
-      path2:'/beauty',
-    },
-    {
-      id: 4,
-      title1: 'Packaging & Printing',
-      img1: 'https://s.alicdn.com/@img/imgextra/i4/O1CN01c8xN8n1Xl6DAeTUDe_!!6000000002963-2-tps-200-200.png',
-      path1:'/packaging-pronting',
-      title2: 'Mother, Kids & Toys',
-      img2: 'https://s.alicdn.com/@img/imgextra/i1/O1CN01SECwAR1ehcde7HSzA_!!6000000003903-2-tps-200-200.png',
-      path2:'/mother-kids-toys',
-    },
-    {
-      id: 5,
-      title1: 'Jewellery Eyewear',
-      img1: 'https://s.alicdn.com/@img/imgextra/i1/O1CN012sGbIl1o81tW54KPo_!!6000000005179-2-tps-200-200.png',
-      path1:'jewellery-eyewear',
-      title2: 'Show & Accessories',
-      img2: 'https://s.alicdn.com/@img/imgextra/i1/O1CN01GqpTkM1kCNBbXXtfT_!!6000000004647-2-tps-200-200.png',
-      path2:'/show-accessories',
-    },
-
-    {
-      id: 6,
-      title1: 'Vehical Parts & Accessories',
-      img1: 'https://s.alicdn.com/@img/imgextra/i2/O1CN01kxhWs527Gi6Fzc3zF_!!6000000007770-2-tps-200-200.png',
-      path1:'vehical-parts-accessories',
-      title2: 'Furniture',
-      img2: 'https://s.alicdn.com/@img/imgextra/i2/O1CN01pq9lU028SRrrtj79B_!!6000000007931-2-tps-200-200.png',
-      path2:'/furniture',
-    },
-    {
-      id: 7,
-      title1: 'Luggages& Bags',
-      img1: 'https://s.alicdn.com/@img/imgextra/i3/O1CN01wtbYT71vJfGaj4BK8_!!6000000006152-2-tps-200-200.png',
-      path1:'luggage-bags',
-      title2: 'Tools & Hardware ',
-      img2: 'https://s.alicdn.com/@img/imgextra/i4/O1CN01yvRa9M1eCTa1vhbZ9_!!6000000003835-2-tps-200-200.png',
-      path2:'tools-hardware',
-    },
-    {
-      id: 8,
-      title1: 'Constructions & Real Estate',
-      img1: 'https://s.alicdn.com/@img/imgextra/i2/O1CN01wmYqD51WrDtOCBmav_!!6000000002841-2-tps-200-200.png',
-      path1:'construction-real-estate',
-      title2: 'Home Appliances',
-      img2: 'https://s.alicdn.com/@img/imgextra/i4/O1CN01VAlsfc1P9zBujbtCk_!!6000000001799-2-tps-200-200.png',
-      path2:'/home-appliances',
-    },
-    {
-      id: 9,
-      title1: 'Vehical Accessories',
-      img1: 'https://s.alicdn.com/@img/imgextra/i3/O1CN018aGwXj1YidrbjBVAY_!!6000000003093-2-tps-200-200.png',
-      path1:'/vehical-accessories',
-      title2: 'Personal Care',
-      img2: 'https://s.alicdn.com/@img/imgextra/i4/O1CN01ICig8T1LX6qUzxNqk_!!6000000001308-2-tps-200-200.png',
-      path2:'personal-care',
-    },{
-      id: 10,
-      title1: 'Commerical Service',
-      img1: 'https://s.alicdn.com/@img/imgextra/i4/O1CN01pbpLad1tk6uA15t5q_!!6000000005939-2-tps-200-200.png',
-      path1:'/commerical-services',
-      title2: 'Light & Lightining',
-      img2: 'https://s.alicdn.com/@img/imgextra/i3/O1CN01z9EKU11JLXUJcG1Vh_!!6000000001012-2-tps-200-200.png',
-      path2:'/light-lightining',
-    },{
-      id: 11,
-      title1: 'Vehical & Transportaion',
-      img1: 'https://s.alicdn.com/@img/imgextra/i3/O1CN01Xyr1VF29Tee5GeZrf_!!6000000008069-2-tps-200-200.png',
-      path1:'/vehical-transportation',
-      title2: 'Gifts & Crafts',
-      img2: 'https://s.alicdn.com/@img/imgextra/i4/O1CN01rOPzCa1ZbbEGb8a30_!!6000000003213-2-tps-200-200.png',
-      path2:'/gifts-crafts',
-    },{
-      id: 12,
-      title1: 'School & office Supplies',
-      img1: 'https://s.alicdn.com/@img/imgextra/i3/O1CN01RkwLHr1Hq6gvqLWtp_!!6000000000808-2-tps-200-200.png',
-      path1:'/school-office-supplies',
-      title2: 'Health Care',
-      img2: 'https://s.alicdn.com/@img/imgextra/i1/O1CN01snVtLV1eWAmAmsrrj_!!6000000003878-2-tps-200-200.png',
-      path2:'/health-care',
-    },{
-      id: 13,
-      title1: 'Electrical Equipments',
-      img1: 'https://s.alicdn.com/@img/imgextra/i2/O1CN017Hcgjs1cJgaN8JoYh_!!6000000003580-2-tps-200-200.png',
-      path1:'/electronic-equipment',
-      title2: 'Renewable Energy',
-      img2: 'https://s.alicdn.com/@img/imgextra/i1/O1CN01xrBf6U1pR67WIk42d_!!6000000005356-2-tps-200-200.png',
-      path2:'/renewable-energy',
-    },{
-      id: 14,
-      title1: 'Medical Devices & Supplies',
-      img1: 'https://s.alicdn.com/@img/imgextra/i1/O1CN01jTWsuf1UZFH9HKZFV_!!6000000002531-2-tps-200-200.png',
-      path1:'/medical-devices-supplies',
-      title2: 'Costruction & Building',
-      img2: 'https://s.alicdn.com/@img/imgextra/i4/O1CN01YET30q1jWhGdnsiRH_!!6000000004556-2-tps-200-200.png',
-      path2:'/construction-building',
-    },{
-      id: 15,
-      title1: 'Electronics Components',
-      img1: 'https://s.alicdn.com/@img/imgextra/i2/O1CN01Sksz1Z1YcgYJqip4w_!!6000000003080-2-tps-200-200.png',
-      path1:'/electronic-components',
-      title2: 'Pet Supplies',
-      img2: 'https://s.alicdn.com/@img/imgextra/i1/O1CN01Ceoni61ObdbmQL9S6_!!6000000001724-2-tps-200-200.png',
-      path2:'/pet-supplies',
-    },{
-      id: 16,
-      title1: 'Security',
-      img1: 'https://s.alicdn.com/@img/imgextra/i2/O1CN01QyVDt11d7bscVohLd_!!6000000003689-2-tps-200-200.png',
-      path1:'/security',
-      title2: 'Foods & Beverages',
-      img2: 'https://s.alicdn.com/@img/imgextra/i1/O1CN01xIExD31nnQ4HHosm7_!!6000000005134-2-tps-200-200.png',
-      path2:'/food-beverages',
-    },{
-      id: 17,
-      title1: 'Chemical',
-      img1: 'https://s.alicdn.com/@img/imgextra/i2/O1CN01dHfom21dRIms583K7_!!6000000003732-2-tps-200-200.png',
-      path1:'/chemical',
-      title2: 'Testing Instruments',
-      img2: 'https://s.alicdn.com/@img/imgextra/i4/O1CN01Bjousj1NmLFYz6v5G_!!6000000001612-2-tps-200-200.png',
-      path2:'/testing-instruments',
-    },{
-      id: 18,
-      title1: 'Bussiness Services',
-      img1: 'https://s.alicdn.com/@img/imgextra/i3/O1CN01fm34sD1PrUwNSEFdk_!!6000000001894-2-tps-200-200.png',
-      path1:'/bussiness-services',
-      title2: 'Fabric Textile',
-      img2: 'https://s.alicdn.com/@img/imgextra/i1/O1CN01b9aLcc1GCtA0OZtjo_!!6000000000587-2-tps-200-200.png',
-      path2:'/fabric-textile',
-    },{
-      id: 19,
-      title1: 'Metals & Alloys',
-      img1: 'https://s.alicdn.com/@img/imgextra/i4/O1CN01cJCsO31WHxWFRMNTj_!!6000000002764-2-tps-200-200.png',
-      path1:'/metal-alloys',
-      title2: 'Safety',
-      img2: 'https://s.alicdn.com/@img/imgextra/i2/O1CN01mswIfe1sg9zSln3tL_!!6000000005795-2-tps-200-200.png',
-      path2:'/safety',
-    },
-    {
-      id: 20,
-      title1: 'Rubber & Plastic Material Handling',
-      img1: 'https://s.alicdn.com/@img/imgextra/i3/O1CN015jOuvl2A2Scj8wr0t_!!6000000008145-2-tps-200-200.png',
-      path1:'/rubber-plastic-material-handling',
-      title2: 'Material Handling',
-      img2: 'https://s.alicdn.com/@img/imgextra/i4/O1CN01LWLxJO1yKWuJno4Ae_!!6000000006560-2-tps-200-200.png',
-      path2:'/material-handling',
-    },{
-      id: 21,
-      title1: 'Power Transmission',
-      img1: 'https://s.alicdn.com/@img/imgextra/i3/O1CN01w4GvVc28geGm7o1Ar_!!6000000007962-2-tps-200-200.png',
-      path1:'/power-transmission',
-      title2: 'Fabrication Services',
-      img2: 'https://s.alicdn.com/@img/imgextra/i3/O1CN01h9OSMd1rN5lYYjP3L_!!6000000005618-2-tps-200-200.png',
-      path2:'/fabrication-services',
-    },{
-      id: 22,
-      title1: 'Aggriculture',
-      img1: 'https://s.alicdn.com/@img/imgextra/i1/O1CN01Ybvy8D1SCgMy5CYuG_!!6000000002211-2-tps-200-199.png',
-      path1:'/aggriculture',
-      title2: 'Environment',
-      img2: 'https://s.alicdn.com/@img/imgextra/i4/O1CN01WD8L611FtC7zB5hSv_!!6000000000544-2-tps-200-200.png',
-      path2:'/environment',
-
-    },
-  ];
+  
 
   const nextSlide = () => {
     if (sliderRef.current) {
@@ -289,22 +100,355 @@ const ExploreOffer = () => {
         
       </div>
       <Slider ref={sliderRef} {...settings} className='px-20'>
-        {servicesData.map(service => (
-          <div key={service.id} className='relative flex flex-col justify-center items-center  '  >
-            <Link to={service.path1} >
+        {/* 0 1  */}
+          <div key='' className='relative flex flex-col justify-center items-center  '  >
+            <Link to={`/catagory-detail-page/${servicesData[0].id}`} >
             <div className=' border h-[9rem] w-[9rem] rounded-full  mr-9 mb-5 hover:border hover:border-orange-500 flex flex-col justify-center items-center font-serif  ' >
-              <img src={service.img1} alt='img' className='w-12 h-auto' />
-              <h1 className=' break-words  text-center text-black font-serif text-[12px]'>{service.title1}</h1>
+              <img src={servicesData[0].imgurl} alt='img' className='w-12 h-auto' />
+              <h1 className=' break-words  text-center text-black font-serif text-[12px]'>{servicesData[0].title}</h1>
             </div>
             </Link>
-            <Link to={service.path2}>
+            <Link to={`/catagory-detail-page/${servicesData[1].id}`}>
             <div className=' border h-[9rem] w-[9rem] rounded-full  mr-9 hover:border hover:border-orange-500 flex flex-col justify-center items-center font-serif  ' >
-              <img src={service.img2} alt='img2' className='w-12 h-auto'/>
-              <h1 className='  break-words  text-center text-black font-serif text-[12px]'>{service.title2}</h1>
+              <img src={servicesData[1].imgurl} alt='imgurl' className='w-12 h-auto'/>
+              <h1 className='  break-words  text-center text-black font-serif text-[12px]'>{servicesData[1].title}</h1>
             </div>
             </Link>
           </div>
-        ))}
+{/* 2 3 */}
+          <div key='' className='relative flex flex-col justify-center items-center  '  >
+            <Link to={`/catagory-detail-page/${servicesData[2].id}`} >
+            <div className=' border h-[9rem] w-[9rem] rounded-full  mr-9 mb-5 hover:border hover:border-orange-500 flex flex-col justify-center items-center font-serif  ' >
+              <img src={servicesData[2].imgurl} alt='img' className='w-12 h-auto' />
+              <h1 className=' break-words  text-center text-black font-serif text-[12px]'>{servicesData[2].title}</h1>
+            </div>
+            </Link>
+            <Link to={`/catagory-detail-page/${servicesData[3].id}`}>
+            <div className=' border h-[9rem] w-[9rem] rounded-full  mr-9 hover:border hover:border-orange-500 flex flex-col justify-center items-center font-serif  ' >
+              <img src={servicesData[3].imgurl} alt='imgurl' className='w-12 h-auto'/>
+              <h1 className='  break-words  text-center text-black font-serif text-[12px]'>{servicesData[3].title}</h1>
+            </div>
+            </Link>
+          </div>
+          {/* 4 5 */}
+          <div key='' className='relative flex flex-col justify-center items-center  '  >
+            <Link to={`/catagory-detail-page/${servicesData[4].id}`} >
+            <div className=' border h-[9rem] w-[9rem] rounded-full  mr-9 mb-5 hover:border hover:border-orange-500 flex flex-col justify-center items-center font-serif  ' >
+              <img src={servicesData[4].imgurl} alt='img' className='w-12 h-auto' />
+              <h1 className=' break-words  text-center text-black font-serif text-[12px]'>{servicesData[4].title}</h1>
+            </div>
+            </Link>
+            <Link to={`/catagory-detail-page/${servicesData[5].id}`}>
+            <div className=' border h-[9rem] w-[9rem] rounded-full  mr-9 hover:border hover:border-orange-500 flex flex-col justify-center items-center font-serif  ' >
+              <img src={servicesData[5].imgurl} alt='imgurl' className='w-12 h-auto'/>
+              <h1 className='  break-words  text-center text-black font-serif text-[12px]'>{servicesData[5].title}</h1>
+            </div>
+            </Link>
+          </div>
+
+          {/* 6 7 */}
+          <div key='' className='relative flex flex-col justify-center items-center  '  >
+            <Link to={`/catagory-detail-page/${servicesData[6].id}`} >
+            <div className=' border h-[9rem] w-[9rem] rounded-full  mr-9 mb-5 hover:border hover:border-orange-500 flex flex-col justify-center items-center font-serif  ' >
+              <img src={servicesData[6].imgurl} alt='img' className='w-12 h-auto' />
+              <h1 className=' break-words  text-center text-black font-serif text-[12px]'>{servicesData[6].title}</h1>
+            </div>
+            </Link>
+            <Link to={`/catagory-detail-page/${servicesData[7].id}`}>
+            <div className=' border h-[9rem] w-[9rem] rounded-full  mr-9 hover:border hover:border-orange-500 flex flex-col justify-center items-center font-serif  ' >
+              <img src={servicesData[7].imgurl} alt='imgurl' className='w-12 h-auto'/>
+              <h1 className='  break-words  text-center text-black font-serif text-[12px]'>{servicesData[7].title}</h1>
+            </div>
+            </Link>
+          </div>
+          {/* 8  9 */}
+          <div key='' className='relative flex flex-col justify-center items-center  '  >
+            <Link to={`/catagory-detail-page/${servicesData[8].id}`} >
+            <div className=' border h-[9rem] w-[9rem] rounded-full  mr-9 mb-5 hover:border hover:border-orange-500 flex flex-col justify-center items-center font-serif  ' >
+              <img src={servicesData[8].imgurl} alt='img' className='w-12 h-auto' />
+              <h1 className=' break-words  text-center text-black font-serif text-[12px]'>{servicesData[8].title}</h1>
+            </div>
+            </Link>
+            <Link to={`/catagory-detail-page/${servicesData[9].id}`}>
+            <div className=' border h-[9rem] w-[9rem] rounded-full  mr-9 hover:border hover:border-orange-500 flex flex-col justify-center items-center font-serif  ' >
+              <img src={servicesData[9].imgurl} alt='imgurl' className='w-12 h-auto'/>
+              <h1 className='  break-words  text-center text-black font-serif text-[12px]'>{servicesData[9].title}</h1>
+            </div>
+            </Link>
+          </div>
+          {/* 10 11 */}
+          <div key='' className='relative flex flex-col justify-center items-center  '  >
+            <Link to={`/catagory-detail-page/${servicesData[10].id}`} >
+            <div className=' border h-[9rem] w-[9rem] rounded-full  mr-9 mb-5 hover:border hover:border-orange-500 flex flex-col justify-center items-center font-serif  ' >
+              <img src={servicesData[10].imgurl} alt='img' className='w-12 h-auto' />
+              <h1 className=' break-words  text-center text-black font-serif text-[12px]'>{servicesData[10].title}</h1>
+            </div>
+            </Link>
+            <Link to={`/catagory-detail-page/${servicesData[11].id}`}>
+            <div className=' border h-[9rem] w-[9rem] rounded-full  mr-9 hover:border hover:border-orange-500 flex flex-col justify-center items-center font-serif  ' >
+              <img src={servicesData[11].imgurl} alt='imgurl' className='w-12 h-auto'/>
+              <h1 className='  break-words  text-center text-black font-serif text-[12px]'>{servicesData[11].title}</h1>
+            </div>
+            </Link>
+          </div>
+
+          {/* 12  13 */}
+          <div key='' className='relative flex flex-col justify-center items-center  '  >
+            <Link to={`/catagory-detail-page/${servicesData[12].id}`} >
+            <div className=' border h-[9rem] w-[9rem] rounded-full  mr-9 mb-5 hover:border hover:border-orange-500 flex flex-col justify-center items-center font-serif  ' >
+              <img src={servicesData[12].imgurl} alt='img' className='w-12 h-auto' />
+              <h1 className=' break-words  text-center text-black font-serif text-[12px]'>{servicesData[12].title}</h1>
+            </div>
+            </Link>
+            <Link to={`/catagory-detail-page/${servicesData[13].id}`}>
+            <div className=' border h-[9rem] w-[9rem] rounded-full  mr-9 hover:border hover:border-orange-500 flex flex-col justify-center items-center font-serif  ' >
+              <img src={servicesData[13].imgurl} alt='imgurl' className='w-12 h-auto'/>
+              <h1 className='  break-words  text-center text-black font-serif text-[12px]'>{servicesData[13].title}</h1>
+            </div>
+            </Link>
+          </div>
+
+          {/* 14  15 */}
+          <div key='' className='relative flex flex-col justify-center items-center  '  >
+            <Link to={`/catagory-detail-page/${servicesData[14].id}`} >
+            <div className=' border h-[9rem] w-[9rem] rounded-full  mr-9 mb-5 hover:border hover:border-orange-500 flex flex-col justify-center items-center font-serif  ' >
+              <img src={servicesData[14].imgurl} alt='img' className='w-12 h-auto' />
+              <h1 className=' break-words  text-center text-black font-serif text-[12px]'>{servicesData[14].title}</h1>
+            </div>
+            </Link>
+            <Link to={`/catagory-detail-page/${servicesData[15].id}`}>
+            <div className=' border h-[9rem] w-[9rem] rounded-full  mr-9 hover:border hover:border-orange-500 flex flex-col justify-center items-center font-serif  ' >
+              <img src={servicesData[15].imgurl} alt='imgurl' className='w-12 h-auto'/>
+              <h1 className='  break-words  text-center text-black font-serif text-[12px]'>{servicesData[15].title}</h1>
+            </div>
+            </Link>
+          </div>
+{/* 16  17 */}
+          <div key='' className='relative flex flex-col justify-center items-center  '  >
+            <Link to={`/catagory-detail-page/${servicesData[16].id}`} >
+            <div className=' border h-[9rem] w-[9rem] rounded-full  mr-9 mb-5 hover:border hover:border-orange-500 flex flex-col justify-center items-center font-serif  ' >
+              <img src={servicesData[16].imgurl} alt='img' className='w-12 h-auto' />
+              <h1 className=' break-words  text-center text-black font-serif text-[12px]'>{servicesData[16].title}</h1>
+            </div>
+            </Link>
+            <Link to={`/catagory-detail-page/${servicesData[17].id}`}>
+            <div className=' border h-[9rem] w-[9rem] rounded-full  mr-9 hover:border hover:border-orange-500 flex flex-col justify-center items-center font-serif  ' >
+              <img src={servicesData[17].imgurl} alt='imgurl' className='w-12 h-auto'/>
+              <h1 className='  break-words  text-center text-black font-serif text-[12px]'>{servicesData[17].title}</h1>
+            </div>
+            </Link>
+          </div>
+          {/* 18  19 */}
+          <div key='' className='relative flex flex-col justify-center items-center  '  >
+            <Link to={`/catagory-detail-page/${servicesData[18].id}`} >
+            <div className=' border h-[9rem] w-[9rem] rounded-full  mr-9 mb-5 hover:border hover:border-orange-500 flex flex-col justify-center items-center font-serif  ' >
+              <img src={servicesData[18].imgurl} alt='img' className='w-12 h-auto' />
+              <h1 className=' break-words  text-center text-black font-serif text-[12px]'>{servicesData[18].title}</h1>
+            </div>
+            </Link>
+            <Link to={`/catagory-detail-page/${servicesData[19].id}`}>
+            <div className=' border h-[9rem] w-[9rem] rounded-full  mr-9 hover:border hover:border-orange-500 flex flex-col justify-center items-center font-serif  ' >
+              <img src={servicesData[19].imgurl} alt='imgurl' className='w-12 h-auto'/>
+              <h1 className='  break-words  text-center text-black font-serif text-[12px]'>{servicesData[19].title}</h1>
+            </div>
+            </Link>
+          </div>
+{/* 20 21 */}
+          <div key='' className='relative flex flex-col justify-center items-center  '  >
+            <Link to={`/catagory-detail-page/${servicesData[20].id}`} >
+            <div className=' border h-[9rem] w-[9rem] rounded-full  mr-9 mb-5 hover:border hover:border-orange-500 flex flex-col justify-center items-center font-serif  ' >
+              <img src={servicesData[20].imgurl} alt='img' className='w-12 h-auto' />
+              <h1 className=' break-words  text-center text-black font-serif text-[12px]'>{servicesData[20].title}</h1>
+            </div>
+            </Link>
+            <Link to={`/catagory-detail-page/${servicesData[21].id}`}>
+            <div className=' border h-[9rem] w-[9rem] rounded-full  mr-9 hover:border hover:border-orange-500 flex flex-col justify-center items-center font-serif  ' >
+              <img src={servicesData[21].imgurl} alt='imgurl' className='w-12 h-auto'/>
+              <h1 className='  break-words  text-center text-black font-serif text-[12px]'>{servicesData[21].title}</h1>
+            </div>
+            </Link>
+          </div>
+
+          {/* 22 23 */}
+          <div key='' className='relative flex flex-col justify-center items-center  '  >
+            <Link to={`/catagory-detail-page/${servicesData[22].id}`} >
+            <div className=' border h-[9rem] w-[9rem] rounded-full  mr-9 mb-5 hover:border hover:border-orange-500 flex flex-col justify-center items-center font-serif  ' >
+              <img src={servicesData[22].imgurl} alt='img' className='w-12 h-auto' />
+              <h1 className=' break-words  text-center text-black font-serif text-[12px]'>{servicesData[22].title}</h1>
+            </div>
+            </Link>
+            <Link to={`/catagory-detail-page/${servicesData[23].id}`}>
+            <div className=' border h-[9rem] w-[9rem] rounded-full  mr-9 hover:border hover:border-orange-500 flex flex-col justify-center items-center font-serif  ' >
+              <img src={servicesData[23].imgurl} alt='imgurl' className='w-12 h-auto'/>
+              <h1 className='  break-words  text-center text-black font-serif text-[12px]'>{servicesData[23].title}</h1>
+            </div>
+            </Link>
+          </div>
+
+          {/* 24  25 */}
+          <div key='' className='relative flex flex-col justify-center items-center  '  >
+            <Link to={`/catagory-detail-page/${servicesData[24].id}`} >
+            <div className=' border h-[9rem] w-[9rem] rounded-full  mr-9 mb-5 hover:border hover:border-orange-500 flex flex-col justify-center items-center font-serif  ' >
+              <img src={servicesData[24].imgurl} alt='img' className='w-12 h-auto' />
+              <h1 className=' break-words  text-center text-black font-serif text-[12px]'>{servicesData[24].title}</h1>
+            </div>
+            </Link>
+            <Link to={`/catagory-detail-page/${servicesData[25].id}`}>
+            <div className=' border h-[9rem] w-[9rem] rounded-full  mr-9 hover:border hover:border-orange-500 flex flex-col justify-center items-center font-serif  ' >
+              <img src={servicesData[25].imgurl} alt='imgurl' className='w-12 h-auto'/>
+              <h1 className='  break-words  text-center text-black font-serif text-[12px]'>{servicesData[25].title}</h1>
+            </div>
+            </Link>
+          </div>
+
+          {/* 26  27 */}
+          <div key='' className='relative flex flex-col justify-center items-center  '  >
+            <Link to={`/catagory-detail-page/${servicesData[26].id}`} >
+            <div className=' border h-[9rem] w-[9rem] rounded-full  mr-9 mb-5 hover:border hover:border-orange-500 flex flex-col justify-center items-center font-serif  ' >
+              <img src={servicesData[26].imgurl} alt='img' className='w-12 h-auto' />
+              <h1 className=' break-words  text-center text-black font-serif text-[12px]'>{servicesData[26].title}</h1>
+            </div>
+            </Link>
+            <Link to={`/catagory-detail-page/${servicesData[27].id}`}>
+            <div className=' border h-[9rem] w-[9rem] rounded-full  mr-9 hover:border hover:border-orange-500 flex flex-col justify-center items-center font-serif  ' >
+              <img src={servicesData[27].imgurl} alt='imgurl' className='w-12 h-auto'/>
+              <h1 className='  break-words  text-center text-black font-serif text-[12px]'>{servicesData[27].title}</h1>
+            </div>
+            </Link>
+          </div>
+
+          {/* 28  29 */}
+          <div key='' className='relative flex flex-col justify-center items-center  '  >
+            <Link to={`/catagory-detail-page/${servicesData[28].id}`} >
+            <div className=' border h-[9rem] w-[9rem] rounded-full  mr-9 mb-5 hover:border hover:border-orange-500 flex flex-col justify-center items-center font-serif  ' >
+              <img src={servicesData[28].imgurl} alt='img' className='w-12 h-auto' />
+              <h1 className=' break-words  text-center text-black font-serif text-[12px]'>{servicesData[28].title}</h1>
+            </div>
+            </Link>
+            <Link to={`/catagory-detail-page/${servicesData[29].id}`}>
+            <div className=' border h-[9rem] w-[9rem] rounded-full  mr-9 hover:border hover:border-orange-500 flex flex-col justify-center items-center font-serif  ' >
+              <img src={servicesData[29].imgurl} alt='imgurl' className='w-12 h-auto'/>
+              <h1 className='  break-words  text-center text-black font-serif text-[12px]'>{servicesData[29].title}</h1>
+            </div>
+            </Link>
+          </div>
+
+          {/* 30  31 */}
+          <div key='' className='relative flex flex-col justify-center items-center  '  >
+            <Link to={`/catagory-detail-page/${servicesData[30].id}`} >
+            <div className=' border h-[9rem] w-[9rem] rounded-full  mr-9 mb-5 hover:border hover:border-orange-500 flex flex-col justify-center items-center font-serif  ' >
+              <img src={servicesData[30].imgurl} alt='img' className='w-12 h-auto' />
+              <h1 className=' break-words  text-center text-black font-serif text-[12px]'>{servicesData[30].title}</h1>
+            </div>
+            </Link>
+            <Link to={`/catagory-detail-page/${servicesData[31].id}`}>
+            <div className=' border h-[9rem] w-[9rem] rounded-full  mr-9 hover:border hover:border-orange-500 flex flex-col justify-center items-center font-serif  ' >
+              <img src={servicesData[31].imgurl} alt='imgurl' className='w-12 h-auto'/>
+              <h1 className='  break-words  text-center text-black font-serif text-[12px]'>{servicesData[31].title}</h1>
+            </div>
+            </Link>
+          </div>
+
+          {/* 32  33 */}
+          <div key='' className='relative flex flex-col justify-center items-center  '  >
+            <Link to={`/catagory-detail-page/${servicesData[32].id}`} >
+            <div className=' border h-[9rem] w-[9rem] rounded-full  mr-9 mb-5 hover:border hover:border-orange-500 flex flex-col justify-center items-center font-serif  ' >
+              <img src={servicesData[32].imgurl} alt='img' className='w-12 h-auto' />
+              <h1 className=' break-words  text-center text-black font-serif text-[12px]'>{servicesData[32].title}</h1>
+            </div>
+            </Link>
+            <Link to={`/catagory-detail-page/${servicesData[33].id}`}>
+            <div className=' border h-[9rem] w-[9rem] rounded-full  mr-9 hover:border hover:border-orange-500 flex flex-col justify-center items-center font-serif  ' >
+              <img src={servicesData[33].imgurl} alt='imgurl' className='w-12 h-auto'/>
+              <h1 className='  break-words  text-center text-black font-serif text-[12px]'>{servicesData[33].title}</h1>
+            </div>
+            </Link>
+          </div>
+
+          {/*  34  35*/}
+          <div key='' className='relative flex flex-col justify-center items-center  '  >
+            <Link to={`/catagory-detail-page/${servicesData[34].id}`} >
+            <div className=' border h-[9rem] w-[9rem] rounded-full  mr-9 mb-5 hover:border hover:border-orange-500 flex flex-col justify-center items-center font-serif  ' >
+              <img src={servicesData[34].imgurl} alt='img' className='w-12 h-auto' />
+              <h1 className=' break-words  text-center text-black font-serif text-[12px]'>{servicesData[34].title}</h1>
+            </div>
+            </Link>
+            <Link to={`/catagory-detail-page/${servicesData[35].id}`}>
+            <div className=' border h-[9rem] w-[9rem] rounded-full  mr-9 hover:border hover:border-orange-500 flex flex-col justify-center items-center font-serif  ' >
+              <img src={servicesData[35].imgurl} alt='imgurl' className='w-12 h-auto'/>
+              <h1 className='  break-words  text-center text-black font-serif text-[12px]'>{servicesData[35].title}</h1>
+            </div>
+            </Link>
+          </div>
+
+          {/* 36  37 */}
+          <div key='' className='relative flex flex-col justify-center items-center  '  >
+            <Link to={`/catagory-detail-page/${servicesData[36].id}`} >
+            <div className=' border h-[9rem] w-[9rem] rounded-full  mr-9 mb-5 hover:border hover:border-orange-500 flex flex-col justify-center items-center font-serif  ' >
+              <img src={servicesData[36].imgurl} alt='img' className='w-12 h-auto' />
+              <h1 className=' break-words  text-center text-black font-serif text-[12px]'>{servicesData[36].title}</h1>
+            </div>
+            </Link>
+            <Link to={`/catagory-detail-page/${servicesData[37].id}`}>
+            <div className=' border h-[9rem] w-[9rem] rounded-full  mr-9 hover:border hover:border-orange-500 flex flex-col justify-center items-center font-serif  ' >
+              <img src={servicesData[37].imgurl} alt='imgurl' className='w-12 h-auto'/>
+              <h1 className='  break-words  text-center text-black font-serif text-[12px]'>{servicesData[37].title}</h1>
+            </div>
+            </Link>
+          </div>
+
+          {/* 38  39 */}
+          <div key='' className='relative flex flex-col justify-center items-center  '  >
+            <Link to={`/catagory-detail-page/${servicesData[38].id}`} >
+            <div className=' border h-[9rem] w-[9rem] rounded-full  mr-9 mb-5 hover:border hover:border-orange-500 flex flex-col justify-center items-center font-serif  ' >
+              <img src={servicesData[38].imgurl} alt='img' className='w-12 h-auto' />
+              <h1 className=' break-words  text-center text-black font-serif text-[12px]'>{servicesData[38].title}</h1>
+            </div>
+            </Link>
+            <Link to={`/catagory-detail-page/${servicesData[39].id}`}>
+            <div className=' border h-[9rem] w-[9rem] rounded-full  mr-9 hover:border hover:border-orange-500 flex flex-col justify-center items-center font-serif  ' >
+              <img src={servicesData[39].imgurl} alt='imgurl' className='w-12 h-auto'/>
+              <h1 className='break-words  text-center text-black font-serif text-[12px]'>{servicesData[39].title}</h1>
+            </div>
+            </Link>
+          </div>
+
+          {/*  40 41  */}
+          <div key='' className='relative flex flex-col justify-center items-center  '  >
+            <Link to={`/catagory-detail-page/${servicesData[40].id}`} >
+            <div className=' border h-[9rem] w-[9rem] rounded-full  mr-9 mb-5 hover:border hover:border-orange-500 flex flex-col justify-center items-center font-serif  ' >
+              <img src={servicesData[40].imgurl} alt='img' className='w-12 h-auto' />
+              <h1 className=' break-words  text-center text-black font-serif text-[12px]'>{servicesData[40].title}</h1>
+            </div>
+            </Link>
+            <Link to={`/catagory-detail-page/${servicesData[41].id}`}>
+            <div className=' border h-[9rem] w-[9rem] rounded-full  mr-9 hover:border hover:border-orange-500 flex flex-col justify-center items-center font-serif  ' >
+              <img src={servicesData[41].imgurl} alt='imgurl' className='w-12 h-auto'/>
+              <h1 className='  break-words  text-center text-black font-serif text-[12px]'>{servicesData[41].title}</h1>
+            </div>
+            </Link>
+          </div>
+
+          {/* 42  43 */}
+          <div key='' className='relative flex flex-col justify-center items-center  '  >
+            <Link to={`/catagory-detail-page/${servicesData[42].id}`} >
+            <div className=' border h-[9rem] w-[9rem] rounded-full  mr-9 mb-5 hover:border hover:border-orange-500 flex flex-col justify-center items-center font-serif  ' >
+              <img src={servicesData[42].imgurl} alt='img' className='w-12 h-auto' />
+              <h1 className=' break-words  text-center text-black font-serif text-[12px]'>{servicesData[42].title}</h1>
+            </div>
+            </Link>
+            <Link to={`/catagory-detail-page/${servicesData[43].id}`}>
+            <div className=' border h-[9rem] w-[9rem] rounded-full  mr-9 hover:border hover:border-orange-500 flex flex-col justify-center items-center font-serif  ' >
+              <img src={servicesData[43].imgurl} alt='imgurl' className='w-12 h-auto'/>
+              <h1 className='  break-words  text-center text-black font-serif text-[12px]'>{servicesData[43].title}</h1>
+            </div>
+            </Link>
+          </div>
+
+          {/* 44   45 */}
+         
+          {/*  46 47*/}
+          
       </Slider>
     </div>
     </>

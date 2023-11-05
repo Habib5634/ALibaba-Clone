@@ -35,6 +35,8 @@ const ConsumerElectronicsCategory = () => {
             <p className='text-base font-normal text-white'>Discover new and trending products</p>
         </div>
 
+
+
         {/* Banners */}
         <div className='flex flex-col xl:px-16 bg-gray-200'>
           <div className='flex'><VerifiedProSuppliers/> <UptoOffSampals/></div>

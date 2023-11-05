@@ -2,6 +2,7 @@ import React from 'react'
 import Navbar from '../../Components/Navbar/Navbar'
 import NewUser from '../../Components/NewUser/NewUser'
 import ExploreOffer from '../../Components/ExploreOffers/ExploreOffer'
+
 import Discover from '../../Components/DiscoverBussiness/Discover'
 import SourceFactory from '../../Components/SourceFactory/SourceFactory'
 import TradeWithConfidence from '../../Components/TradeWithConfidence/TradeWithConfidence'
