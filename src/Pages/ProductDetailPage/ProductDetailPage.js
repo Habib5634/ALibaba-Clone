@@ -1,42 +1,121 @@
-import React, { useState } from 'react'
-import { useParams } from 'react-router-dom';
-import data from '../ProductsData/Data'
-import Navbar2 from '../../../Components/Navbar/Navbar2';
+import React, { useEffect, useState } from 'react'
+import { Link, useParams } from 'react-router-dom';
 import { AiOutlineCheckCircle, AiOutlineRight, AiOutlineInfoCircle, AiOutlineMail } from 'react-icons/ai'
 import { BsCartPlus, BsTelephone } from 'react-icons/bs'
 import { LiaLessThanEqualSolid} from 'react-icons/lia'
 
+import Footer from '../../Components/Footer/Footer';
+import SubFooter from '../../Components/Footer/SubFooter';
+import API from '../../service/API';
+import Navbar2 from '../../Components/Navbar/Navbar2';
 
-const getProductById = (id) => {
-  // Assuming products is an array of products
-  return data.find(product => product.id === parseInt(id));
-};
+
+
+
 const ProductDetailPage = () => {
-  const { id } = useParams();
-  const product = getProductById(id);
+  
   const [currentImage, setCurrentImage] = useState(0);
-  const [count, setCount] = useState(0);
-  const handleIncrement = () => {
-    setCount(count + 1);
-  };
+const [product,setProducts] = useState(null)
 
-  const handleDecrement = () => {
-    setCount(count - 1);
-  };
+  const { id } = useParams();
 
+  // Fetch product by ID
+  useEffect(() => {
+    const getProductById = async (id) => {
+      try {
+        const response = await API.get(`https://tiny-tan-snail-wear.cyclic.app/alibaba/usergetone/${id}`);
+        const product = response.data;
+        setProducts(product);
+        console.log(product)
+      } catch (error) {
+        console.error('Error fetching category:', error);
+      }
+    };
+
+    getProductById(id);
+  }, [id]);
+ 
+  //sest count quantity code
+  const [count, setCount] = useState([]);
+useEffect(() => {
+  if (product && product.orderDetails) {
+    const initialCounts = product.orderDetails.map(item => item.quantity);
+    setCount(initialCounts);
+  }
+}, [product]);
+
+const handleIncrement = (index) => {
+  console.log('Increment clicked');
+  setCount(prevCounts => prevCounts.map((count, i) => i === index ? count + 1 : count));
+};
+
+const handleDecrement = (index) => {
+  console.log('Decrement clicked');
+  setCount(prevCounts => prevCounts.map((count, i) => i === index ? Math.max(count - 1, 0) : count));
+};
   const handleThumbnailClick = (index) => {
     setCurrentImage(index);
   };
 
+  //check user is loggedin or not
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      const decodedToken = atob(token.split('.')[1]);
+      const userData = JSON.parse(decodedToken);
+      setUser(userData);
+    }
+  }, []);
+// Add to cart
+  const addToCart = async () => {
+    if (!user || !user._id) {
+      console.error('User ID not available');
+      return;
+    }
+
+    const apiUrl = 'https://tiny-tan-snail-wear.cyclic.app/alibaba/addtocart';
+    const orderDetails = product.orderDetails.map((caliber, index) => ({
+      size: caliber.size,
+      quantity: count[index],
+      
+    }));
+    const requestData = {
+      product: product._id,
+      user: user._id,
+      orderDetails: orderDetails
+    };
+
+    try {
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(requestData)
+      });
+
+      if (response.ok) {
+        const responseData = await response.json();
+        console.log('Product added to cart:', responseData);
+      } else {
+        console.error('Error adding product to cart:', response.status);
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
   return (
     <>
       <Navbar2 />
+      {product &&  (
       <div className='flex justify-center xl:px-16'>
         {/* left side */}
         <div className='w-[28%]'>
-
+        
           <div className="flex flex-col">
-
+          
             <div className='p-3 ml-4 rounded-lg bg-gray-100'>
               <img
                 src={product.images[currentImage]}
@@ -44,6 +123,7 @@ const ProductDetailPage = () => {
                 className="max-w-full h-[350px]  w-[350px]"
               />
             </div>
+            
             <h1 className='text-[14px] py-4 text-center'>View Larger Images</h1>
             <div className="flex flex-row space-x-1 ">
               {product.images.map((image, index) => (
@@ -59,7 +139,9 @@ const ProductDetailPage = () => {
               ))}
             </div>
           </div>
+          
         </div>
+        
         {/* center */}
         <div className='w-1/2 pl-8 '>
           <h1 className='text-[14px] flex mt-4'>
@@ -68,7 +150,7 @@ const ProductDetailPage = () => {
             <span className='bg-red-100 flex justify-center items-center  text-red-500 px-2 py-0.5'><AiOutlineCheckCircle className='mr-1' />Fast Dispatch</span>
           </h1>
           <h1 className='text-[16px] font-semibold py-2'>{product.title}</h1>
-          <p className='text-[14px] mb-2 underline'><span className=''>{product.buyer} Buyers</span></p>
+          <p className='text-[14px] mb-2 underline'><span className=''>{product.buyers} Buyers</span></p>
           <div className='flex items-center mb-2 border-b pb-6'>
             <img className='h-[18px] w-[18px]' src='https://s.alicdn.com/@img/imgextra/i3/O1CN01aRlJV61yF2Ezy532h_!!6000000006548-2-tps-54-54.png' alt='sdfsdf' />
             <p>#1 Hot Selling in <span className='underline'>Lens Cap</span></p>
@@ -76,16 +158,32 @@ const ProductDetailPage = () => {
           {/* price */}
           <div className='flex border-b'>
             <div className='w-1/4 flex flex-col'>
-              <p className='text-[14px] text-gray-500 my-2'>{product.MinOrder}-499 pieces</p>
-              <h1 className='text-[18px] mb-2 font-bold text-orange-500'>US${product.minOrderPrice}</h1>
+              <p className='text-[14px] text-gray-500 my-2'>{ product.priceOfPieces[0].pieces}-499 pieces</p>
+              <h1 className='text-[18px] mb-2 font-bold text-orange-500'>
+  {product && product.priceOfPieces && product.priceOfPieces[0] && product.priceOfPieces[0].price
+    ? `US$${product.priceOfPieces[0].price}`
+    : 'Price Not Available'}
+</h1>
             </div>
             <div className='w-1/4 flex flex-col'>
-              <p className='text-[14px] text-gray-500 my-2'>{product.mediumOrder}-1000 pieces</p>
-              <h1 className='text-[18px] mb-2 font-bold '>US${product.mediumOrderPrice}</h1>
+              <p className='text-[14px] text-gray-500 my-2'>{product.priceOfPieces[1].pieces}-1000 pieces</p>
+              <h1 className='text-[18px] mb-2 font-bold text-orange-500'>
+  {product && product.priceOfPieces && product.priceOfPieces[1] && product.priceOfPieces[1].price
+    ? `US$${product.priceOfPieces[1].price}`
+    : 'Price Not Available'}
+</h1>
             </div>
             <div className='w-1/4 flex flex-col'>
-              <p className='text-[14px] flex items-center text-gray-500 my-2'><AiOutlineRight className='text-[12px]' />={product.largerOrder}</p>
-              <h1 className='text-[18px] mb-2 font-bold '>US${product.minOrderPrice}</h1>
+            <h1 className='text-[18px] mb-2 font-bold text-orange-500'>
+  {product && product.priceOfPieces && product.priceOfPieces[1] && product.priceOfPieces[1].price
+    ? `US$${product.priceOfPieces[1].price}`
+    : 'Price Not Available'}
+</h1>
+<h1 className='text-[18px] mb-2 font-bold text-orange-500'>
+  {product && product.priceOfPieces && product.priceOfPieces[1] && product.priceOfPieces[1].price
+    ? `US$${product.priceOfPieces[1].price}`
+    : 'Price Not Available'}
+</h1>
             </div>
           </div>
           {/* Benefits */}
@@ -97,45 +195,40 @@ const ProductDetailPage = () => {
           {/* Colors */}
           <div className='flex items-center my-2'>
             <h1 className='text-[14px] text-gray-500 my-2 w-1/4' >Color:</h1>
-            <div className='h-10 w-10 bg-black'></div>
+            {product.color[0] === 'black' && 
+            <div className={`h-10 w-10 bg-black mr-2`}></div>
+          }
+          {product.color[1] === 'white' && 
+            <div className={`h-10 w-10 bg-white border mr-2 border-black `}></div>
+          }
+          {product.color[2] === 'orange' && 
+            <div className={`h-10 w-10 bg-orange-500  mr-2`}></div>
+          }
+          {product.color[3] === 'yellow' && 
+            <div className={`h-10 w-10 bg-yellow-500  mr-2`}></div>
+          }
           </div>
           {/* Quantities and Sizes  */}
-          <div className='flex items-center my-2'>
-            <h1 className='text-[14px] text-gray-500 my-2 w-1/4' >Calibers:</h1>
-            <div className='w-1/2 flex justify-between px-2 text-[14px] text-gray-500'>
-              <p>32mm</p>
-              <p>$0.25</p>
-            </div>
-            <div className='flex w-1/4 space-x-1 px-2'>
-              <p className='px-3 py-1 cursor-pointer border hover:border-black' onClick={handleDecrement}>-</p>
-              <p className='px-3 py-1 border'>{count}</p>
-              <p className='px-3 py-1 cursor-pointer border hover:border-black' onClick={handleIncrement}>+</p>
-            </div>
-          </div>
-          <div className='flex items-center justify-end my-2'>
+{product.orderDetails.map((caliber, index) => (
+  <div className='flex items-center my-2' key={caliber._id}>
+    {index === 0 && 1 ? (
+      <h1 className='text-[14px] text-gray-500 my-2 w-1/4'>Calibers:</h1>
+    ):(
+      <h1 className='text-[14px] text-gray-500 my-2 w-1/4'></h1>
+    )}
+    <div className='w-1/2 flex justify-between self-center px-2 text-[14px] text-gray-500'>
+      <p>{caliber.size}</p>
+      <p>${caliber.price}</p>
+    </div>
+    <div className='flex w-1/4 space-x-1 justify-end px-2'>
+      <p className='px-3 py-1 cursor-pointer border hover:border-black' onClick={() => handleDecrement(index)}>-</p>
+      <p className='px-3 py-1 border'>{count[index]}</p>
+      <p className='px-3 py-1 cursor-pointer border hover:border-black' onClick={() => handleIncrement(index)}>+</p>
+    </div>
+  </div>
+))}
 
-            <div className='w-1/2 flex self-center justify-between px-2 text-[14px] text-gray-500'>
-              <p>32mm</p>
-              <p>$0.25</p>
-            </div>
-            <div className='flex w-1/4 self-end space-x-1 px-2'>
-              <p className='px-3 py-1 cursor-pointer border hover:border-black' onClick={handleDecrement}>-</p>
-              <p className='px-3 py-1 border'>{count}</p>
-              <p className='px-3 py-1 cursor-pointer border hover:border-black' onClick={handleIncrement}>+</p>
-            </div>
-          </div>
-          <div className='flex items-center justify-end my-2'>
 
-            <div className='w-1/2 flex self-center justify-between px-2 text-[14px] text-gray-500'>
-              <p>32mm</p>
-              <p>$0.25</p>
-            </div>
-            <div className='flex w-1/4 self-end space-x-1 px-2'>
-              <p className='px-3 py-1 cursor-pointer border hover:border-black' onClick={handleDecrement}>-</p>
-              <p className='px-3 py-1 border'>{count}</p>
-              <p className='px-3 py-1 cursor-pointer border hover:border-black' onClick={handleIncrement}>+</p>
-            </div>
-          </div>
           <div className='flex justify-center text-center w-1/2'>
             <button className='text-blue-500 hover:text-blue-600'>View all Options </button>
           </div>
@@ -144,12 +237,16 @@ const ProductDetailPage = () => {
           <div className='flex items-center my-2'>
             <h1 className='text-[14px] text-gray-500 my-2 w-1/4'>Samples</h1>
             <div className='flex item-center px-2'>
-              <div className='h-8 w-8 rounded-md bg-black'></div><h1 className='text-[14px] ml-2 text-gray-500'>96mm</h1>
+            {product.color[0] === 'black' && 
+            <div className={`h-8 w-8 bg-black mr-2`}></div>
+          }
+              
+              <h1 className='text-[14px] ml-2 flex items-center text-gray-500'>96mm</h1>
             </div>
           </div>
           <div className='flex justify-center items-center px-2'>
-            <h1 className='text-[14px] font-bold px-2 border-r'>US${product.minOrderPrice}/piece</h1>
-            <p className='text-[14px]'>Min .Order: {product.MinOrder} Piece</p>
+            <h1 className='text-[14px] font-bold px-2 border-r'>US${product.priceOfPieces[0].price}/piece</h1>
+            <p className='text-[14px]'>Min .Order: {product.priceOfPieces[0].pieces} Piece</p>
             <button className='text-blue-500 hover:text-blue-600 text-[14px] ml-1'> Get Samples</button>
 
           </div>
@@ -162,15 +259,15 @@ const ProductDetailPage = () => {
                 <tbody>
                   <tr>
                     <td className="py-1 px-2 border-b border-r text-[ 14px]">Quantity Pieces</td>
-                    <td className="py-1 px-2 border-b border-r text-[ 14px]">1-5</td>
-                    <td className="py-1 px-2 border-b border-r text-[ 14px]">{product.MinOrder}-500</td>
+                    <td className="py-1 px-2 border-b border-r text-[ 14px]">{product.leadTime[0].quantity}</td>
+                    <td className="py-1 px-2 border-b border-r text-[ 14px] truncate">{product.leadTime[1].quantity}-500</td>
                     <td className="py-1 px-2 border-b border-r text-[ 14px]">{product.mediumOrder}-1000</td>
                     <td className="py-1 px-2 border-b border-r text-[ 14px] flex items-center"><AiOutlineRight className='text-[12px]' />{product.largerOrder}</td>
                   </tr>
                   <tr>
                     <td className="py-1 px-2 border-b border-r text-[14px]">Lead Time </td>
-                    <td className="py-1 px-2 border-b border-r text-[14px]">7days</td>
-                    <td className="py-1 px-2 border-b border-r text-[14px]">10days</td>
+                    <td className="py-1 px-2 border-b border-r text-[14px]">{product.leadTime[0].leadTimedays}days</td>
+                    <td className="py-1 px-2 border-b border-r text-[14px]">{product.leadTime[1].leadTimedays}days</td>
                     <td className="py-1 px-2 border-b border-r text-[14px]">20days</td>
                     <td className="py-1 px-2 border-b border-r text-[14px]">To be Negotiated</td>
                   </tr>
@@ -185,9 +282,9 @@ const ProductDetailPage = () => {
           <div className='flex items-center mt-3  pb-6 border-b'>
             <h1 className='text-[14px] text-gray-500 my-2 w-1/4' >Customization:</h1>
             <div className='w-1/2 flex flex-col px-2'>
-              <h1 className='text-[14px] flex items-center'>Customized Logo <span className='text-gray-500'>Min Order {product.customizedLogoOrders} pieces</span></h1>
-              <h1 className='text-[14px] flex items-center'>Customized Packaging  <span className='text-gray-500'>Min Order {product.customizedLogoOrders} pieces</span></h1>
-              <h1 className='text-[14px] flex items-center'>Graphic Customization <span className='text-gray-500'>Min Order {product.customizedLogoOrders} pieces</span></h1>
+              <h1 className='text-[14px] flex items-center truncate'>Customized Logo <span className='text-gray-500 truncate ml-1'>Min Order {product.priceOfPieces[1].pieces} pieces</span></h1>
+              <h1 className='text-[14px] flex items-center truncate'>Customized Packaging  <span className='text-gray-500 ml-1 truncate'>Min Order {product.priceOfPieces[1].pieces} pieces</span></h1>
+              <h1 className='text-[14px] flex items-center truncate'>Graphic Customization <span className='text-gray-500 ml-1 truncate'>Min Order {product.priceOfPieces[1].pieces} pieces</span></h1>
 
             </div>
           </div>
@@ -196,12 +293,12 @@ const ProductDetailPage = () => {
         {/* right */}
         <div className='w-[20%] '>
           <div className='p-3 shadow rounded-lg ml-4 h-fit'>
-          <h1 className='text-[12px] text-gray-500 mt-2'>The minimum order quantity is {product.MinOrder} pieces</h1>
+          <h1 className='text-[12px] text-gray-500 mt-2'>The minimum order quantity is {product.priceOfPieces[0].pieces} pieces</h1>
           <div className='flex justify-between text-[14px]'>
             <h1 className='text-gray-700'>0/{product.MinOrder}</h1>
-            <h1 className='text-gray-700'>from <span className='text-[16px] text-black font-bold'>${product.minOrderPrice}</span></h1>
+            <h1 className='text-gray-700'>from <span className='text-[16px] text-black font-bold'>${product.priceOfPieces[0].price}</span></h1>
           </div>
-          <h1 className='flex items-center text-[14px] text-gray-700 justify-end border-b pb-4'>Lead Time 7 Days<AiOutlineInfoCircle className='ml-1' /></h1>
+          <h1 className='flex items-center text-[14px] text-gray-700 justify-end border-b pb-4'>Lead Time {product.leadTime[0].leadTimedays} Days<AiOutlineInfoCircle className='ml-1' /></h1>
           <div className='flex justify-between pt-2'>
             <h1 className='text-[14px] text-gray-700'>Shipping</h1>
             <h1 className='text-gray-700'>from <span className='text-[16px] text-black font-bold'>${product.shippingCharges}</span></h1>
@@ -213,11 +310,11 @@ const ProductDetailPage = () => {
           <button className='w-full py-1 border border-orange-500 mt-3 rounded-full text-[14px] flex justify-center items-center text-orange-500'><AiOutlineMail className='mr-1 text-[16px]' />Contact Supplier</button>
           <button className='w-full py-1 border border-orange-500 mt-3 rounded-full text-[14px] flex justify-center items-center text-orange-500'><BsTelephone className='mr-1 text-[16px]' />Call Us</button>
 
-          <button className='flex w-full mt-3 justify-center items-center text-[14px]'><BsCartPlus className='mr-1 text-[16px]' /> Add to cart</button>
+          <Link to='/cart'><button className='flex w-full mt-3 justify-center items-center text-[14px] ' onClick={addToCart}><BsCartPlus className='mr-1 text-[16px]' /> Add to cart</button></Link>
           </div>
 <div className='p-3 mt-3 shadow rounded-lg ml-4 h-fit'>
 <h1 className=' text-[14px] font-bold overflow-hidden  max-w-full'>
-        {product.sellerCompany.length > 20 ? `${product.sellerCompany.slice(0, 25)}...` : product.sellerCompany}
+        {/* {product.sellerCompany.length > 20 ? `${product.sellerCompany.slice(0, 25)}...` : product.sellerCompany} */}
       </h1>
       <p className='text-gray-700 text-[14px]'>Manufacture</p>
       <div className='flex items-center text-[12px] '>
@@ -247,6 +344,9 @@ const ProductDetailPage = () => {
 
         </div>
       </div>
+      )}
+      <Footer/>
+      <SubFooter/>
     </>
   )
 }

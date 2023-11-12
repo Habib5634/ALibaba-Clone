@@ -2,7 +2,7 @@ const servicesData = [
     {
       id: 1,
       title: 'Consumer Electronics',
-      catImg:'',
+      catImg:'https://img.alicdn.com/imgextra/i3/O1CN01IG66It1ZCrw40fyRX_!!6000000003159-2-tps-1920-240.png',
       imgurl: 'https://s.alicdn.com/@img/imgextra/i2/O1CN01lTlEA71idHDZyDnE1_!!6000000004435-2-tps-200-200.png',
       path:'/consumer-electronics',
       
