@@ -15,7 +15,7 @@ const ExploreOffer = () => {
  const getAllCatagories = async () => {
   try {
       console.log("Fetching categories...");
-      const response = await API.get("https://tiny-tan-snail-wear.cyclic.app/alibaba/usergetallcategories");
+      const response = await API.get("https://gray-ill-viper.cyclic.app/alibaba/usergetallcategories");
       const servicesData = response.data.category;
       if (servicesData) {
           console.log(servicesData);

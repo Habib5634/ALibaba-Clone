@@ -16,14 +16,14 @@ const ProductDetailPage = () => {
   
   const [currentImage, setCurrentImage] = useState(0);
 const [product,setProducts] = useState(null)
-
+// const [selectedProduct, setSelectedProduct] = useState(null);
   const { id } = useParams();
-
+  // const [selectedQuantities, setSelectedQuantities] = useState(Array(product.orderDetails.length).fill(1));
   // Fetch product by ID
   useEffect(() => {
     const getProductById = async (id) => {
       try {
-        const response = await API.get(`https://tiny-tan-snail-wear.cyclic.app/alibaba/usergetone/${id}`);
+        const response = await API.get(`https://gray-ill-viper.cyclic.app/alibaba/usergetone/${id}`);
         const product = response.data;
         setProducts(product);
         console.log(product)
@@ -68,14 +68,61 @@ const handleDecrement = (index) => {
       setUser(userData);
     }
   }, []);
+
+  // const handleQuantityChange = (index, newQuantity) => {
+  //   const newQuantities = [...selectedQuantities];
+  //   newQuantities[index] = newQuantity;
+  //   setSelectedQuantities(newQuantities);
+  // };
 // Add to cart
+
+// const addToCart = () => {
+//   // Assuming 'product' contains the details of the selected product
+//   const productDetails = {
+//     productId: product._id,
+//     // Add other product details as needed
+//     ...product,
+//     // orderDetails: product.orderDetails.map((caliber, index) => ({
+//     //     ...caliber,
+//     //     quantity: selectedQuantities[index],
+//     //   })),
+//   };
+
+//   // Retrieve existing cart items from local storage
+//   const existingCart = JSON.parse(localStorage.getItem('cart')) || [];
+
+//   // Check if the product is already in the cart
+//   const existingProductIndex = existingCart.findIndex(item => item.productId === product._id);
+
+//   if (existingProductIndex !== -1) {
+//     // If the product is already in the cart, update the quantity
+//     existingCart[existingProductIndex].quantity += 1;
+//   } else {
+//     // If the product is not in the cart, add it with a quantity of 1
+//     const newCartItem = {
+//       userId: user._id, // Assuming 'user' contains the details of the logged-in user
+//       productId: product._id,
+//       quantity: 1,
+//       details: productDetails,
+//     };
+
+//     existingCart.push(newCartItem);
+//   }
+
+//   // Update the local storage with the new cart items
+//   localStorage.setItem('cart', JSON.stringify(existingCart));
+
+//   // Optionally, update the UI or show a success message
+//   setSelectedProduct(productDetails);
+// };
+
   const addToCart = async () => {
     if (!user || !user._id) {
       console.error('User ID not available');
       return;
     }
 
-    const apiUrl = 'https://tiny-tan-snail-wear.cyclic.app/alibaba/addtocart';
+    const apiUrl = 'https://gray-ill-viper.cyclic.app/alibaba/addtocart';
     const orderDetails = product.orderDetails.map((caliber, index) => ({
       size: caliber.size,
       quantity: count[index],
@@ -174,11 +221,7 @@ const handleDecrement = (index) => {
 </h1>
             </div>
             <div className='w-1/4 flex flex-col'>
-            <h1 className='text-[18px] mb-2 font-bold text-orange-500'>
-  {product && product.priceOfPieces && product.priceOfPieces[1] && product.priceOfPieces[1].price
-    ? `US$${product.priceOfPieces[1].price}`
-    : 'Price Not Available'}
-</h1>
+            <p className='text-[14px] text-gray-500 my-2'>{product.priceOfPieces[1].pieces}-1000 pieces</p>
 <h1 className='text-[18px] mb-2 font-bold text-orange-500'>
   {product && product.priceOfPieces && product.priceOfPieces[1] && product.priceOfPieces[1].price
     ? `US$${product.priceOfPieces[1].price}`
@@ -194,20 +237,15 @@ const handleDecrement = (index) => {
           </div>
           {/* Colors */}
           <div className='flex items-center my-2'>
-            <h1 className='text-[14px] text-gray-500 my-2 w-1/4' >Color:</h1>
-            {product.color[0] === 'black' && 
-            <div className={`h-10 w-10 bg-black mr-2`}></div>
-          }
-          {product.color[1] === 'white' && 
-            <div className={`h-10 w-10 bg-white border mr-2 border-black `}></div>
-          }
-          {product.color[2] === 'orange' && 
-            <div className={`h-10 w-10 bg-orange-500  mr-2`}></div>
-          }
-          {product.color[3] === 'yellow' && 
-            <div className={`h-10 w-10 bg-yellow-500  mr-2`}></div>
-          }
-          </div>
+  <h1 className='text-[14px] text-gray-500 my-2 w-1/4'>Color:</h1>
+  {product.color.map((color, index) => (
+    <div
+      key={index}
+      className={`h-10 w-10 mr-2 ${index === 1 ? 'border border-black' : ''}`}
+      style={{ background: color }}
+    ></div>
+  ))}
+</div>
           {/* Quantities and Sizes  */}
 {product.orderDetails.map((caliber, index) => (
   <div className='flex items-center my-2' key={caliber._id}>

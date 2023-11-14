@@ -1,17 +1,20 @@
-import React, { useState, useEffect } from 'react';
-import API from '../../service/API'; // Import your API library
+import React, { useEffect, useState } from 'react'
+import Navbar3 from '../../Components/Navbar/Navbar3'
+import {ImLocation2} from 'react-icons/im'
+import { fetchCartItems, mergeData } from '../../redux/features/auth/authAction';
 import { AiOutlineClose, AiOutlineInfoCircle } from 'react-icons/ai';
 import { BiStore } from 'react-icons/bi'
+import { GoShieldCheck} from 'react-icons/go'
 import { HiChatBubbleOvalLeftEllipsis } from 'react-icons/hi2'
-import { fetchCartItems, mergeData } from '../../redux/features/auth/authAction';
-import Navbar3 from '../../Components/Navbar/Navbar3';
-import { Link } from 'react-router-dom';
-const Cart = () => {
+import ShippingForm from './ShippingForm';
+import { useParams } from 'react-router-dom';
+const BuyNow = () => {
   const [cartItems, setCartItems] = useState([]);
   const [mergedCartItems, setMergedCartItems] = useState([]);
-
+  const [isFormModal, setIsFormModal] = useState(false);
   const [subtotal, setSubtotal] = useState(0);
   const [totalQuantity, setTotalQuantity] = useState(0);
+  const { id } = useParams();
   //fetch cart item
 // useEffect(() => {
 //     const fetchCartItems = async () => {
@@ -113,7 +116,7 @@ const handleSelectAll = () => {
       const flattenedCounts = initialCounts.flat();
 
       setCount(flattenedCounts);
-      // console.log("initial", flattenedCounts);
+      console.log("initial", flattenedCounts);
     }
   }, [mergedCartItems]);
 
@@ -185,24 +188,107 @@ const handleSelectAll = () => {
   
     
   };
+  const openForm = () => {
+    setIsFormModal(true);
+  };
+
+  const closeForm = () => {
+    setIsFormModal(false);
+  };
+
+  const [formData, setFormData] = useState({
+    shippingAddress: [
+      {
+        country: '',
+        address1: '',
+        address2: '',
+        province: '',
+        city: '',
+        zipCode: '',
+        fullName: '',
+        phoneNumber: '',
+        tag: [],
+      },
+    ],
+    totalQuantity: 0,
+    shippingPrice: 25,
+    totalPrice: subtotal,
+    Status: false,
+  });
   
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`https://gray-ill-viper.cyclic.app/alibaba/patchcart/${id}`);
+  
+        if (response.ok) {
+          const data = await response.json();
+          setFormData(data);
+        } else {
+          console.error('Error fetching cart data:', response.status);
+        }
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    };
+  
+    fetchData();
+  }, [id]);
+  
+  useEffect(() => {
+    const storedFormData = JSON.parse(localStorage.getItem('formData'));
+  
+    if (storedFormData) {
+      setFormData(storedFormData);
+    }
+  }, []);
+  const handleShippingAddressChange = (field, value) => {
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      shippingAddress: [
+        {
+          ...prevFormData.shippingAddress[0],
+          [field]: value,
+        },
+      ],
+    }));
+  
+    // Update local storage
+    localStorage.setItem('formData', JSON.stringify(formData));
+  };
+  const handleSubmit = async () => {
+    try {
+      const response = await fetch(`https://gray-ill-viper.cyclic.app/alibaba/patchcart/${id}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+  
+      if (response.ok) {
+        console.log('Cart data updated successfully!');
+      } else {
+        console.error('Error updating cart data:', response.status);
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+  
+  console.log(formData)
   return (
     <>
-       <Navbar3 title={'Shoping Cart'}/>
-    <div className='bg-gray-100 py-10 px-28 flex space-x-5'>
+    <Navbar3 title={'Buy Now'} />
 
+    <div className='bg-gray-100 py-10 px-28 flex space-x-5'>
     <div className='w-2/3    mb-4   flex flex-col'>
-    
-    <label className="inline-flex items-center p-5 w-full mb-4 rounded-md bg-white">
-        <input
-          type="checkbox"
-          className="form-checkbox text-indigo-600 h-5 w-5"
-          checked={selectedProducts.length === mergedCartItems.length}
-          onChange={handleSelectAll}
-        />
-        <span className="ml-2 text-gray-700">Select All</span>
-      </label>
-<div className='mb-4 rounded-md bg-white w-full p-5'>
+      <div className='w-full bg-white p-4 mb-4'>
+        <div className='flex justify-center items-center w-full border border-dashed border-gray-500 rounded-md py-4'>
+          <ImLocation2 className='text-orange-500'/> <span onClick={openForm} className='text-[14px] font-bold text-blue-500 hover:text-orange-500 '>Add an address</span>
+        </div>
+      </div>
+      <div className=' border-b rounded-md bg-white w-full p-5'>
 <div className='w-full flex justify-between py-3 border-b'>
               <label className='flex items-center'>
                 <input
@@ -289,30 +375,33 @@ const handleSelectAll = () => {
       )} )}
       
       </div>
+      <div className=' flex justify-end p-4 bg-gray-50'>
+        <h1 className='text-[14px]'>Items total: <span className='font-bold text-[16px]'>US${subtotal}</span></h1>
+      </div>
     </div>
-    <div className='w-1/3 p-5 bg-white rounded-md flex flex-col h-fit'>
-          <h1 className='font-bold text-gray-700'>Cart SubTotal</h1>
-          <div className='flex justify-between w-full'>
-            <h1 className='  text-gray-700 text-[14px]'>Items Total</h1>
-            <h1 className='pb-3 text-gray-700 text-[14px]'>US${subtotal}</h1>
-          </div>
-          <div className='flex justify-between w-full  pb-7 border-b '>
-            <h1 className='  text-gray-700 text-[14px]'>Shipping</h1>
-            <h1 className=' text-gray-700 text-[14px] font-bold'>US$25</h1>
-          </div>
-          <div className='flex justify-between w-full  pt-7 pb-3  '>
-            <h1 className='  text-gray-700 text-[14px]'>Cart Total</h1>
-            <h1 className=' text-gray-700 text-[18px] font-bold'>US${subtotal + 25}
-            </h1>
-          </div>
-          <Link to={`/buy-now/${mergedCartItems[0]?._id}`}>
-          <button onClick={handleCheckout} className='bg-orange-500 w-full text-white py-1 text-[14px] rounded-full'>Checkout</button>
-          </Link>
-        </div>
-     
-    </div>
-    </>
-  );
-};
 
-export default Cart;
+
+    <div className='w-1/3 p-5 bg-white rounded-md flex flex-col h-fit'>
+      <h1 className='text-[14px] font-bold mb-2'>This order is protected</h1>
+      <p className='text-gray-500 text-[11px] pb-6 border-b flex items-center'>with 
+      <img className='h-[16px] ml-2 w-[106px]' src='https://img.alicdn.com/imgextra/i1/O1CN01hydRi91Czf0T3Ayd8_!!6000000000152-55-tps-133-20.svg' about='lt'/>
+      <button className='text-black underline font-bold ml-2'>View Details</button>
+      </p>
+      <h1 className='flex justify-between mt-3 pb-4 border-b'>
+        <span className='text-[14px] text-gray-500'>Items Total</span>
+        <span className='font-medium text-[16px] '>US${subtotal}</span>
+      </h1>
+      <h1 className='flex justify-between mt-3 pb-4 '>
+        <span className='text-[14px] text-gray-500'>Order Total</span>
+        <span className='font-medium text-[16px] '>to be Negotiated</span>
+
+      </h1>
+      <button onClick={handleSubmit} className='text-[14px] flex justify-center items-center py-2 w-full rounded-full bg-orange-500 hover:bg-orange-500 text-white font-medium'><GoShieldCheck className='text-lg mr-2'/> Submit Order</button>
+    </div>
+    </div>
+    <ShippingForm isFormModal={isFormModal} closeForm={closeForm} />
+    </>
+  )
+}
+
+export default BuyNow

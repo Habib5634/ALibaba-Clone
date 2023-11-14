@@ -8,7 +8,7 @@ export const userLogin = createAsyncThunk(
     'auth/login',
     async ({  email, password }, { rejectWithValue }) => {
         try {
-            const { data } = await API.post('https://jade-happy-bull.cyclic.app/signin', {  email, password })
+            const { data } = await API.post('https://gray-ill-viper.cyclic.app/signin', {  email, password })
             //store token
             if (data) {
                 localStorage.setItem('token', data.token);
@@ -36,7 +36,7 @@ export const userRegister = createAsyncThunk(
     'auth/register',
     async ({firstname,lastname, email, password,purpose,companyname,phone,country,isnotbussinessentinty  }, { rejectWithValue }) => {
         try {
-            const { data } = await API.post('https://jade-happy-bull.cyclic.app/signup', { firstname,lastname, email, password,purpose,companyname,phone,country,isnotbussinessentinty })
+            const { data } = await API.post('https://gray-ill-viper.cyclic.app/signup', { firstname,lastname, email, password,purpose,companyname,phone,country,isnotbussinessentinty })
             if (data) {
                 
                 
@@ -75,3 +75,50 @@ export const userRegister = createAsyncThunk(
 //         }
 //     }
 // )
+
+const apiUrl = 'https://gray-ill-viper.cyclic.app/alibaba';
+
+export const fetchCartItems = async () => {
+  try {
+    const response = await fetch(`${apiUrl}/getcarts`);
+
+    if (response.ok) {
+      const cartItemsData = await response.json();
+      return cartItemsData;
+    } else {
+      console.error('Error fetching cart items:', response.status);
+      return null;
+    }
+  } catch (error) {
+    console.error('Error:', error);
+    return null;
+  }
+};
+
+export const fetchProductDetails = async (productId) => {
+  try {
+    const response = await API.get(`${apiUrl}/usergetone/${productId}`);
+    return response.data;
+  } catch (error) {
+    console.error(`Error fetching product details for ID ${productId}:`, error);
+    return null;
+  }
+};
+
+export const mergeData = async (cartItemsData, setMergedCartItems) => {
+  const productIds = cartItemsData?.addtocart?.map(item => item.product) || [];
+
+  try {
+    const productDetailsArray = await Promise.all(productIds.map(fetchProductDetails));
+
+    const mergedCartItems = cartItemsData.addtocart.map((cartItem, index) => ({
+      ...cartItem,
+      productDetails: productDetailsArray[index],
+    }));
+
+    setMergedCartItems(mergedCartItems);
+    console.log("merg", mergedCartItems);
+  } catch (error) {
+    console.error('Error merging data:', error);
+  }
+};

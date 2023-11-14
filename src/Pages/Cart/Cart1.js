@@ -10,6 +10,7 @@ const Cart = () => {
 const [selectAll, setSelectAll] = useState(false);
   const uniqueProductIds = new Set();
   
+  //get all carts
   useEffect(() => {
     const fetchCartItems = async () => {
       const apiUrl = 'https://tiny-tan-snail-wear.cyclic.app/alibaba/getcarts';
@@ -194,7 +195,7 @@ const handleSelectAllChange = () => {
                     <div className='flex  space-x-1 justify-end '>
                       <button
                         className='px-3 py-1 cursor-pointer border hover:border-black'
-                        // onClick={() => handleDecrement(index)}
+                        onClick={() => handleDecrement(index)}
                         // disabled={count[index] === 1}
                       >
                         -
@@ -203,7 +204,7 @@ const handleSelectAllChange = () => {
                         {/* {count[index]} */}
                         </span>
                       <button className='px-3 py-1 cursor-pointer border hover:border-black'
-                      //  onClick={() => handleIncrement(index)}
+                      onClick={() => handleIncrement(index)}
                        >+</button>
                     </div>
 

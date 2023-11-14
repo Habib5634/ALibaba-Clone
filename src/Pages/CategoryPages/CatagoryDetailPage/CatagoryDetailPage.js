@@ -24,7 +24,7 @@ const CatagoryDetailPage = () => {
   useEffect(() => {
     const getCatagoryById = async (id) => {
       try {
-        const response = await API.get(`https://tiny-tan-snail-wear.cyclic.app/alibaba/usergetonecategory/${id}`);
+        const response = await API.get(`https://gray-ill-viper.cyclic.app/alibaba/usergetonecategory/${id}`);
         const category = response.data;
         setCategory(category);
         console.log(category)
@@ -40,7 +40,7 @@ const CatagoryDetailPage = () => {
   const getProducts = async () => {
     try {
 
-      const response = await API.get("https://tiny-tan-snail-wear.cyclic.app/alibaba/usergetall");
+      const response = await API.get("https://gray-ill-viper.cyclic.app/alibaba/usergetall");
       const allProducts = response.data.products;
 
       if (category) {
