@@ -195,8 +195,13 @@ const handleSelectAll = () => {
   const closeForm = () => {
     setIsFormModal(false);
   };
+  const yourAuthToken = localStorage.getItem('token');
+console.log('Token:', yourAuthToken);
 
-  const [formData, setFormData] = useState({
+  const totalPrice = JSON.parse(localStorage.getItem('subtotal'));
+  const shippingPrice = JSON.parse(localStorage.getItem('shippingPrice'));
+  // console.log(totalPrice,shippingPrice)
+  const storedFormData = JSON.parse(localStorage.getItem('formData')) || {
     shippingAddress: [
       {
         country: '',
@@ -210,73 +215,47 @@ const handleSelectAll = () => {
         tag: [],
       },
     ],
-    totalQuantity: 0,
-    shippingPrice: 25,
-    totalPrice: subtotal,
-    Status: false,
-  });
-  
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(`https://gray-ill-viper.cyclic.app/alibaba/patchcart/${id}`);
-  
-        if (response.ok) {
-          const data = await response.json();
-          setFormData(data);
-        } else {
-          console.error('Error fetching cart data:', response.status);
-        }
-      } catch (error) {
-        console.error('Error:', error);
-      }
-    };
-  
-    fetchData();
-  }, [id]);
-  
-  useEffect(() => {
-    const storedFormData = JSON.parse(localStorage.getItem('formData'));
-  
-    if (storedFormData) {
-      setFormData(storedFormData);
-    }
-  }, []);
-  const handleShippingAddressChange = (field, value) => {
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      shippingAddress: [
-        {
-          ...prevFormData.shippingAddress[0],
-          [field]: value,
-        },
-      ],
-    }));
-  
-    // Update local storage
-    localStorage.setItem('formData', JSON.stringify(formData));
+    
   };
+  // console.log("object",storedFormData,)
+  const [formdata,setFormdata] = useState({
+    shippingAddress:storedFormData,
+    totalPrice,
+    shippingPrice,
+    status:false
+  })
+  console.log("formdata",formdata)
+  
+  
   const handleSubmit = async () => {
     try {
       const response = await fetch(`https://gray-ill-viper.cyclic.app/alibaba/patchcart/${id}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `Bearer ${yourAuthToken}`,
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(formdata),
       });
   
       if (response.ok) {
         console.log('Cart data updated successfully!');
       } else {
         console.error('Error updating cart data:', response.status);
+        const errorText = await response.text();
+  console.error('Response Text:', errorText);
       }
     } catch (error) {
       console.error('Error:', error);
     }
   };
   
-  console.log(formData)
+  // Update local storage whenever formData changes
+  useEffect(() => {
+    localStorage.setItem('formData', JSON.stringify(formdata));
+  }, [formdata]);
+  
+  // console.log(storedFormData);
   return (
     <>
     <Navbar3 title={'Buy Now'} />

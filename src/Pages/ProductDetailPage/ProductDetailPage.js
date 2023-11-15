@@ -69,90 +69,77 @@ const handleDecrement = (index) => {
     }
   }, []);
 
-  // const handleQuantityChange = (index, newQuantity) => {
-  //   const newQuantities = [...selectedQuantities];
-  //   newQuantities[index] = newQuantity;
-  //   setSelectedQuantities(newQuantities);
-  // };
+
 // Add to cart
+const addToCart = () => {
+  if (!user || !user._id) {
+    console.error('User ID not available');
+    return;
+  }
 
-// const addToCart = () => {
-//   // Assuming 'product' contains the details of the selected product
-//   const productDetails = {
-//     productId: product._id,
-//     // Add other product details as needed
-//     ...product,
-//     // orderDetails: product.orderDetails.map((caliber, index) => ({
-//     //     ...caliber,
-//     //     quantity: selectedQuantities[index],
-//     //   })),
-//   };
+  const orderDetails = product.orderDetails.map((caliber, index) => ({
+    size: caliber.size,
+    quantity: count[index],
+  }));
 
-//   // Retrieve existing cart items from local storage
-//   const existingCart = JSON.parse(localStorage.getItem('cart')) || [];
-
-//   // Check if the product is already in the cart
-//   const existingProductIndex = existingCart.findIndex(item => item.productId === product._id);
-
-//   if (existingProductIndex !== -1) {
-//     // If the product is already in the cart, update the quantity
-//     existingCart[existingProductIndex].quantity += 1;
-//   } else {
-//     // If the product is not in the cart, add it with a quantity of 1
-//     const newCartItem = {
-//       userId: user._id, // Assuming 'user' contains the details of the logged-in user
-//       productId: product._id,
-//       quantity: 1,
-//       details: productDetails,
-//     };
-
-//     existingCart.push(newCartItem);
-//   }
-
-//   // Update the local storage with the new cart items
-//   localStorage.setItem('cart', JSON.stringify(existingCart));
-
-//   // Optionally, update the UI or show a success message
-//   setSelectedProduct(productDetails);
-// };
-
-  const addToCart = async () => {
-    if (!user || !user._id) {
-      console.error('User ID not available');
-      return;
-    }
-
-    const apiUrl = 'https://gray-ill-viper.cyclic.app/alibaba/addtocart';
-    const orderDetails = product.orderDetails.map((caliber, index) => ({
-      size: caliber.size,
-      quantity: count[index],
-      
-    }));
-    const requestData = {
-      product: product._id,
-      user: user._id,
-      orderDetails: orderDetails
-    };
-
-    try {
-      const response = await fetch(apiUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(requestData)
-      });
-
-      if (response.ok) {
-        const responseData = await response.json();
-        console.log('Product added to cart:', responseData);
-      } else {
-        console.error('Error adding product to cart:', response.status);
-      }
-    } catch (error) {
-      console.error('Error:', error);
-    }
+  const cartItem = {
+    product: product._id,
+    user: user._id,
+    orderDetails: orderDetails
   };
+
+  // Retrieve existing cart data from local storage
+  const existingCartData = JSON.parse(localStorage.getItem('cartData')) || [];
+
+  // Add the new item to the cart
+  existingCartData.push(cartItem);
+
+  // Update local storage with the modified cart data
+  localStorage.setItem('cartData', JSON.stringify(existingCartData));
+
+  console.log('Product added to local cart:', cartItem);
+};
+
+
+// console.log(user)
+
+  // const addToCart = async () => {
+  //   if (!user || !user._id) {
+  //     console.error('User ID not available');
+  //     return;
+  //   }
+
+  //   const apiUrl = 'https://gray-ill-viper.cyclic.app/alibaba/addtocart';
+  //   const orderDetails = product.orderDetails.map((caliber, index) => ({
+  //     size: caliber.size,
+  //     quantity: count[index],
+      
+  //   }));
+  //   const requestData = {
+  //     product: product._id,
+  //     user: user._id,
+  //     orderDetails: orderDetails
+  //   };
+
+  //   try {
+  //     const response = await fetch(apiUrl, {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json'
+  //       },
+  //       body: JSON.stringify(requestData)
+  //     });
+
+  //     if (response.ok) {
+  //       const responseData = await response.json();
+  //       console.log('Product added to cart:', responseData);
+  //     } else {
+  //       console.error('Error adding product to cart:', response.status);
+  //     }
+  //   } catch (error) {
+  //     console.error('Error:', error);
+  //   }
+  // };
   return (
     <>
       <Navbar2 />

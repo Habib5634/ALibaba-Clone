@@ -15,14 +15,14 @@ const ShippingForm = ({ isFormModal, closeForm }) => {
   const [selectedOption, setSelectedOption] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [loading, setLoading] = useState(false);
-  const [selectedTags, setSelectedTags] = useState([]);
+  const [tag, setTag] = useState([]);
 
-  const handleOptionChange = (tag) => {
+  const handleOptionChange = (selectedTag) => {
     // Toggle tag selection
-    if (selectedTags.includes(tag)) {
-      setSelectedTags(selectedTags.filter((selectedTag) => selectedTag !== tag));
+    if (tag.includes(selectedTag)) {
+      setTag(tag.filter((existingTag) => existingTag !== selectedTag));
     } else {
-      setSelectedTags([...selectedTags, tag]);
+      setTag([...tag, selectedTag]);
     }
   };
 
@@ -39,7 +39,7 @@ const ShippingForm = ({ isFormModal, closeForm }) => {
       zipCode,
       fullName,
       phoneNumber,
-      selectedTags,
+      tag,
     };
 
     // Store the form data in local storage
@@ -211,25 +211,26 @@ const ShippingForm = ({ isFormModal, closeForm }) => {
         <div className='flex flex-wrap w-4/6'>
           <div
             onClick={() => handleOptionChange('BUSSINESS')}
-            className={`radio-box w-1/4 text-gray-700 mr-2 mb-2 rounded-md bg-gray-100 hover:bg-gray-200 py-0.5 px-2 ${selectedTags.includes('BUSSINESS') ? 'text-orange-500' : ''}`}
+            className={`radio-box w-1/4 text-gray-700 mr-2 mb-2 rounded-md bg-gray-100 hover:bg-gray-200 py-0.5 px-2 
+            ${tag.includes('BUSSINESS') ? 'text-orange-500' : ''}`}
           >
             BUSSINESS
           </div>
           <div
             onClick={() => handleOptionChange('FACTORY')}
-            className={`radio-box w-1/4 text-gray-700 mr-2 mb-2 rounded-md bg-gray-100 hover:bg-gray-200 py-0.5 px-2 ${selectedTags.includes('FACTORY') ? 'text-orange-500' : ''}`}
+            className={`radio-box w-1/4 text-gray-700 mr-2 mb-2 rounded-md bg-gray-100 hover:bg-gray-200 py-0.5 px-2 ${tag.includes('FACTORY') ? 'text-orange-500' : ''}`}
           >
             FACTORY
           </div>
           <div
             onClick={() => handleOptionChange('WAREHOUSE')}
-            className={`radio-box w-1/4 text-gray-700 mr-2 mb-2 rounded-md bg-gray-100 hover:bg-gray-200 py-0.5 px-2 ${selectedTags.includes('WAREHOUSE') ? 'text-orange-500' : ''}`}
+            className={`radio-box w-1/4 text-gray-700 mr-2 mb-2 rounded-md bg-gray-100 hover:bg-gray-200 py-0.5 px-2 ${tag.includes('WAREHOUSE') ? 'text-orange-500' : ''}`}
           >
             WAREHOUSE
           </div>
           <div
             onClick={() => handleOptionChange('RESIDENTIAL')}
-            className={`radio-box w-1/4 text-gray-700 mr-2 mb-2 rounded-md bg-gray-100 hover:bg-gray-200 py-0.5 px-2 ${selectedTags.includes('RESIDENTIAL') ? 'text-orange-500' : ''}`}
+            className={`radio-box w-1/4 text-gray-700 mr-2 mb-2 rounded-md bg-gray-100 hover:bg-gray-200 py-0.5 px-2 ${tag.includes('RESIDENTIAL') ? 'text-orange-500' : ''}`}
           >
             RESIDENTIAL
           </div>
