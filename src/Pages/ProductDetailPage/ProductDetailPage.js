@@ -71,75 +71,75 @@ const handleDecrement = (index) => {
 
 
 // Add to cart
-const addToCart = () => {
-  if (!user || !user._id) {
-    console.error('User ID not available');
-    return;
-  }
+// const addToCart = () => {
+//   if (!user || !user._id) {
+//     console.error('User ID not available');
+//     return;
+//   }
 
-  const orderDetails = product.orderDetails.map((caliber, index) => ({
-    size: caliber.size,
-    quantity: count[index],
-  }));
+//   const orderDetails = product.orderDetails.map((caliber, index) => ({
+//     size: caliber.size,
+//     quantity: count[index],
+//   }));
 
-  const cartItem = {
-    product: product._id,
-    user: user._id,
-    orderDetails: orderDetails
-  };
+//   const cartItem = {
+//     product: product._id,
+//     user: user._id,
+//     orderDetails: orderDetails
+//   };
 
-  // Retrieve existing cart data from local storage
-  const existingCartData = JSON.parse(localStorage.getItem('cartData')) || [];
+//   // Retrieve existing cart data from local storage
+//   const existingCartData = JSON.parse(localStorage.getItem('cartData')) || [];
 
-  // Add the new item to the cart
-  existingCartData.push(cartItem);
+//   // Add the new item to the cart
+//   existingCartData.push(cartItem);
 
-  // Update local storage with the modified cart data
-  localStorage.setItem('cartData', JSON.stringify(existingCartData));
+//   // Update local storage with the modified cart data
+//   localStorage.setItem('cartData', JSON.stringify(existingCartData));
 
-  console.log('Product added to local cart:', cartItem);
-};
+//   console.log('Product added to local cart:', cartItem);
+// };
 
 
 // console.log(user)
 
-  // const addToCart = async () => {
-  //   if (!user || !user._id) {
-  //     console.error('User ID not available');
-  //     return;
-  //   }
+  const addToCart = async () => {
+    if (!user || !user._id) {
+      console.error('User ID not available');
+      return;
+    }
 
-  //   const apiUrl = 'https://gray-ill-viper.cyclic.app/alibaba/addtocart';
-  //   const orderDetails = product.orderDetails.map((caliber, index) => ({
-  //     size: caliber.size,
-  //     quantity: count[index],
+    const apiUrl = 'https://gray-ill-viper.cyclic.app/alibaba/addtocart';
+    const orderDetails = product.orderDetails.map((caliber, index) => ({
+      size: caliber.size,
+      quantity: count[index],
       
-  //   }));
-  //   const requestData = {
-  //     product: product._id,
-  //     user: user._id,
-  //     orderDetails: orderDetails
-  //   };
+    }));
+    const requestData = {
+      product: product._id,
+      user: user._id,
+      orderDetails: orderDetails
+    };
 
-  //   try {
-  //     const response = await fetch(apiUrl, {
-  //       method: 'POST',
-  //       headers: {
-  //         'Content-Type': 'application/json'
-  //       },
-  //       body: JSON.stringify(requestData)
-  //     });
+    try {
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(requestData)
+      });
 
-  //     if (response.ok) {
-  //       const responseData = await response.json();
-  //       console.log('Product added to cart:', responseData);
-  //     } else {
-  //       console.error('Error adding product to cart:', response.status);
-  //     }
-  //   } catch (error) {
-  //     console.error('Error:', error);
-  //   }
-  // };
+      if (response.ok) {
+        const responseData = await response.json();
+        console.log('Product added to cart:', responseData);
+      } else {
+        console.error('Error adding product to cart:', response.status);
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
   return (
     <>
       <Navbar2 />

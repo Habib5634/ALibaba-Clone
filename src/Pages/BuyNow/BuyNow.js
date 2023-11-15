@@ -217,12 +217,13 @@ console.log('Token:', yourAuthToken);
     ],
     
   };
+  console.log("stored",storedFormData)
   // console.log("object",storedFormData,)
   const [formdata,setFormdata] = useState({
     shippingAddress:storedFormData,
     totalPrice,
     shippingPrice,
-    status:false
+    orderStatus:false
   })
   console.log("formdata",formdata)
   
@@ -240,6 +241,13 @@ console.log('Token:', yourAuthToken);
   
       if (response.ok) {
         console.log('Cart data updated successfully!');
+
+         // Remove items from local storage after successful submission
+      localStorage.removeItem('formdata');
+      localStorage.removeItem('formData');
+      localStorage.removeItem('subtotal');
+      localStorage.removeItem('shippingPrice');
+      localStorage.removeItem('totalQuantity');
       } else {
         console.error('Error updating cart data:', response.status);
         const errorText = await response.text();
@@ -252,7 +260,7 @@ console.log('Token:', yourAuthToken);
   
   // Update local storage whenever formData changes
   useEffect(() => {
-    localStorage.setItem('formData', JSON.stringify(formdata));
+    localStorage.setItem('formdata', JSON.stringify(formdata));
   }, [formdata]);
   
   // console.log(storedFormData);

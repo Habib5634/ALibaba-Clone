@@ -44,7 +44,7 @@ const ShippingForm = ({ isFormModal, closeForm }) => {
 
     // Store the form data in local storage
     localStorage.setItem('formData', JSON.stringify(formData));
-
+    window.location.reload();
     // You can also redirect or perform other actions after storing the data
     // For example, redirect to another page
     // window.location.href = '/success';
