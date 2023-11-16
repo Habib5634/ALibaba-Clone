@@ -2,22 +2,15 @@ import React from 'react'
 
 const SellingHeader = () => {
   return (
-    <div className='px-32 py-20 flex justify-between'>
+    <div className='px-32 py-20 flex justify-between items-center bg-[#f8f8f8]'>
         <div>
-            <h1 className='text-[28px] text-[#333333]'>Sell on ALibaba.com</h1>
-            <h1 className='text-[48px] text-[#333333] font-bold'>Reach millions of <br/>B2B buyers globally</h1>
-            <div className='flex items-center mt-20 space-x-10'>
-                <button className=' bg-blue-600 rounded-full px-12 py-[12px] flex items-center  text-white'>Start Selling</button>
-                <button className='border border-blue-500 hover:bg-blue-500 hover:text-white transition-colors duration-300 rounded-full px-3 py-2.5 text-blue-500 font-medium   flex  items-center'>Chat with Consultant</button>
-            </div>
+
+            <h1 className='text-[48px] text-[#333333] font-bold'>How to start selling<br/>on Alibaba.com</h1>
+            <h1 className=' text-[#333333] font-bold'>Ready to go global? Your business can penetrate new markets<br/> and reach customers around the world with an Alibaba.com seller<br/> account. Here's how to get started!</h1>
+           
         </div>
-        <div>
-            <h1 className='text-[36px] text-[#333333]'>40,000,000+</h1>
-            <h1 className='text-[#333333] mb-4'>active buyers Globally</h1>
-            <h1 className='text-[36px] text-[#333333]'>280,000+</h1>
-            <h1 className='text-[#333333] mb-4'>Product inquiries daily</h1>
-            <h1 className='text-[36px] text-[#333333]'>200+</h1>
-            <h1 className='text-[#333333] mb-4'>countries and regions<br/> represented</h1>
+        <div className='  '>
+            <img src='https://s.alicdn.com/@img/imgextra/i2/19999999999999/O1CN01m5ksQi2NjassgInzd_!!19999999999999-2-tps.png' alt='fsd'/>
         </div>
     </div>
   )
