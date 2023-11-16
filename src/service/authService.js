@@ -21,7 +21,7 @@ export const handleLogin = async (e, email, password,setLoading) => {
 
 
 
-export const handleRegister = async(e,  firstname, lastname, email, password, isnotbusinessentinty,companyname,purpose, phone,setLoading) => {
+export const handleRegister = async(e,  firstname, lastname, email, password,country, isnotbusinessentinty,companyname,purpose, phone,setLoading) => {
     e.preventDefault();
     console.log('Inside handleRegister function');
     try {
@@ -30,7 +30,7 @@ export const handleRegister = async(e,  firstname, lastname, email, password, is
             return alert('Please provide all fields');
           }
           setLoading(true); 
-          await store.dispatch(userRegister({    firstname, lastname, email, password, isnotbusinessentinty,companyname,purpose, phone}))
+          await store.dispatch(userRegister({    firstname, lastname, email,country, password, isnotbusinessentinty,companyname,purpose, phone}))
           setLoading(false); 
     } catch (error) {
       setLoading(false); 

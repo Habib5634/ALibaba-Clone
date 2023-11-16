@@ -5,7 +5,7 @@ import {  handleRegister } from '../../../service/authService';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 const SignupForm = () => {
-  const [countryname, setCountryName] = useState('');
+  const [country, setCountry] = useState('');
   const [purpose, setPurpose] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -20,15 +20,30 @@ const navigate = useNavigate()
   const handleSubmit = async (e) => {
     e.preventDefault();
   
-    const isNotBusinessEntityString = isnotbusinessentinty ? 'true' : 'false';
+    const isNotBusinessEntityString = isnotbusinessentinty ? true : false;
   
     try {
       setLoading(true);
-      await handleRegister(e, firstname, lastname, email, password, isNotBusinessEntityString, companyname, purpose, phone,setLoading);
-      
-      setLoading(false);
-      toast("Registered Successfull Please Login to Continue")
-      navigate('/')
+       // Assuming handleRegister returns some data after successful registration
+    const responseData = await handleRegister(
+      e,
+      firstname,
+      lastname,
+      email,
+      country,
+      password,
+      isNotBusinessEntityString,
+      companyname,
+      purpose,
+      phone,
+      setLoading
+    );
+
+    console.log('Registration successful. Response data:', responseData);
+
+    setLoading(false);
+    toast('Registered Successfully! Please Login to Continue');
+    navigate('/');
       // window.location.replace('/')
     } catch (error) {
       setLoading(false);
@@ -57,9 +72,9 @@ const navigate = useNavigate()
           </label>
           <select
             id="country"
-            name="countryname"
-            value={countryname}
-            onChange={(e) => setCountryName(e.target.value)}
+            name="country"
+            value={country}
+            onChange={(e) => setCountry(e.target.value)}
             className="w-4/6 px-3 text-sm py-0.5 focus:outline-none border border-gray-300"
             required
           >
