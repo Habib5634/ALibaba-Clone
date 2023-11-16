@@ -34,8 +34,8 @@ const SellingNav = () => {
             <img src='https://s.alicdn.com/@u/mobile/g/common/flags/1.0.0/assets/pk.png' className='w-5 h-auto mr-2' alt='pk'/><span className=' flex'>PK</span>
             </li>
             <li className='text-gray-600'>Signin</li>
-            <li className='border border-blue-500 hover:bg-blue-500 hover:text-white transition-colors duration-300 rounded-full px-3 py-1.5 flex text-[14px] items-center'>Chat With Consultant</li>
-            <li onClick={openForm} className=' bg-blue-600 rounded-full px-12 py-[7px] flex items-center text-[14px] text-white'>Start Selling</li>
+            <li className='border border-blue-500 hover:bg-blue-500 hover:text-white transition-colors duration-300 rounded-full px-3 py-1.5 flex text-[14px] items-center cursor-pointer'>Chat With Consultant</li>
+            <li onClick={openForm} className='cursor-pointer bg-blue-600 rounded-full px-12 py-[7px] flex items-center text-[14px] text-white'>Start Selling</li>
         </ul>
     </div>
     {/* form modal */}
