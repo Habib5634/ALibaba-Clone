@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import {AiOutlineDown} from 'react-icons/ai'
 import SellingFormModal from '../SellingComponents/SellingFormModal';
+import { Link } from 'react-router-dom';
 const SellingNav = () => {
   const [isFormModal, setIsFormModal] = useState(false);
 
@@ -16,13 +17,14 @@ const SellingNav = () => {
     <>
     <div className='flex shadow-md justify-between  h-20 items-center px-7'>
         <ul className='flex space-x-8'>
+          <Link to='/'>
         <li><img
           src='https://s.alicdn.com/@img/imgextra/i2/O1CN0153JdbU26g4bILVOyC_!!6000000007690-2-tps-418-58.png'
 
           alt="pngfuel"
           className="mr-3 w-48 h-auto"
         />
-        </li>
+        </li></Link>
         <li className='text-[14px] text-gray-600 flex items-center '>Plateform<AiOutlineDown className='mt-1 ml-1'/></li>
         <li className='text-[14px] text-gray-600 flex items-center '>Solution<AiOutlineDown className='mt-1 ml-1'/></li>
         <li className='text-[14px] text-gray-600 flex items-center '>Pricing<AiOutlineDown className='mt-1 ml-1'/></li>

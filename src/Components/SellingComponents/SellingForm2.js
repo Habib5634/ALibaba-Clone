@@ -5,6 +5,7 @@ const SellingForm2 = () => {
   const [otherPlatform, setOtherPlatform] = useState('');
   const [preferredOption, setPreferredOption] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('');
+  const [sellerAccountStatus, setSellerAccountStatus] = useState(false)
 
   const handleCheckboxChange = (platform) => {
     if (selectedPlatforms.includes(platform)) {
@@ -26,12 +27,12 @@ const SellingForm2 = () => {
     setSelectedCategory(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
   
     // Retrieve data from local storage
     const storedFormData = JSON.parse(localStorage.getItem('formData')) || {};
-    
+  
     // Combine data from the first form and the current form
     const combinedFormData = {
       ...storedFormData,
@@ -39,16 +40,35 @@ const SellingForm2 = () => {
       otherPlatform,
       preferredOption,
       selectedCategory,
+      sellerAccountStatus
     };
   
-    console.log(combinedFormData);
+    try {
+      // Make a POST request to the API
+      const response = await fetch('https://gray-ill-viper.cyclic.app/alibaba/addseller', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(combinedFormData),
+      });
   
-    // Add logic to handle the combined form data as needed
-    // For example, you can save it to local storage or submit it to an API
-  
-    // Save the combined form data to local storage
-    localStorage.setItem('combinedForm', JSON.stringify(combinedFormData));
+      // Check if the request was successful (status code 2xx)
+      if (response.ok) {
+        console.log('Data posted successfully!');
+        // Optionally, you can clear the local storage after a successful API call
+        localStorage.removeItem('formData');
+        // closeForm()
+      } else {
+        // Log an error if the request was not successful
+        console.error('Error posting data:', response.status);
+      }
+    } catch (error) {
+      // Log an error if an exception occurs during the API call
+      console.error('Error:', error);
+    }
   };
+  
   return (
     <div>
         <h1 className='text-[14px] text-[#CCCCCC] mb-[10px] text-center'>Step 2 of 2</h1>

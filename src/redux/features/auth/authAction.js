@@ -34,9 +34,9 @@ export const userLogin = createAsyncThunk(
 
 export const userRegister = createAsyncThunk(
     'auth/register',
-    async ({firstname,lastname, email, password,purpose,companyname,phone,country,isnotbussinessentinty  }, { rejectWithValue }) => {
+    async ({firstName,lastName, email, password,purpose,companyName,phone,country,isNotBussinessEntity  }, { rejectWithValue }) => {
         try {
-            const { data } = await API.post('https://gray-ill-viper.cyclic.app/signup', { firstname,lastname, email, password,purpose,companyname,phone,country,isnotbussinessentinty })
+            const { data } = await API.post('https://gray-ill-viper.cyclic.app/signup', { firstName,lastName, email, password,purpose,companyName,phone,country,isNotBussinessEntity })
             if (data) {
                 
                 

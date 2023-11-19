@@ -9,31 +9,46 @@ const SignupForm = () => {
   const [purpose, setPurpose] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [firstname, setFirstName] = useState('');
-  const [lastname, setLastName] = useState('');
-  const [companyname, setCompanyName] = useState('');
-  const [isnotbusinessentinty, setIsNotBusinessEntity] = useState(false);
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [companyName, setCompanyName] = useState('');
+  const [isNotBussinessEntity, setIsNotBusinessEntity] = useState(false);
   const [phone, setPhone] = useState('');
   const [loading, setLoading] = useState(false);
  
+  const toggleCompanyInput = () => {
+    setCompanyName('');
+    setIsNotBusinessEntity(!isNotBussinessEntity);
+  };
 const navigate = useNavigate()
   const handleSubmit = async (e) => {
     e.preventDefault();
   
-    const isNotBusinessEntityString = isnotbusinessentinty ? true : false;
+   
   
     try {
       setLoading(true);
+      console.log('Form Data:', {
+        firstName,
+        lastName,
+        email,
+        country,
+        password,
+        isNotBussinessEntity,
+        companyName,
+        purpose,
+        phone,
+      });
        // Assuming handleRegister returns some data after successful registration
     const responseData = await handleRegister(
       e,
-      firstname,
-      lastname,
+      firstName,
+      lastName,
       email,
       country,
       password,
-      isNotBusinessEntityString,
-      companyname,
+      isNotBussinessEntity,
+      companyName,
       purpose,
       phone,
       setLoading
@@ -164,9 +179,9 @@ const navigate = useNavigate()
           <input
             type="text"
             id="firstName"
-            name="firstname"
+            name="firstName"
             placeholder='First Name'
-            value={firstname}
+            value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
             className="w-1/2 text-sm px-3 py-0.5 focus:outline-none border border-gray-300"
             required
@@ -174,9 +189,9 @@ const navigate = useNavigate()
           <input
             type="text"
             id="lastName"
-            name="lastname"
+            name="lastName"
             placeholder='Last Name'
-            value={lastname}
+            value={lastName}
             onChange={(e) => setLastName(e.target.value)}
             className="w-1/2 text-sm px-3 py-0.5 focus:outline-none border border-gray-300"
             required
@@ -186,7 +201,7 @@ const navigate = useNavigate()
         
       
 
-{!isnotbusinessentinty && (
+{isNotBussinessEntity  && (
   <div className="mb-4 flex w-full items-center">
     <label htmlFor="companyName" className="block text-end pr-2 self-center text-sm w-2/6 text-gray-500 mb-2">
       Company Name:
@@ -194,27 +209,27 @@ const navigate = useNavigate()
     <input
       type="text"
       id="companyName"
-      name="companyname"
-      value={companyname}
+      name="companyName"
+      value={companyName}
       onChange={(e) => setCompanyName(e.target.value)}
       className="w-4/6 px-3 text-sm py-0.5 focus:outline-none border border-gray-300"
       required
     />
   </div>
-)}
-        <div className="mb-4 w-4/6 flex justify-end items-center">
-          <input
-            type="checkbox"
-            id="isNotBusinessEntity"
-            name="isnotbusinessentinty"
-            checked={isnotbusinessentinty}
-            onChange={(e) => setIsNotBusinessEntity(e.target.value)}
-            className="mr-2"
-          />
-          <label htmlFor="isNotBusinessEntity" className="text-gray-700">
-            I am not a business entity
-          </label>
-        </div>
+ )} 
+<div className="mb-4 w-4/6 flex justify-end items-center">
+  <input
+    type="checkbox"
+    id="isNotBussinessEntity"
+    name="isNotBussinessEntity"
+    checked={isNotBussinessEntity}
+    onChange={toggleCompanyInput}
+    className="mr-2"
+  />
+  <label htmlFor="isNotBusinessEntity" className="text-gray-700">
+    I am not a business entity
+  </label>
+</div>
         <div className="mb-4 flex w-full items-center">
           <label htmlFor="phone" className="block text-end pr-2 text-sm w-2/6  text-gray-500  mb-2">
             Phone: 

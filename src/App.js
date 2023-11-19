@@ -9,6 +9,7 @@ import Cart from './Pages/Cart/Cart';
 import ProductDetailPage from './Pages/ProductDetailPage/ProductDetailPage';
 import BuyNow from './Pages/BuyNow/BuyNow';
 import Selling from './Pages/Selling/Selling';
+import SellerDashboard from './Pages/Selling/SellerDashboard';
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
 <Route path='/cart' exact element={<Cart/>}/>
 <Route path='/buy-now/:id' exact element={<BuyNow/>}/>
 <Route path='/Start-selling' exact element={<Selling/>}/>
+<Route path='/seller-dashboard' exact element={<SellerDashboard/>}/>
 
 
 </Routes>

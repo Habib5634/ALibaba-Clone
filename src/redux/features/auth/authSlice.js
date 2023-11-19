@@ -1,16 +1,28 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {  userLogin ,userRegister} from "./authAction";
+import {jwtDecode} from 'jwt-decode';
 
+const decodeToken = (token) => {
+  try {
+    const decoded = jwtDecode(token);
+    return decoded;
+  } catch (error) {
+    console.error('Error decoding token:', error);
+    return null;
+  }
+};
 
-const token = localStorage.getItem('token') ? localStorage.getItem('token') : null
+// Example usage:
+const token = localStorage.getItem('token') || null;
+const decodedToken = decodeToken(token);
 
 const inittalState = {
     loading: false,
-    user: null,
+    user: decodedToken,
     token,
-    error: null
+    error: null,
 }
-
+console.log(inittalState);
 const authSlice = createSlice({
     name: 'auth',
     initialState: inittalState,

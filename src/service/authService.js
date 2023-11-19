@@ -21,16 +21,16 @@ export const handleLogin = async (e, email, password,setLoading) => {
 
 
 
-export const handleRegister = async(e,  firstname, lastname, email, password,country, isnotbusinessentinty,companyname,purpose, phone,setLoading) => {
+export const handleRegister = async(e,  firstName, lastName, email, password,country, isNotBussinessEntity,companyName,purpose, phone,setLoading) => {
     e.preventDefault();
     console.log('Inside handleRegister function');
     try {
      
-        if (!firstname || !lastname || !email || !password ||  !purpose || !phone ) {
-            return alert('Please provide all fields');
-          }
+        // if (!firstName || !lastName || !email || !password ||  !purpose || !phone ) {
+        //     return alert('Please provide all fields');
+        //   }
           setLoading(true); 
-          await store.dispatch(userRegister({    firstname, lastname, email,country, password, isnotbusinessentinty,companyname,purpose, phone}))
+          await store.dispatch(userRegister({    firstName, lastName, email, password,country, isNotBussinessEntity,companyName,purpose, phone}))
           setLoading(false); 
     } catch (error) {
       setLoading(false); 
