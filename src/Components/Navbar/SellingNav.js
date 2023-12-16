@@ -1,10 +1,14 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {AiOutlineDown} from 'react-icons/ai'
 import SellingFormModal from '../SellingComponents/SellingFormModal';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 const SellingNav = () => {
   const [isFormModal, setIsFormModal] = useState(false);
+  const { user } = useSelector(state => state.auth)
 
+
+  
 
   const openForm = () => {
     setIsFormModal(true);
@@ -13,6 +17,16 @@ const SellingNav = () => {
   const closeForm = () => {
     setIsFormModal(false);
   };
+
+
+const sellerStatus = localStorage.getItem('seller');
+if (user.isSeller === true) {
+  localStorage.removeItem('seller');
+}
+// Parse the JSON data if needed
+const parsedSellerStatus = JSON.parse(sellerStatus);
+
+
   return (
     <>
     <div className='flex shadow-md justify-between  h-20 items-center px-7'>
@@ -37,7 +51,15 @@ const SellingNav = () => {
             </li>
             <li className='text-gray-600'>Signin</li>
             <li className='border border-blue-500 hover:bg-blue-500 hover:text-white transition-colors duration-300 rounded-full px-3 py-1.5 flex text-[14px] items-center cursor-pointer'>Chat With Consultant</li>
-            <li onClick={openForm} className='cursor-pointer bg-blue-600 rounded-full px-12 py-[7px] flex items-center text-[14px] text-white'>Start Selling</li>
+            { user.isSeller === true ? (
+              <Link to='/seller-dashboard'>
+  <li className='cursor-pointer bg-blue-600 rounded-full px-12 py-[7px] flex items-center text-[14px] text-white'>Dashboard</li></Link>
+) : parsedSellerStatus === "pending" ? (
+  <li className='cursor-pointer bg-blue-600 rounded-full px-12 py-[7px] flex items-center text-[14px] text-white'>pending</li>
+) : (
+  <li onClick={openForm} className='cursor-pointer bg-blue-600 rounded-full px-12 py-[7px] flex items-center text-[14px] text-white'>Start Selling</li>
+)}
+            
         </ul>
     </div>
     {/* form modal */}

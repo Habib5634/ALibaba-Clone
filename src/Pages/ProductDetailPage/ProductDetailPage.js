@@ -12,7 +12,7 @@ import Navbar2 from '../../Components/Navbar/Navbar2';
 
 
 
-const ProductDetailPage = () => {
+const ProductDetailPage = ({company}) => {
   
   const [currentImage, setCurrentImage] = useState(0);
 const [product,setProducts] = useState(null)
@@ -23,7 +23,7 @@ const [product,setProducts] = useState(null)
   useEffect(() => {
     const getProductById = async (id) => {
       try {
-        const response = await API.get(`https://gray-ill-viper.cyclic.app/alibaba/usergetone/${id}`);
+        const response = await API.get(`http://localhost:5000/alibaba/usergetone/${id}`);
         const product = response.data;
         setProducts(product);
         console.log(product)
@@ -342,11 +342,12 @@ const handleDecrement = (index) => {
         {/* {product.sellerCompany.length > 20 ? `${product.sellerCompany.slice(0, 25)}...` : product.sellerCompany} */}
       </h1>
       <p className='text-gray-700 text-[14px]'>Manufacture</p>
-      <div className='flex items-center text-[12px] '>
+      <Link to={`/seller-profile/${product.addedby}`}><div className='flex items-center text-[12px] '>
         <img src='https://u.alicdn.com/mobile/g/common/flags/1.0.0/assets/cn.png' className='w-[20px] h-[14px] mr-1' alt='fleg' />
+       <p className='capitalize'>{company} Co,Ltd</p>
         <p>CN</p>
         <p>9<sup className="text-superscript">YR</sup></p>
-      </div>
+      </div></Link>
       <div className='flex mt-3 justify-between'>
         <div>
           <h1 className='text-gray-500 text-[13px]'>Response Time</h1>

@@ -1,11 +1,15 @@
 import React, { useState } from 'react'
+import { useSelector } from 'react-redux';
 
 const SellingForm2 = () => {
+  const { user } = useSelector(state => state.auth)
+  const loggUser =user._id 
     const [selectedPlatforms, setSelectedPlatforms] = useState([]);
   const [otherPlatform, setOtherPlatform] = useState('');
   const [preferredOption, setPreferredOption] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('');
   const [sellerAccountStatus, setSellerAccountStatus] = useState(false)
+  const [logUser,setlogUser] =useState(loggUser)
 
   const handleCheckboxChange = (platform) => {
     if (selectedPlatforms.includes(platform)) {
@@ -40,12 +44,13 @@ const SellingForm2 = () => {
       otherPlatform,
       preferredOption,
       selectedCategory,
-      sellerAccountStatus
+      sellerAccountStatus,
+      logUser
     };
   
     try {
       // Make a POST request to the API
-      const response = await fetch('https://gray-ill-viper.cyclic.app/alibaba/addseller', {
+      const response = await fetch('http://localhost:5000/alibaba/addseller', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -58,7 +63,8 @@ const SellingForm2 = () => {
         console.log('Data posted successfully!');
         // Optionally, you can clear the local storage after a successful API call
         localStorage.removeItem('formData');
-        // closeForm()
+        localStorage.setItem('seller', JSON.stringify("pending"));
+        
       } else {
         // Log an error if the request was not successful
         console.error('Error posting data:', response.status);

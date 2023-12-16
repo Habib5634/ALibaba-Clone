@@ -10,6 +10,7 @@ import ProductDetailPage from './Pages/ProductDetailPage/ProductDetailPage';
 import BuyNow from './Pages/BuyNow/BuyNow';
 import Selling from './Pages/Selling/Selling';
 import SellerDashboard from './Pages/Selling/SellerDashboard';
+import SellerUserProfile from './Pages/SellerProfilePage/SellerUserProfile';
 
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
 <Route path='/buy-now/:id' exact element={<BuyNow/>}/>
 <Route path='/Start-selling' exact element={<Selling/>}/>
 <Route path='/seller-dashboard' exact element={<SellerDashboard/>}/>
+<Route path='/seller-profile/:addedby' exact element={<SellerUserProfile/>}/>
 
 
 </Routes>

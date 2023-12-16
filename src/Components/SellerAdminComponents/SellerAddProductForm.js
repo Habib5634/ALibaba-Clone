@@ -1,14 +1,20 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux';
+import API from '../../service/API';
 
 const SellerAddProductForm = () => {
+  const { user,token } = useSelector(state => state.auth)
+  // console.log("user",user)
+  // console.log("user",token)
   const colors = ['Black', 'Red', 'Orange', 'Green'];
-   
+  const [servicesData, setCatagories] = useState([]);
 
     const [formData, setFormData] = useState({
         title: '',
         description: '',
         reviews: 0,
         buyers: 0,
+        
         priceOfPieces: [
           { price: 0, pieces: 0 },
           { price: 0, pieces: 0 },
@@ -27,6 +33,7 @@ const SellerAddProductForm = () => {
         ],
         category: [],
         images: [],
+        addedby:user?._id,
       });
 
       const handleCheckboxChange = (e) => {
@@ -74,26 +81,24 @@ const SellerAddProductForm = () => {
       
       const handleSubmit = async (e) => {
         e.preventDefault();
-      console.log(formData)
+    
         try {
-          const adminToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZTk0NGViMmIyYmFkZjFiOTg0ZTcyODQiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsIm5hbWUiOiJBZG1pbiIsInVzZXJUeXBlIjoiYWRtaW4iLCJpYXQiOjE2OTg5NTE2MjAsImV4cCI6MTczMDQ4NzYyMH0.bZLHmBxK0EZvICUR0xGqnGft-7zUoLQI3-jVkFSWEng';
-          const response = await fetch('https://gray-ill-viper.cyclic.app/alibaba/add', {
+          const response = await fetch('http://localhost:5000/alibaba/selleradd', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
-              // Include any additional headers for authentication
-              // Replace 'your-admin-token' with the actual admin token
-              'Authorization': `Bearer ${adminToken}`,
+              // Include the user's token in the Authorization header
+              'Authorization': `Bearer ${token}`,
             },
             body: JSON.stringify(formData),
           });
-      
+    
           if (!response.ok) {
             const errorData = await response.json(); // Assuming the error response is in JSON format
             console.error('Error Details:', errorData);
             throw new Error('Failed to submit the form');
           }
-      
+    
           const result = await response.json();
           console.log('API Response:', result);
         } catch (error) {
@@ -101,6 +106,27 @@ const SellerAddProductForm = () => {
         }
       };
     
+      
+
+
+ //get all catagory
+ const getAllCatagories = async () => {
+  try {
+      console.log("Fetching categories...");
+      const response = await API.get("http://localhost:5000/alibaba/usergetallcategories");
+      const servicesData = response.data.category;
+      if (servicesData) {
+          // console.log(servicesData);
+          setCatagories(servicesData); // Update state if needed
+      }
+  } catch (error) {
+      console.log("Error fetching categories:", error);
+  }
+};
+
+useEffect(() => {
+    getAllCatagories();
+}, []);
     
   return (
     <>
@@ -352,19 +378,25 @@ const SellerAddProductForm = () => {
 
 {/* Category */}
 <div className="mb-4">
-  <label htmlFor="category" className="block text-sm font-medium text-gray-600">
-    Category:
-  </label>
-  <input
-    type="text"
-    id="category"
-    name="category"
-    value={formData.category}
-    onChange={(e) => handleInputChange(e)}
-    className="mt-1 p-2 w-full border rounded-md"
-    required
-  />
-</div>
+      <label htmlFor="category" className="block text-sm font-medium text-gray-600">
+        Category:
+      </label>
+      <select
+        id="category"
+        name="category"
+        value={formData.category}
+        onChange={(e) => handleInputChange(e)}
+        className="mt-1 p-2 w-full border rounded-md"
+        required
+      >
+        <option value="" disabled defaultValue>Select a category</option>
+        {servicesData.map((category) => (
+          <option key={category._id} value={category._id}>
+            {category.category}
+          </option>
+        ))}
+      </select>
+    </div>
 
 {/* Images */}
 <div className="mb-4">

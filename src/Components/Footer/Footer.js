@@ -92,13 +92,13 @@ const Footer = () => {
         <div key={index} className='w-1/6 flex flex-col justify-start p-4'>
           <h1 className='text-start mb-6 font-bold'>{item.title}</h1>
           {item.buttons.map((button, i) => (
-            <>
-              <Link to={button.path1}><button key={i} className='text-start mb-4 hover:underline'>{button.btn1}</button></Link>
-              <Link to={button.path2}><button key={i} className='text-start mb-4 hover:underline'>{button.btn2}</button></Link>
-              <Link to={button.path3}><button key={i} className='text-start mb-4 hover:underline'>{button.btn3}</button></Link>
-              <Link to={button.path4}><button key={i} className='text-start mb-4 hover:underline'>{button.btn4}</button></Link>
-              <Link to={button.path5}><button key={i} className='text-start mb-4 hover:underline'>{button.btn5}</button></Link>
-            </>
+            <div key={i}>
+              <Link to={button.path1}><button key={i} className='text-start w-full mb-4 hover:underline'>{button.btn1}</button></Link>
+              <Link to={button.path2}><button key={i} className='text-start w-full mb-4 hover:underline'>{button.btn2}</button></Link>
+              <Link to={button.path3}><button key={i} className='text-start w-full mb-4 hover:underline'>{button.btn3}</button></Link>
+              <Link to={button.path4}><button key={i} className='text-start w-full mb-4 hover:underline'>{button.btn4}</button></Link>
+              <Link to={button.path5}><button key={i} className='text-start w-full mb-4 hover:underline'>{button.btn5}</button></Link>
+            </div>
           ))}
         </div>
       ))}

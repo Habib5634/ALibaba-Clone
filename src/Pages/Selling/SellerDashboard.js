@@ -6,6 +6,7 @@ import { RxDashboard } from 'react-icons/rx';
 import { AiOutlineDown, AiOutlineRight } from 'react-icons/ai';
 import '../../App.css'
 import SellerAddProductForm from '../../Components/SellerAdminComponents/SellerAddProductForm';
+import SellerGetAllProducts from '../../Components/SellerAdminComponents/SellerGetAllProducts';
 const SellerDashboard = () => {
     const [isOpen, setIsOpen] = useState(window.innerWidth > 768);
     const [selectedPage, setSelectedPage] = useState('Home');
@@ -49,7 +50,7 @@ const handleOrderDropdown = ()=>{
         );
     }else if (selectedPage === 'allProducts') {
         content = (
-            <h1>Products</h1>
+            <SellerGetAllProducts/>
         );
     }else if (selectedPage === 'addProducts') {
         content = (

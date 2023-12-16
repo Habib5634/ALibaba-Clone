@@ -1,64 +1,65 @@
 import React, { useState } from 'react';
-import { FaFacebook, FaLinkedin,  FaTwitter } from 'react-icons/fa';
-import {FcGoogle} from 'react-icons/fc'
-import {  handleRegister } from '../../../service/authService';
+import { FaFacebook, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import { FcGoogle } from 'react-icons/fc'
+import { handleRegister } from '../../../service/authService';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 const SignupForm = () => {
-  const [country, setCountry] = useState('');
-  const [purpose, setPurpose] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [purpose, setPurpose] = useState('');
   const [companyName, setCompanyName] = useState('');
-  const [isNotBussinessEntity, setIsNotBusinessEntity] = useState(false);
   const [phone, setPhone] = useState('');
+
+  const [country, setCountry] = useState('');
+  const [isNotBussinessEntity, setIsNotBusinessEntity] = useState(false);
+  const [isSeller, setIsSeller] = useState(false)
   const [loading, setLoading] = useState(false);
- 
+
   const toggleCompanyInput = () => {
     setCompanyName('');
     setIsNotBusinessEntity(!isNotBussinessEntity);
   };
-const navigate = useNavigate()
+  const navigate = useNavigate()
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
-   
-  
     try {
       setLoading(true);
       console.log('Form Data:', {
         firstName,
         lastName,
         email,
-        country,
         password,
-        isNotBussinessEntity,
-        companyName,
         purpose,
+        companyName,
         phone,
+        country,
+        isNotBussinessEntity,
+        isSeller,
       });
-       // Assuming handleRegister returns some data after successful registration
-    const responseData = await handleRegister(
-      e,
-      firstName,
-      lastName,
-      email,
-      country,
-      password,
-      isNotBussinessEntity,
-      companyName,
-      purpose,
-      phone,
-      setLoading
-    );
-
-    console.log('Registration successful. Response data:', responseData);
-
-    setLoading(false);
-    toast('Registered Successfully! Please Login to Continue');
-    navigate('/');
+      // Assuming handleRegister returns some data after successful registration
+      const responseData = await handleRegister(
+        e,
+        firstName,
+        lastName,
+        email,
+        password,
+        purpose,
+        companyName,
+        phone,
+        country,
+        isNotBussinessEntity,
+        isSeller,
+        setLoading 
+      );
+  
+      console.log('Registration successful. Response data:', responseData);
+  
+      setLoading(false);
+      toast('Registered Successfully! Please Login to Continue');
+      navigate('/');
       // window.location.replace('/')
     } catch (error) {
       setLoading(false);
@@ -66,22 +67,23 @@ const navigate = useNavigate()
       console.error('Registration failed:', error);
     }
   };
+  
 
   return (
     <div className="">
 
-<div className='flex justify-center space-x-3 my-6'>
-    
-    <FaFacebook size={30} color="#3b5998" />
-<FaLinkedin size={30} color="#0077B5" />
-<FcGoogle size={30} color="#EA4335" />
-<FaTwitter size={30} color="#1DA1F2" />
-</div>
+      <div className='flex justify-center space-x-3 my-6'>
 
-<hr className='border-b w-full  mb-6' />
+        <FaFacebook size={30} color="#3b5998" />
+        <FaLinkedin size={30} color="#0077B5" />
+        <FcGoogle size={30} color="#EA4335" />
+        <FaTwitter size={30} color="#1DA1F2" />
+      </div>
+
+      <hr className='border-b w-full  mb-6' />
 
       <form onSubmit={handleSubmit}>
-      <div className="mb-4 flex w-full items-center">
+        <div className="mb-4 flex w-full items-center">
           <label htmlFor="country" className="block text-end pr-2 self-center text-sm w-2/6 text-gray-500  mb-2">
             Country/Region:
           </label>
@@ -99,7 +101,7 @@ const navigate = useNavigate()
             {/* Add more options as needed */}
           </select>
         </div>
-        
+
         <div className="mb-1 flex w-full items-center">
           <label className="block text-end pr-2 self-center text-sm w-2/6 text-gray-500  mb-2">I am here to:</label>
           <label className="flex items-center">
@@ -135,13 +137,13 @@ const navigate = useNavigate()
             />
             <span className='mr-2 text-sm text-gray-500'>Both</span>
           </label>
-          
+
         </div>
         <div className="mb-4 flex w-full items-center">
-        <label  className="block text-end pr-2 self-center text-sm w-2/6 text-gray-500  mb-2">
+          <label className="block text-end pr-2 self-center text-sm w-2/6 text-gray-500  mb-2">
           </label>
-          <p  className="w-4/6  text-sm text-gray-400">Purchaser and seller will have different experience. And you may NOT change your role later.</p>
-            
+          <p className="w-4/6  text-sm text-gray-400">Purchaser and seller will have different experience. And you may NOT change your role later.</p>
+
         </div>
         <div className="mb-4 flex w-full items-center">
           <label htmlFor="email" className="block text-end pr-2 self-center text-sm w-2/6 text-gray-500  mb-2">
@@ -176,63 +178,63 @@ const navigate = useNavigate()
             Name:
           </label>
           <div className='w-4/6 flex space-x-2'>
-          <input
-            type="text"
-            id="firstName"
-            name="firstName"
-            placeholder='First Name'
-            value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
-            className="w-1/2 text-sm px-3 py-0.5 focus:outline-none border border-gray-300"
-            required
-          />
-          <input
-            type="text"
-            id="lastName"
-            name="lastName"
-            placeholder='Last Name'
-            value={lastName}
-            onChange={(e) => setLastName(e.target.value)}
-            className="w-1/2 text-sm px-3 py-0.5 focus:outline-none border border-gray-300"
-            required
-          />
+            <input
+              type="text"
+              id="firstName"
+              name="firstName"
+              placeholder='First Name'
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+              className="w-1/2 text-sm px-3 py-0.5 focus:outline-none border border-gray-300"
+              required
+            />
+            <input
+              type="text"
+              id="lastName"
+              name="lastName"
+              placeholder='Last Name'
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
+              className="w-1/2 text-sm px-3 py-0.5 focus:outline-none border border-gray-300"
+              required
+            />
           </div>
         </div>
-        
-      
 
-{isNotBussinessEntity  && (
-  <div className="mb-4 flex w-full items-center">
-    <label htmlFor="companyName" className="block text-end pr-2 self-center text-sm w-2/6 text-gray-500 mb-2">
-      Company Name:
-    </label>
-    <input
-      type="text"
-      id="companyName"
-      name="companyName"
-      value={companyName}
-      onChange={(e) => setCompanyName(e.target.value)}
-      className="w-4/6 px-3 text-sm py-0.5 focus:outline-none border border-gray-300"
-      required
-    />
-  </div>
- )} 
-<div className="mb-4 w-4/6 flex justify-end items-center">
-  <input
-    type="checkbox"
-    id="isNotBussinessEntity"
-    name="isNotBussinessEntity"
-    checked={isNotBussinessEntity}
-    onChange={toggleCompanyInput}
-    className="mr-2"
-  />
-  <label htmlFor="isNotBusinessEntity" className="text-gray-700">
-    I am not a business entity
-  </label>
-</div>
+
+
+        {isNotBussinessEntity && (
+          <div className="mb-4 flex w-full items-center">
+            <label htmlFor="companyName" className="block text-end pr-2 self-center text-sm w-2/6 text-gray-500 mb-2">
+              Company Name:
+            </label>
+            <input
+              type="text"
+              id="companyName"
+              name="companyName"
+              value={companyName}
+              onChange={(e) => setCompanyName(e.target.value)}
+              className="w-4/6 px-3 text-sm py-0.5 focus:outline-none border border-gray-300"
+              required
+            />
+          </div>
+        )}
+        <div className="mb-4 w-4/6 flex justify-end items-center">
+          <input
+            type="checkbox"
+            id="isNotBussinessEntity"
+            name="isNotBussinessEntity"
+            checked={isNotBussinessEntity}
+            onChange={toggleCompanyInput}
+            className="mr-2"
+          />
+          <label htmlFor="isNotBusinessEntity" className="text-gray-700">
+            I am not a business entity
+          </label>
+        </div>
         <div className="mb-4 flex w-full items-center">
           <label htmlFor="phone" className="block text-end pr-2 text-sm w-2/6  text-gray-500  mb-2">
-            Phone: 
+            Phone:
           </label>
           <input
             type="tel"

@@ -8,7 +8,7 @@ export const userLogin = createAsyncThunk(
     'auth/login',
     async ({  email, password }, { rejectWithValue }) => {
         try {
-            const { data } = await API.post('https://gray-ill-viper.cyclic.app/signin', {  email, password })
+            const { data } = await API.post('http://localhost:5000/signin', {  email, password })
             //store token
             if (data) {
                 localStorage.setItem('token', data.token);
@@ -34,9 +34,27 @@ export const userLogin = createAsyncThunk(
 
 export const userRegister = createAsyncThunk(
     'auth/register',
-    async ({firstName,lastName, email, password,purpose,companyName,phone,country,isNotBussinessEntity  }, { rejectWithValue }) => {
+    async ({firstName,
+      lastName,
+      email,
+      password,
+      purpose,
+      companyName,
+      phone,
+      country,
+      isNotBussinessEntity,
+    isSeller }, { rejectWithValue }) => {
         try {
-            const { data } = await API.post('https://gray-ill-viper.cyclic.app/signup', { firstName,lastName, email, password,purpose,companyName,phone,country,isNotBussinessEntity })
+            const { data } = await API.post('http://localhost:5000/signup', { firstName,
+            lastName,
+            email,
+            password,
+            purpose,
+            companyName,
+            phone,
+            country,
+            isNotBussinessEntity,
+          isSeller})
             if (data) {
                 
                 
@@ -76,7 +94,7 @@ export const userRegister = createAsyncThunk(
 //     }
 // )
 
-const apiUrl = 'https://gray-ill-viper.cyclic.app/alibaba';
+const apiUrl = 'http://localhost:5000/alibaba';
 
 export const fetchCartItems = async () => {
   try {

@@ -9,7 +9,7 @@ import { FaSearch, FaCamera } from 'react-icons/fa';
 import ShipToPkMenu from "./NavbarMenus/ShipToPkMenu/ShipToPkMenu";
 import LanguageMenu from "./NavbarMenus/LanguageMenu/LanguageMenu";
 import SigninMenu from "./NavbarMenus/SigninMenu/SigninMenu";
-import SubNav from "../SubNav/SubNav";
+
 import Modal from "./FormModal";
 import CategoryMenu from "../SubNav/CategoryMenu/CategoryMenu";
 import FeaturedSelectionMenu from "../SubNav/FeaturedSelectionMenu/FeaturedSelectionMenu";
@@ -18,7 +18,7 @@ import BuyerCentralMenu from "../SubNav/BuyerCentralMenu/BuyerCentralMenu";
 import SupplierMenu from "../SubNav/SupplierMenu/SupplierMenu";
 import HelpCenterMenu from "../SubNav/HelpCenterMenu/HelpCenterMenu";
 import AppMenu from "../SubNav/AppMenu/AppMenu";
-import Navbar2 from "./Navbar2";
+
 import { toast } from "react-toastify";
 
 const Navbar = () => {
@@ -44,7 +44,7 @@ const Navbar = () => {
       id: 1,
       label: 'All Categories',
       subMenu: <CategoryMenu />,
-      icon: <AiOutlineBars className="mt-1 mr-1" />,
+      icon: <AiOutlineBars className="mt-1 mr-1 " />,
     },
     {
       id: 2,
@@ -307,7 +307,7 @@ const Navbar = () => {
           <div className="flex self-start w-5/6 mt-6 bg-white  rounded-full p-1">
             <input
               type="text"
-              className="border-none outline-none bg-transparent flex-grow px-2"
+              className="border-none outline-none bg-transparent text-black pl-4 flex-grow px-2"
               placeholder="Search..."
             />
             <div className="flex items-center ">
